@@ -1,0 +1,2322 @@
+[
+  {
+    "id": 1,
+    "name": "Air Pods 2 lux (Поддержка беспроводной зарядки, Чип JL Отображаются в основных/пробиваются/3imei+гравировка/картон+молочная ванночка, плотный картон/ звук ) H4",
+    "category": "Электроника и аксессуары",
+    "section": "AIR 2",
+    "price": 320,
+    "prices": [
+      350,
+      340,
+      320
+    ],
+    "image": "assets/p0053.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 13
+  },
+  {
+    "id": 2,
+    "name": "AIR Pods 2 Premium * Поддержка беспроводной зарядки, Чип J8-1 (Отображаются в основных/пробиваются/3imei+3гравировки/картон+молочная коробка/плотная пленка кейса и кабель с надписью/сильный магнит в шарнире/3 наклейка поверх заводской запайки)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR 2",
+    "price": 440,
+    "prices": [
+      460,
+      450,
+      440
+    ],
+    "image": "assets/illustration_2.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 14,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 3,
+    "name": "AIR Pods 3 Lux (Поддержка беспроводной зарядки, ,Отображаются в основных/пробиваются/3imei+3гравировки/анимация на ios 16/все изображения в настройках как на AIR 3/Чип JL)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR 3",
+    "price": 330,
+    "prices": [
+      360,
+      340,
+      330
+    ],
+    "image": "assets/p0054.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 16
+  },
+  {
+    "id": 4,
+    "name": "AIR Pods 3 Premium Поддержка беспроводной зарядки, чип J8 (Отображаются в основных/пробиваются/3imei+гравировки/картон+молочная коробка/анимация на ios 16, все изображения в настройках как на AIR 3/ звук микрофона. чип с маркировкой 1562a/airoha)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR 3",
+    "price": 510,
+    "prices": [
+      540,
+      530,
+      510
+    ],
+    "image": "assets/illustration_4.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 17,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 5,
+    "name": "Air Pods Pro Lux Поддержка беспроводной зарядки, H4 (Отображаются в основных/пробиваются/3imei+гравировка/картон)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO БЕЗ ШУМКИ",
+    "price": 440,
+    "prices": [
+      460,
+      450,
+      440
+    ],
+    "image": "assets/p0055.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 19
+  },
+  {
+    "id": 6,
+    "name": "Air Pods Pro Premium. AIR Pro* Поддержка беспроводной зарядки, чипJ8 (Отображаются в основных/пробиваются/3imei+3гравировки/картон+ молочная коробка/пленка с надписью/ звук микрофона, чип с маркировкой 1562a/airoha)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO БЕЗ ШУМКИ",
+    "price": 530,
+    "prices": [
+      560,
+      550,
+      530
+    ],
+    "image": "assets/illustration_6.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 20,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 7,
+    "name": "Air Pods Pro с Шумкой Lux. Поддержка беспроводной зарядки, H4 (Отображаются в основных/пробиваются/3imei+3гравировки/картон+молочная коробка)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO С ШУМКОЙ",
+    "price": 450,
+    "prices": [
+      470,
+      460,
+      450
+    ],
+    "image": "assets/p0056.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 22
+  },
+  {
+    "id": 8,
+    "name": "AIR Pods Pro с Шумкой Premium. 🎧AIR Pro с Шумкой* J8-1 (Отображаются в основных/пробиваются/3imei+3гравировки/картон+молочная коробка/пленка и кабель с надписью/ 3 наклейка поверх заводской запайки, звук микрофона, чип с маркировкой 1562a/airoha, через приложение пробивается как airoha, улучшенная версия)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO С ШУМКОЙ",
+    "price": 670,
+    "prices": [
+      690,
+      680,
+      670
+    ],
+    "image": "assets/illustration_8.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 23,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 9,
+    "name": "AIR Pods PRO 2 без шумки Lux. H4) Поддержка беспроводной зарядки, Type-C без шумки (Анимация Air Pro Gen2 / 3 пары амбушюр / отображаются в основных/пробиваются как AIR PRO 2/ 3imei+3гравировки/картон+молочная коробка/пленка c надписью)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO 2 БЕЗ ШУМКИ",
+    "price": 370,
+    "prices": [
+      410,
+      390,
+      370
+    ],
+    "image": "assets/p0057.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 25
+  },
+  {
+    "id": 10,
+    "name": "AIR Pods PRO 2 без шумки Premium. 🎧AIR PRO (GEN2 J8) без шумки , Поддержка беспроводной зарядки,(Анимация Air Pro Gen2 / 3 пары амбушюр / отображаются в основных/пробиваются как AIR PRO 2/ 3imei+3гравировки/картон+молочная коробка/пленка c надписью/Чип с маркировкой 1562a/airoha, улучшенная версия)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO 2 БЕЗ ШУМКИ",
+    "price": 585,
+    "prices": [
+      620,
+      610,
+      585
+    ],
+    "image": "assets/p0058.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 26
+  },
+  {
+    "id": 11,
+    "name": "AIR Pods PRO 2 с Шумкой Поддержка беспроводной зарядки, H4 с Шумкой (Функционирует динамик на кейсе и сенсорное управление громкостью. Чип JL, ванночка плотный картон)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO 2  TYPE-C С ШУМОПОДАВЛЕНИЕМ",
+    "price": 550,
+    "prices": [
+      590,
+      560,
+      550
+    ],
+    "image": "assets/p0059.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 28
+  },
+  {
+    "id": 12,
+    "name": "AIR Pods PRO 2 Type-C с Шумкой Lux. (Поддержка беспроводной зарядки, Функционирует динамик на кейсе и Поддержка беспроводной зарядки, сенсорное управление громкостью. Чип JL)йй",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO 2  TYPE-C С ШУМОПОДАВЛЕНИЕМ",
+    "price": 670,
+    "prices": [
+      700,
+      680,
+      670
+    ],
+    "image": "assets/illustration_12.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 29,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 13,
+    "name": "AIR Pods PRO 2 Type-C с Шумкой Premium. Type-C с Шумкой j8 (Поддержка беспроводной зарядки, улучшенный микрофон,функционирует динамик на кейсе и сенсорное управление громкостью. Чип с маркировкой 1562a/airoha)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO 2  TYPE-C С ШУМОПОДАВЛЕНИЕМ",
+    "price": 720,
+    "prices": [
+      750,
+      740,
+      720
+    ],
+    "image": "assets/illustration_13.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 30,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 14,
+    "name": "AIR Pods PRO 2 Type-C Blutrum с Шум Premium. Type-C Улучшенный микрофон (Поддержка беспроводной зарядки, функционирует динамик на кейсе и сенсорное управление громкостью. Чип с маркировкой airoha) Улучшенный звук , качественный кабель",
+    "category": "Электроника и аксессуары",
+    "section": "AIR PRO 2  TYPE-C С ШУМОПОДАВЛЕНИЕМ",
+    "price": 950,
+    "prices": [
+      990,
+      970,
+      950
+    ],
+    "image": "assets/p0022.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 31
+  },
+  {
+    "id": 15,
+    "name": "🎧AIR PRO 3 J8 Type-C без шумоподавления",
+    "category": "Электроника и аксессуары",
+    "section": "AirPods Pro 3 без шумоподавления",
+    "price": 530,
+    "prices": [
+      550,
+      540,
+      530
+    ],
+    "image": "assets/p0030.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 33
+  },
+  {
+    "id": 16,
+    "name": "🎧AIR PRO 3 Lux",
+    "category": "Электроника и аксессуары",
+    "section": "AirPods Pro 3 c шумоподавлением",
+    "price": 590,
+    "prices": [
+      650,
+      610,
+      590
+    ],
+    "image": "assets/p0031.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 35
+  },
+  {
+    "id": 17,
+    "name": "🎧AIR PRO 3 J8 Type-C с шумоподавлением",
+    "category": "Электроника и аксессуары",
+    "section": "AirPods Pro 3 c шумоподавлением",
+    "price": 650,
+    "prices": [
+      790,
+      700,
+      650
+    ],
+    "image": "assets/illustration_17.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 36,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 18,
+    "name": "AIRPODS 4 чип J8 активное шумуоподавление , улучшенная версия (Рабочий гироскоп, анимации, коробка и комплектация как в оригинале)",
+    "category": "Электроника и аксессуары",
+    "section": "AIRPods 4",
+    "price": 1640,
+    "prices": [
+      1690,
+      1650,
+      1640
+    ],
+    "image": "assets/p0018.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 38
+  },
+  {
+    "id": 19,
+    "name": "AIRPODS 4 чип J8 активное шумуоподавление , улучшенная версия (анимация, коробка и комплектация как в оригинале)",
+    "category": "Электроника и аксессуары",
+    "section": "AIRPods 4",
+    "price": 670,
+    "prices": [
+      690,
+      680,
+      670
+    ],
+    "image": "assets/p0004.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 39
+  },
+  {
+    "id": 20,
+    "name": "AIRPODS 4 без шумоподавления",
+    "category": "Электроника и аксессуары",
+    "section": "AIRPods 4",
+    "price": 370,
+    "prices": [
+      490,
+      400,
+      370
+    ],
+    "image": "assets/p0010.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 40
+  },
+  {
+    "id": 21,
+    "name": "🎧AIRPODS PRO 2 Type-C airoha 1563 E (Поддержка беспроводной зарядки, Звук как на оригинале, самый качественный микрофон среди копий, гироскоп, пространственный звук, функции сенсоров как на ориге 1 в 1, аккумулятор до 7 часов работы, максимальное качество пластика кейса, все гравировки)",
+    "category": "Электроника и аксессуары",
+    "section": "Топовые версии наушников",
+    "price": 1450,
+    "prices": [
+      1450
+    ],
+    "image": "assets/p0033.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 43
+  },
+  {
+    "id": 22,
+    "name": "🎧AIRPODS PRO 2 Type-C Huilian 277 H2S Ultra (Поддержка беспроводной зарядки, Звук как на оригинале, самый качественный микрофон среди копий, гироскоп, пространственный звук, функции сенсоров как на ориге 1 в 1, 350ма аккумулятор до 7 часов работы, максимальное качество пластика кейса, все гравировки)",
+    "category": "Электроника и аксессуары",
+    "section": "Топовые версии наушников",
+    "price": 3700,
+    "prices": [
+      3700
+    ],
+    "image": "assets/p0002.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 44
+  },
+  {
+    "id": 23,
+    "name": "Marshall Major 4 (Черный)",
+    "category": "Электроника и аксессуары",
+    "section": "Marshall",
+    "price": 1900,
+    "prices": [
+      1990,
+      1950,
+      1900
+    ],
+    "image": "assets/p0060.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 46
+  },
+  {
+    "id": 24,
+    "name": "Marshall Major 4 (Коричневый)",
+    "category": "Электроника и аксессуары",
+    "section": "Marshall",
+    "price": 1900,
+    "prices": [
+      1990,
+      1950,
+      1900
+    ],
+    "image": "assets/p0061.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 47
+  },
+  {
+    "id": 25,
+    "name": "Galaxy Bads 3 Pro",
+    "category": "Электроника и аксессуары",
+    "section": "Samsung",
+    "price": 590,
+    "prices": [
+      590
+    ],
+    "image": "https://storage.comprasmartphone.com/headphones/samsung-galaxy-buds-3-pro.png",
+    "sheet": "Электроника|Аксессуары",
+    "row": 49,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 26,
+    "name": "Колонка JBL FLIP 6",
+    "category": "Электроника и аксессуары",
+    "section": "БЕСПРОВОДНЫЕ КОЛОНКИ",
+    "price": 850,
+    "prices": [
+      850
+    ],
+    "image": "assets/p0027.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 51
+  },
+  {
+    "id": 27,
+    "name": "Колонка JBL FLIP 7",
+    "category": "Электроника и аксессуары",
+    "section": "БЕСПРОВОДНЫЕ КОЛОНКИ",
+    "price": 990,
+    "prices": [
+      990
+    ],
+    "image": "https://hnsfpau.imgix.net/5/images/detailed/508/6494050.1.jpg?auto=format%2Ccompress&bg=0FFF&fit=fill&h=844&w=1500",
+    "sheet": "Электроника|Аксессуары",
+    "row": 52,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 28,
+    "name": "AIR Max (Черные) AA",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX",
+    "price": 1400,
+    "prices": [
+      1400
+    ],
+    "image": "assets/p0062.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 54
+  },
+  {
+    "id": 29,
+    "name": "AIR Max (Белый) AA",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX",
+    "price": 1400,
+    "prices": [
+      1400
+    ],
+    "image": "assets/p0016.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 55
+  },
+  {
+    "id": 30,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Черные)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 - второе поколение с шум пластик",
+    "price": 3450,
+    "prices": [
+      3790,
+      3470,
+      3450
+    ],
+    "image": "assets/p0063.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 57
+  },
+  {
+    "id": 31,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Белые)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 - второе поколение с шум пластик",
+    "price": 3450,
+    "prices": [
+      3790,
+      3470,
+      3450
+    ],
+    "image": "assets/p0064.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 58
+  },
+  {
+    "id": 32,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Синие)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 - второе поколение с шум пластик",
+    "price": 3450,
+    "prices": [
+      3790,
+      3470,
+      3450
+    ],
+    "image": "assets/p0065.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 59
+  },
+  {
+    "id": 33,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Красные)",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 - второе поколение с шум пластик",
+    "price": 3450,
+    "prices": [
+      3790,
+      3470,
+      3450
+    ],
+    "image": "assets/p0066.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 60
+  },
+  {
+    "id": 34,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (фиолетовый )",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 - второе поколение с шум пластик",
+    "price": 3450,
+    "prices": [
+      3790,
+      3470,
+      3450
+    ],
+    "image": "assets/p0067.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 61
+  },
+  {
+    "id": 35,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Черные) Алюминий + гироскоп",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 Airoha с шумкой Алюминий + гироскоп",
+    "price": 5600,
+    "prices": [
+      5600
+    ],
+    "image": "assets/p0068.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 63
+  },
+  {
+    "id": 36,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Белые) Алюминий + гироскоп чип Airoha",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 Airoha с шумкой Алюминий + гироскоп",
+    "price": 5600,
+    "prices": [
+      5600
+    ],
+    "image": "assets/p0069.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 64
+  },
+  {
+    "id": 37,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Синие) Алюминий + гироскоп",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 Airoha с шумкой Алюминий + гироскоп",
+    "price": 5600,
+    "prices": [
+      5600
+    ],
+    "image": "assets/p0070.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 65
+  },
+  {
+    "id": 38,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (Красные) Алюминий + гироскоп",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 Airoha с шумкой Алюминий + гироскоп",
+    "price": 5600,
+    "prices": [
+      5600
+    ],
+    "image": "assets/p0071.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 66
+  },
+  {
+    "id": 39,
+    "name": "AIR Max 2 с Шумкой 1 в 1 (фиолетовый ) Алюминий + гироскоп",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 Airoha с шумкой Алюминий + гироскоп",
+    "price": 5600,
+    "prices": [
+      5600
+    ],
+    "image": "assets/p0072.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 67
+  },
+  {
+    "id": 40,
+    "name": "Чехлы на AIR Pods",
+    "category": "Электроника и аксессуары",
+    "section": "AIR MAX 2 Airoha с шумкой Алюминий + гироскоп",
+    "price": 35,
+    "prices": [
+      35
+    ],
+    "image": "assets/p0073.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 69
+  },
+  {
+    "id": 41,
+    "name": "X 9 CALL",
+    "category": "Электроника и аксессуары",
+    "section": "Watch ULTRA : 49мм",
+    "price": 2800,
+    "prices": [
+      2900,
+      2850,
+      2800
+    ],
+    "image": "assets/p0074.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 72
+  },
+  {
+    "id": 42,
+    "name": "Apple Watch Ultra в ориг коробке ( Лого Apple при включении )",
+    "category": "Электроника и аксессуары",
+    "section": "Watch ULTRA : 49мм",
+    "price": 1550,
+    "prices": [
+      1550
+    ],
+    "image": "assets/p0009.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 73
+  },
+  {
+    "id": 43,
+    "name": "Apple Watch в ориг коробке ( Лого Apple при включении ) Lux версия",
+    "category": "Электроника и аксессуары",
+    "section": "РАЗМЕР : 45мм",
+    "price": 1050,
+    "prices": [
+      1150,
+      1100,
+      1050
+    ],
+    "image": "assets/p0026.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 75
+  },
+  {
+    "id": 44,
+    "name": "Apple Watch в ориг коробке ( Лого Apple при включении ) Premium",
+    "category": "Электроника и аксессуары",
+    "section": "РАЗМЕР : 45мм",
+    "price": 1540,
+    "prices": [
+      1550,
+      1540
+    ],
+    "image": "assets/p0008.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 76
+  },
+  {
+    "id": 45,
+    "name": "HK 11 PRO Max +",
+    "category": "Электроника и аксессуары",
+    "section": "РАЗМЕР : 45мм",
+    "price": 1590,
+    "prices": [
+      1590
+    ],
+    "image": "https://shoppingekart.com/images/product-images/small_1763020984156433769.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 77,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 46,
+    "name": "Hk 11 mini",
+    "category": "Электроника и аксессуары",
+    "section": "РАЗМЕР : 41мм",
+    "price": 1210,
+    "prices": [
+      1250,
+      1220,
+      1210
+    ],
+    "image": "https://shoppingekart.com/images/product-images/small_1763020984156433769.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 79,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 47,
+    "name": "Hk 11 mini plus",
+    "category": "Электроника и аксессуары",
+    "section": "РАЗМЕР : 41мм",
+    "price": 1630,
+    "prices": [
+      1690,
+      1670,
+      1630
+    ],
+    "image": "https://shoppingekart.com/images/product-images/small_1763020984156433769.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 80,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 48,
+    "name": "Защитное стекло для часов в упаковке.",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары для часов",
+    "price": 65,
+    "prices": [
+      65
+    ],
+    "image": "assets/p0003.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 82
+  },
+  {
+    "id": 49,
+    "name": "Силиконовый ремешек для часов 41/45мм",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары для часов",
+    "price": 70,
+    "prices": [
+      70
+    ],
+    "image": "https://shop.switch.com.my/cdn/shop/files/45mm-silver-milanese-loop_ML783_AV1.png?v=1717697250&width=1445",
+    "sheet": "Электроника|Аксессуары",
+    "row": 83,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 50,
+    "name": "Миланская петля, металлический ремешек для часов 41мм",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары для часов",
+    "price": 90,
+    "prices": [
+      90
+    ],
+    "image": "https://shop.switch.com.my/cdn/shop/files/45mm-silver-milanese-loop_ML783_AV1.png?v=1717697250&width=1445",
+    "sheet": "Электроника|Аксессуары",
+    "row": 84,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 51,
+    "name": "Миланская петля (в пакете), металлический ремешек для часов 45мм",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары для часов",
+    "price": 90,
+    "prices": [
+      90
+    ],
+    "image": "https://shop.switch.com.my/cdn/shop/files/45mm-silver-milanese-loop_ML783_AV1.png?v=1717697250&width=1445",
+    "sheet": "Электроника|Аксессуары",
+    "row": 85,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 52,
+    "name": "Коробка Watch ULTRA 2 (1 в 1, рельефная надпись)",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары для часов",
+    "price": 250,
+    "prices": [
+      250
+    ],
+    "image": "assets/illustration_52.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 86,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 53,
+    "name": "Коробка App Watch 9 (1 в 1, рельефная надпись)",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары для часов",
+    "price": 250,
+    "prices": [
+      250
+    ],
+    "image": "assets/illustration_53.svg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 87,
+    "image_note": "Иллюстрация категории; перед заказом уточните конкретную модель"
+  },
+  {
+    "id": 54,
+    "name": "Чехол Ip 11/12/12pro/12pm/13/13pro/13pm/14/15 Прозрачный Magnetic",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 110,
+    "prices": [
+      110
+    ],
+    "image": "assets/p0075.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 90
+  },
+  {
+    "id": 55,
+    "name": "Защитное стекло 3D REMAX 11\\12\\13\\14\\15\\16 PRO \\ PRO MAX",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 150,
+    "prices": [
+      150
+    ],
+    "image": "assets/p0076.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 92
+  },
+  {
+    "id": 56,
+    "name": "Защитное стекло 3D REMAX 15 PRO \\ PRO MAX",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 170,
+    "prices": [
+      170
+    ],
+    "image": "assets/p0011.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 94
+  },
+  {
+    "id": 57,
+    "name": "Защитное стекло 3D REMAX 15 PRO \\ PRO MAX",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 290,
+    "prices": [
+      290
+    ],
+    "image": "assets/p0012.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 95
+  },
+  {
+    "id": 58,
+    "name": "Магнитный кошелек для кредиток Leather Wallet ( Цвет на выбор )",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 150,
+    "prices": [
+      150
+    ],
+    "image": "assets/p0077.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 96
+  },
+  {
+    "id": 59,
+    "name": "iP Battery pack ( РСТ, анимация есть)",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 290,
+    "prices": [
+      290
+    ],
+    "image": "assets/p0078.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 97
+  },
+  {
+    "id": 60,
+    "name": "Проводные Airpods",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 290,
+    "prices": [
+      290
+    ],
+    "image": "assets/p0029.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 98
+  },
+  {
+    "id": 61,
+    "name": "Кабель Type - C - Type - C (с чипом, в упаковке, плетенный)",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 190,
+    "prices": [
+      190
+    ],
+    "image": "assets/p0079.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 99
+  },
+  {
+    "id": 62,
+    "name": "Кабель Lightning USB (с чипом, в упаковке) Premium",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 170,
+    "prices": [
+      170
+    ],
+    "image": "assets/p0080.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 100
+  },
+  {
+    "id": 63,
+    "name": "Кабель Lighting USB (в упаковке) Lux",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 95,
+    "prices": [
+      95
+    ],
+    "image": "https://media.cdn.kaufland.de/product-images/1024x1024/3c2015e3d39a90283d44bb9813e41e9e.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 101,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 64,
+    "name": "Кабель Lightning Type - C (с чипом, в упаковке) Premium",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 175,
+    "prices": [
+      175
+    ],
+    "image": "assets/p0081.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 102
+  },
+  {
+    "id": 65,
+    "name": "Кабель Lightning Type - C (в упаковке) Lux",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 95,
+    "prices": [
+      95
+    ],
+    "image": "https://media.cdn.kaufland.de/product-images/1024x1024/3c2015e3d39a90283d44bb9813e41e9e.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 103,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 66,
+    "name": "Адаптер USB-C / 20W Premium",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 700,
+    "prices": [
+      700
+    ],
+    "image": "assets/p0082.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 104
+  },
+  {
+    "id": 67,
+    "name": "Адаптер USB-C 20W 1:1",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 190,
+    "prices": [
+      190
+    ],
+    "image": "assets/p0083.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 105
+  },
+  {
+    "id": 68,
+    "name": "Переходник Lightning - 3.5mm (в упаковке)",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 180,
+    "prices": [
+      180
+    ],
+    "image": "assets/p0084.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 106
+  },
+  {
+    "id": 69,
+    "name": "MagSafe (анимация, в упаковке)",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 190,
+    "prices": [
+      190
+    ],
+    "image": "assets/p0085.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 107
+  },
+  {
+    "id": 70,
+    "name": "Комплект Кабель Type - C + Адаптер 2А / 20W",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 190,
+    "prices": [
+      190
+    ],
+    "image": "assets/p0086.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 108
+  },
+  {
+    "id": 71,
+    "name": "Комплект Кабель Type - C + Адаптер 2А / 25W",
+    "category": "Электроника и аксессуары",
+    "section": "Акссесуары Apple",
+    "price": 210,
+    "prices": [
+      210
+    ],
+    "image": "https://media.cdn.kaufland.de/product-images/1024x1024/3c2015e3d39a90283d44bb9813e41e9e.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 109,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 72,
+    "name": "DualSanse PS5 ( Цвет по запросу)",
+    "category": "Электроника и аксессуары",
+    "section": "ДЖОЙСТИКИ PS4/PS5",
+    "price": 2750,
+    "prices": [
+      2750
+    ],
+    "image": "https://gamescorner.bh/cdn/shop/products/geeceegames-com-ps5-dualsense-white-wireless-controller-29565316694064.jpg?v=1662676038&width=1946",
+    "sheet": "Электроника|Аксессуары",
+    "row": 111,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 73,
+    "name": "DualShock PS4 Однотонный ( Цвета по запросу )",
+    "category": "Электроника и аксессуары",
+    "section": "ДЖОЙСТИКИ PS4/PS5",
+    "price": 590,
+    "prices": [
+      590
+    ],
+    "image": "assets/p0087.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 112
+  },
+  {
+    "id": 74,
+    "name": "DualShock PS4 Камуфляж ( Цвета по запросу )",
+    "category": "Электроника и аксессуары",
+    "section": "ДЖОЙСТИКИ PS4/PS5",
+    "price": 570,
+    "prices": [
+      570
+    ],
+    "image": "assets/p0088.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 113
+  },
+  {
+    "id": 75,
+    "name": "Xiaomi повербанк 10 000 mAh",
+    "category": "Электроника и аксессуары",
+    "section": "Трендовые товары",
+    "price": 650,
+    "prices": [
+      650
+    ],
+    "image": "assets/p0013.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 115
+  },
+  {
+    "id": 76,
+    "name": "Xiaomi повербанк 20 000 mAh",
+    "category": "Электроника и аксессуары",
+    "section": "Трендовые товары",
+    "price": 750,
+    "prices": [
+      750
+    ],
+    "image": "https://img.gkbcdn.com/s3/p/2018-11-01/original-xiaomi-20000mah-power-bank--1571986089298.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 116,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 77,
+    "name": "Выпрямитель dyson c кейсом ( цвет по запросу)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 6500,
+    "prices": [
+      6500
+    ],
+    "image": "assets/p0032.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 118
+  },
+  {
+    "id": 78,
+    "name": "Выпрямитель dyson ( цвет по запросу)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 5500,
+    "prices": [
+      5500
+    ],
+    "image": "assets/p0024.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 119
+  },
+  {
+    "id": 79,
+    "name": "Набор расчесок Dyson ( разные цвета)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 950,
+    "prices": [
+      950
+    ],
+    "image": "https://shop-dyson.kz/assets/cache_image/products/621/971430-02_550x550_29b.png",
+    "sheet": "Электроника|Аксессуары",
+    "row": 120,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 80,
+    "name": "Расческа DYSON",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 520,
+    "prices": [
+      540,
+      530,
+      520
+    ],
+    "image": "assets/p0089.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 121
+  },
+  {
+    "id": 81,
+    "name": "Фен DYSON 5 насадок, 2.7м кабель, коробка полноразмерная.(Розовый)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 1080,
+    "prices": [
+      1100,
+      1090,
+      1080
+    ],
+    "image": "assets/p0090.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 122
+  },
+  {
+    "id": 82,
+    "name": "Фен DYSON 5 насадок, 2.7м кабель, коробка полноразмерная.(Фиолетовый)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 1080,
+    "prices": [
+      1100,
+      1090,
+      1080
+    ],
+    "image": "assets/p0091.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 123
+  },
+  {
+    "id": 83,
+    "name": "Фен DYSON, 5 насадок, 2.7м кабель, коробка уменьшенная, с надписью Dyson (HD-08)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 2100,
+    "prices": [
+      2300,
+      2200,
+      2100
+    ],
+    "image": "assets/p0092.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 124
+  },
+  {
+    "id": 84,
+    "name": "Стайлер DYSON PREMIUM HS 05 (6 насадок) (LONG)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 5490,
+    "prices": [
+      5490
+    ],
+    "image": "assets/p0019.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 125
+  },
+  {
+    "id": 85,
+    "name": "Стайлер DYSON PREMIUM HS 08 все цвета",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 6500,
+    "prices": [
+      6500
+    ],
+    "image": "assets/p0035.png",
+    "sheet": "Электроника|Аксессуары",
+    "row": 126
+  },
+  {
+    "id": 86,
+    "name": "Стайлер DYSON PREMIUM HS 09 все цвета",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 6790,
+    "prices": [
+      6790
+    ],
+    "image": "https://imobile.market/assets/galleries/2661/wn84fjwyaye2gospr464u2hpnxr17eb8.jpeg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 127,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 87,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) ОРАНЖЕВЫЙ (LONG)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0093.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 128
+  },
+  {
+    "id": 88,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) ЗОЛОТО (СИНИЙ) (LONG)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0094.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 129
+  },
+  {
+    "id": 89,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) РОЗОВЫЙ (LONG)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0095.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 130
+  },
+  {
+    "id": 90,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) СЕРЫЙ (LONG)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0096.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 131
+  },
+  {
+    "id": 91,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) ТИФФАНИ (LONG)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0097.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 132
+  },
+  {
+    "id": 92,
+    "name": "Ноутбук HTEX H16 Pro (15.6 дюйма FullHD, N5095, 16gb RAM, 512gb SSD)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 19300,
+    "prices": [
+      19900,
+      19300
+    ],
+    "image": "https://avatars.mds.yandex.net/get-mpic/5207084/2a00000195189fb2f6e43df104ca56738dd8/orig",
+    "sheet": "Электроника|Аксессуары",
+    "row": 133,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 93,
+    "name": "Моноблок All in One PC (23.8 дюйма FullHD, I73610, 16gb RAM, 256gb SSD, в комплекте клавиатура и мышь)",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 21000,
+    "prices": [
+      21500,
+      21000
+    ],
+    "image": "https://abo.express/Smartstore/media/20522/catalog/HP_AIO_24_27cr_02_3986.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 134,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 94,
+    "name": "Колонка BT-2307 \"6в1\"",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 850,
+    "prices": [
+      850
+    ],
+    "image": "https://www.newsciencetech.com/cdn/shop/files/40230-web.jpg?v=1718788580",
+    "sheet": "Электроника|Аксессуары",
+    "row": 135,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 95,
+    "name": "ПРОЕКТОР Lingbo T4 - Т6 max Обзор",
+    "category": "Электроника и аксессуары",
+    "section": "DYSON",
+    "price": 4350,
+    "prices": [
+      4350
+    ],
+    "image": "https://static.insales-cdn.com/images/products/1/6115/712652771/7279-3.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 136,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 96,
+    "name": "Очки с камерой Ray Ban",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 4600,
+    "prices": [
+      4600
+    ],
+    "image": "assets/p0044.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 838
+  },
+  {
+    "id": 97,
+    "name": "Смарт часы Garmin",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 1800,
+    "prices": [
+      1800
+    ],
+    "image": "assets/p0051.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 839
+  },
+  {
+    "id": 98,
+    "name": "Wi fi смарт камера",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 1100,
+    "prices": [
+      1100
+    ],
+    "image": "https://www.geewiz.co.za/546007-large_default/indoor-wi-fi-pt-tuya-camera-smart-home-security-pan-tilt-camera-bsy-3318.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 840,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 99,
+    "name": "Hw 6 mini",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 1690,
+    "prices": [
+      1690
+    ],
+    "image": "assets/p0049.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 841
+  },
+  {
+    "id": 100,
+    "name": "Мини принтер",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 1150,
+    "prices": [
+      1150
+    ],
+    "image": "assets/p0050.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 842
+  },
+  {
+    "id": 101,
+    "name": "Hoco Power Bank 30 000",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 890,
+    "prices": [
+      890
+    ],
+    "image": "assets/p0043.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 843
+  },
+  {
+    "id": 102,
+    "name": "Dyson Pencil",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 13990,
+    "prices": [
+      13990
+    ],
+    "image": "assets/p0042.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 844
+  },
+  {
+    "id": 103,
+    "name": "Мини ретро камера",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 650,
+    "prices": [
+      650
+    ],
+    "image": "assets/p0041.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 845
+  },
+  {
+    "id": 104,
+    "name": "Hoco power Bank",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 1350,
+    "prices": [
+      1350
+    ],
+    "image": "assets/p0037.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 847
+  },
+  {
+    "id": 105,
+    "name": "Wi fi камера",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 990,
+    "prices": [
+      990
+    ],
+    "image": "https://www.geewiz.co.za/546007-large_default/indoor-wi-fi-pt-tuya-camera-smart-home-security-pan-tilt-camera-bsy-3318.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 848,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 106,
+    "name": "Mi Power bank",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 990,
+    "prices": [
+      990
+    ],
+    "image": "assets/p0040.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 849
+  },
+  {
+    "id": 107,
+    "name": "To stick",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 1290,
+    "prices": [
+      1290
+    ],
+    "image": "assets/p0045.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 850
+  },
+  {
+    "id": 108,
+    "name": "Блок Mi 120",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 390,
+    "prices": [
+      390
+    ],
+    "image": "assets/p0046.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 851
+  },
+  {
+    "id": 109,
+    "name": "Блок Mi",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 290,
+    "prices": [
+      290
+    ],
+    "image": "assets/p0048.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 852
+  },
+  {
+    "id": 110,
+    "name": "iPhone XR в корпусе 17",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 11990,
+    "prices": [
+      11990
+    ],
+    "image": "assets/p0047.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 853
+  },
+  {
+    "id": 111,
+    "name": "Pencil Pro",
+    "category": "Электроника и аксессуары",
+    "section": "Новинки",
+    "price": 950,
+    "prices": [
+      950
+    ],
+    "image": "https://image1280.macovi.de/images/product_images/1280/1535844_0__9136888.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 854,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 112,
+    "name": "Выпрямитель dyson ( цвет по запросу)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 6900,
+    "prices": [
+      6900
+    ],
+    "image": "assets/p0106.jpg",
+    "sheet": "Dyson",
+    "row": 11
+  },
+  {
+    "id": 113,
+    "name": "Набор расчесок Dyson ( разные цвета)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 1090,
+    "prices": [
+      1090
+    ],
+    "image": "https://shop-dyson.kz/assets/cache_image/products/621/971430-02_550x550_29b.png",
+    "sheet": "Dyson",
+    "row": 12,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 114,
+    "name": "Расческа DYSON",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 520,
+    "prices": [
+      540,
+      530,
+      520
+    ],
+    "image": "assets/p0107.jpg",
+    "sheet": "Dyson",
+    "row": 13
+  },
+  {
+    "id": 115,
+    "name": "Фен DYSON 5 насадок, 2.7м кабель, коробка полноразмерная.(Розовый)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 1260,
+    "prices": [
+      1290,
+      1280,
+      1260
+    ],
+    "image": "assets/p0108.jpg",
+    "sheet": "Dyson",
+    "row": 14
+  },
+  {
+    "id": 116,
+    "name": "Фен DYSON 5 насадок, 2.7м кабель, коробка полноразмерная.(Фиолетовый)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 1260,
+    "prices": [
+      1290,
+      1280,
+      1260
+    ],
+    "image": "assets/p0109.jpg",
+    "sheet": "Dyson",
+    "row": 15
+  },
+  {
+    "id": 117,
+    "name": "Фен DYSON, 5 насадок, 2.7м кабель, коробка уменьшенная, с надписью Dyson Синий (HD-08)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 2170,
+    "prices": [
+      2290,
+      2180,
+      2170
+    ],
+    "image": "assets/p0110.jpg",
+    "sheet": "Dyson",
+    "row": 16
+  },
+  {
+    "id": 118,
+    "name": "Фен DYSON, 5 насадок, 2.7м кабель, коробка уменьшенная, с надписью Dyson Золотой (HD-08)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 2170,
+    "prices": [
+      2290,
+      2180,
+      2170
+    ],
+    "image": "assets/p0111.jpg",
+    "sheet": "Dyson",
+    "row": 17
+  },
+  {
+    "id": 119,
+    "name": "Фен DYSON, 5 насадок, 2.7м кабель, коробка уменьшенная, с надписью Dyson РОЗОВЫЙ (ФУКСИЯ) (HD-08)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 2170,
+    "prices": [
+      2290,
+      2180,
+      2170
+    ],
+    "image": "assets/p0112.jpg",
+    "sheet": "Dyson",
+    "row": 18
+  },
+  {
+    "id": 120,
+    "name": "Стайлер DYSON PREMIUM HS 05 (6 насадок) (LONG)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 8300,
+    "prices": [
+      8500,
+      8400,
+      8300
+    ],
+    "image": "assets/p0104.jpg",
+    "sheet": "Dyson",
+    "row": 19
+  },
+  {
+    "id": 121,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) ОРАНЖЕВЫЙ (LONG)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0113.jpg",
+    "sheet": "Dyson",
+    "row": 20
+  },
+  {
+    "id": 122,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) ЗОЛОТО (СИНИЙ) (LONG)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0114.jpg",
+    "sheet": "Dyson",
+    "row": 21
+  },
+  {
+    "id": 123,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) РОЗОВЫЙ (LONG)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0115.jpg",
+    "sheet": "Dyson",
+    "row": 22
+  },
+  {
+    "id": 124,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) СЕРЫЙ (LONG)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0116.jpg",
+    "sheet": "Dyson",
+    "row": 23
+  },
+  {
+    "id": 125,
+    "name": "Стайлер DYSON PREMIUM (6 насадок) ТИФФАНИ (LONG)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 12800,
+    "prices": [
+      12800
+    ],
+    "image": "assets/p0117.jpg",
+    "sheet": "Dyson",
+    "row": 24
+  },
+  {
+    "id": 126,
+    "name": "Ноутбук HTEX H16 Pro (15.6 дюйма FullHD, N5095, 16gb RAM, 512gb SSD)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 19300,
+    "prices": [
+      19900,
+      19300
+    ],
+    "image": "https://avatars.mds.yandex.net/get-mpic/5207084/2a00000195189fb2f6e43df104ca56738dd8/orig",
+    "sheet": "Dyson",
+    "row": 25,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 127,
+    "name": "Моноблок All in One PC (23.8 дюйма FullHD, I73610, 16gb RAM, 256gb SSD, в комплекте клавиатура и мышь)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 21000,
+    "prices": [
+      21500,
+      21000
+    ],
+    "image": "https://avatars.mds.yandex.net/get-mpic/5207084/2a00000195189fb2f6e43df104ca56738dd8/orig",
+    "sheet": "Dyson",
+    "row": 26,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 128,
+    "name": "Колонка BT-2307 \"6в1\"",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 850,
+    "prices": [
+      850
+    ],
+    "image": "https://hnsfpau.imgix.net/5/images/detailed/508/6494050.1.jpg?auto=format%2Ccompress&bg=0FFF&fit=fill&h=844&w=1500",
+    "sheet": "Dyson",
+    "row": 27,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 129,
+    "name": "ПРОЕКТОР Lingbo T4 - Т6 max Обзор",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 4350,
+    "prices": [
+      4350
+    ],
+    "image": "https://hnsfpau.imgix.net/5/images/detailed/508/6494050.1.jpg?auto=format%2Ccompress&bg=0FFF&fit=fill&h=844&w=1500",
+    "sheet": "Dyson",
+    "row": 28,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 130,
+    "name": "Фен DYSON, 4 насадки, 2.7м кабель, коробка уменьшенная, с надписью Dyson РОЗОВЫЙ ( фукси ) (HD-15)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 2450,
+    "prices": [
+      2490,
+      2470,
+      2450
+    ],
+    "image": "assets/p0118.jpg",
+    "sheet": "Dyson",
+    "row": 727
+  },
+  {
+    "id": 131,
+    "name": "Фен DYSON, 4 насадки, 2.7м кабель, коробка уменьшенная, с надписью Dyson Синий (HD-15)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 2450,
+    "prices": [
+      2490,
+      2470,
+      2450
+    ],
+    "image": "assets/p0119.jpg",
+    "sheet": "Dyson",
+    "row": 729
+  },
+  {
+    "id": 132,
+    "name": "Фен DYSON, 4 насадки, 2.7м кабель, коробка уменьшенная, с надписью Dyson Красный (HD-15)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 2450,
+    "prices": [
+      2490,
+      2470,
+      2450
+    ],
+    "image": "assets/p0120.jpg",
+    "sheet": "Dyson",
+    "row": 730
+  },
+  {
+    "id": 133,
+    "name": "Фен DYSON, 4 насадки, 2.7м кабель, коробка уменьшенная, с надписью Dyson Золотой (HD-15)",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 2450,
+    "prices": [
+      2490,
+      2470,
+      2450
+    ],
+    "image": "assets/p0121.jpg",
+    "sheet": "Dyson",
+    "row": 731
+  },
+  {
+    "id": 134,
+    "name": "Фен super hair dryer Одна насадка кабель 2.8 ( серый, фукси, красный, тифани )",
+    "category": "Dyson и техника",
+    "section": "DYSON",
+    "price": 740,
+    "prices": [
+      740
+    ],
+    "image": "assets/p0122.jpg",
+    "sheet": "Dyson",
+    "row": 733
+  },
+  {
+    "id": 135,
+    "name": "Dv-Pioneer.Ok DEH-MP516 ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 700,
+    "prices": [
+      700
+    ],
+    "image": "assets/p0125.jpg",
+    "sheet": "Авто Товары",
+    "row": 8
+  },
+  {
+    "id": 136,
+    "name": "Dv-Pioneer.Ok DEH-MP517 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 700,
+    "prices": [
+      700
+    ],
+    "image": "assets/p0126.jpg",
+    "sheet": "Авто Товары",
+    "row": 9
+  },
+  {
+    "id": 137,
+    "name": "Dv-Pioneer.Ok DEH-MP518 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 700,
+    "prices": [
+      700
+    ],
+    "image": "assets/p0127.jpg",
+    "sheet": "Авто Товары",
+    "row": 10
+  },
+  {
+    "id": 138,
+    "name": "Dv-Pioneer.Ok 219 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка ✅4 выхода RCA ✅Радиатор охлаждения ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 750,
+    "prices": [
+      750
+    ],
+    "image": "assets/p0142.jpg",
+    "sheet": "Авто Товары",
+    "row": 11
+  },
+  {
+    "id": 139,
+    "name": "Dv-Pioneer.Ok 218 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка ✅4 выхода RCA ✅Радиатор охлаждения ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 750,
+    "prices": [
+      750
+    ],
+    "image": "assets/p0140.jpg",
+    "sheet": "Авто Товары",
+    "row": 12
+  },
+  {
+    "id": 140,
+    "name": "Dv-Pioneer.Ok 217 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка ✅4 выхода RCA ✅Радиатор охлаждения ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 750,
+    "prices": [
+      750
+    ],
+    "image": "assets/p0139.jpg",
+    "sheet": "Авто Товары",
+    "row": 13
+  },
+  {
+    "id": 141,
+    "name": "Dv-Pioneer.Ok 5177 Магнитолы с экраном ✅Размер экрана -7\" сенсорный ✅Автоматический механизм ✅7-цветная подсветка ✅Bluetooth ✅Aux ✅2 USB ✅Возможность подключения камеры заднего вида ✅Пульт управления и провода в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 3990,
+    "prices": [
+      3990
+    ],
+    "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/85d9a169-cc03-482f-ab7d-5dd93a70a6c0.jpg",
+    "sheet": "Авто Товары",
+    "row": 14,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 142,
+    "name": "Dv-Pioneer.Ok 317 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅Цветной экран ✅2USB и SD карты ✅Радиатор охлаждения ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте!",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1200,
+    "prices": [
+      1200
+    ],
+    "image": "assets/p0141.jpg",
+    "sheet": "Авто Товары",
+    "row": 15
+  },
+  {
+    "id": 143,
+    "name": "Dv-Pioneer.Ok 789 Магнитолы с экраном ✅Типоразмер-2Din ✅Bluetooth ✅AUX ✅2USB и SD выходы ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1000,
+    "prices": [
+      1750,
+      1000
+    ],
+    "image": "assets/p0124.jpg",
+    "sheet": "Авто Товары",
+    "row": 16
+  },
+  {
+    "id": 144,
+    "name": "Dv-Pioneer.ok 66 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅Цветной экран ✅2USB и SD карты ✅Радиатор охлаждения ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте!",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1050,
+    "prices": [
+      1200,
+      1050
+    ],
+    "image": "assets/p0156.jpg",
+    "sheet": "Авто Товары",
+    "row": 17
+  },
+  {
+    "id": 145,
+    "name": "Pioneer.GB MVH-815DSP Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Процессор DSP ✅Цветной RGB экран ✅Мощный радиатор охлаждения ✅6 выходов RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1100,
+    "prices": [
+      1950,
+      1100
+    ],
+    "image": "assets/p0137.jpg",
+    "sheet": "Авто Товары",
+    "row": 18
+  },
+  {
+    "id": 146,
+    "name": "Dv-Pioneer.Ok DEH-MP267 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 700,
+    "prices": [
+      700,
+      1000
+    ],
+    "image": "https://image.badem.shop/base/images/GQ/9X/GQ9XxjtT7v1BCGBW.webp",
+    "sheet": "Авто Товары",
+    "row": 19,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 147,
+    "name": "Dv-Pioneer.Ok AC3 4+64G Android Магнитолы ✅Размер экрана-9\" ✅Память-4+64Gb ✅Кулер охлаждения ✅Набор проводов для подключения",
+    "category": "Автотовары",
+    "section": "",
+    "price": 2000,
+    "prices": [
+      4800,
+      2000
+    ],
+    "image": "assets/p0136.jpg",
+    "sheet": "Авто Товары",
+    "row": 20
+  },
+  {
+    "id": 148,
+    "name": "Dv-Pioneer.Ok 5166 Магнитолы с экраном ✅Размер экрана -7\" сенсорный ✅Автоматический механизм ✅7-цветная подсветка ✅Bluetooth ✅Aux ✅2 USB ✅Возможность подключения камеры заднего вида ✅Пульт управления и провода в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 2100,
+    "prices": [
+      3900,
+      2100
+    ],
+    "image": "assets/p0135.jpg",
+    "sheet": "Авто Товары",
+    "row": 21
+  },
+  {
+    "id": 149,
+    "name": "Dv-Pioneer.Ok DEH-MP265 ✅Bluetooth ✅Aux ✅USB и SD карты ✅Монохромная подсветка. ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 700,
+    "prices": [
+      700,
+      6100
+    ],
+    "image": "assets/p0130.jpg",
+    "sheet": "Авто Товары",
+    "row": 22
+  },
+  {
+    "id": 150,
+    "name": "✅Размер экрана-9 дюймов ✅Память-6+64Gb ✅Carplay ✅Кулер охлаждения ✅Набор проводов в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 6500,
+    "prices": [
+      6500
+    ],
+    "image": "assets/p0151.jpg",
+    "sheet": "Авто Товары",
+    "row": 23
+  },
+  {
+    "id": 151,
+    "name": "DEH-MP530 Магнитолы 1 Din ✅Монохромный экран ✅Bluetooth ✅Aux ✅USB и SD карты ✅4 выхода RCA ✅Радиатор охлаждения ✅Пульт управления и фишки для подключения в комплекте!!!",
+    "category": "Автотовары",
+    "section": "",
+    "price": 800,
+    "prices": [
+      800
+    ],
+    "image": "assets/p0152.jpg",
+    "sheet": "Авто Товары",
+    "row": 24
+  },
+  {
+    "id": 152,
+    "name": "KK5 Pro 4+64 Android Магнитолы ✅Размер экрана-9 дюймов ✅Память-4+64Gb ✅Поддержка сим карты ✅Количество ядер-8 ✅CarPlay ✅Кулер охлаждения ✅Набор проводов для подключения и выносной микрофон в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 8500,
+    "prices": [
+      8500
+    ],
+    "image": "assets/p0150.jpg",
+    "sheet": "Авто Товары",
+    "row": 25
+  },
+  {
+    "id": 153,
+    "name": "DEH-MP6850 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅2USB и SD ✅Цветной экран ✅4 выхода RCA ✅Радиатор охлаждения ✅Пульт на руль и фишки для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1250,
+    "prices": [
+      1250
+    ],
+    "image": "assets/p0149.jpg",
+    "sheet": "Авто Товары",
+    "row": 26
+  },
+  {
+    "id": 154,
+    "name": "Bos-918B Магнитолы 1 Din ✅Bluetooth ✅Aux ✅2USB и SD карты ✅RGB подсветка ✅Радиатор охлаждения ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1700,
+    "prices": [
+      1700
+    ],
+    "image": "https://image.badem.shop/base/images/GQ/9X/GQ9XxjtT7v1BCGBW.webp",
+    "sheet": "Авто Товары",
+    "row": 27,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 155,
+    "name": "DEH-MP2850 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅2USB и SD ✅Цветной экран ✅4 выхода RCA ✅Радиатор охлаждения ✅Пульт на руль и фишки для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1200,
+    "prices": [
+      1200
+    ],
+    "image": "assets/p0148.jpg",
+    "sheet": "Авто Товары",
+    "row": 28
+  },
+  {
+    "id": 156,
+    "name": "O1 6+128Gb Android Магнитолы ✅Размер экрана-9 дюймов ✅Память-6+64Gb ✅Carplay ✅Кулер охлаждения ✅Набор проводов в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 6500,
+    "prices": [
+      6500
+    ],
+    "image": "assets/p0146.jpg",
+    "sheet": "Авто Товары",
+    "row": 29
+  },
+  {
+    "id": 157,
+    "name": "P-028 Магнитолы 1 Din ✅Bluetooth ✅Aux ✅USB и SD карты ✅Цветной экран ✅Радиатор охлаждения ✅6 выходов RCA ✅Простой пульт,пульт на руль и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1250,
+    "prices": [
+      1250
+    ],
+    "image": "assets/p0144.jpg",
+    "sheet": "Авто Товары",
+    "row": 30
+  },
+  {
+    "id": 158,
+    "name": "Bos-935BT Магнитолы 1 Din ✅Bluetooth ✅Aux ✅2USB и SD карты ✅RGB подсветка ✅Радиатор охлаждения ✅4 выхода RCA ✅Пульт и провода для подключения в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 1650,
+    "prices": [
+      1650
+    ],
+    "image": "assets/p0147.jpg",
+    "sheet": "Авто Товары",
+    "row": 31
+  },
+  {
+    "id": 159,
+    "name": "O2 Gold 6+128Gb (выходы Type-C и USB) Android Магнитолы ✅Размер экрана-10 дюймов ✅Память-6+128Gb ✅Carplay ✅Кулер охлаждения ✅Переходная рамка и набор проводов в комплекте",
+    "category": "Автотовары",
+    "section": "",
+    "price": 8000,
+    "prices": [
+      8000
+    ],
+    "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/85d9a169-cc03-482f-ab7d-5dd93a70a6c0.jpg",
+    "sheet": "Авто Товары",
+    "row": 32,
+    "image_source": "internet_reference"
+  },
+  {
+    "id": 160,
+    "name": "Dv-Pioneer.Ok 6960 Колонки ✅Размер динамика-6/9 овалы ✅Мощность-1000W",
+    "category": "Автотовары",
+    "section": "Колонки",
+    "price": 1100,
+    "prices": [
+      1750,
+      1100
+    ],
+    "image": "assets/p0132.jpg",
+    "sheet": "Авто Товары",
+    "row": 37
+  },
+  {
+    "id": 161,
+    "name": "Dv-Pioneer.Ok 6905 Колонки ✅Размер динамика-6/9 овалы ✅Мощность-1000W",
+    "category": "Автотовары",
+    "section": "Колонки",
+    "price": 1200,
+    "prices": [
+      1750,
+      1200
+    ],
+    "image": "assets/p0131.jpg",
+    "sheet": "Авто Товары",
+    "row": 38
+  },
+  {
+    "id": 162,
+    "name": "Dv-Pioneer.Ok 6925 Колонки ✅Размер динамика-6/9 овалы ✅Мощность-1000W",
+    "category": "Автотовары",
+    "section": "Колонки",
+    "price": 1270,
+    "prices": [
+      1750,
+      1270
+    ],
+    "image": "assets/p0128.jpg",
+    "sheet": "Авто Товары",
+    "row": 39
+  },
+  {
+    "id": 163,
+    "name": "Dv-Pioneer.Ok 6910 Колонки ✅Размер динамика-6/9 овалы ✅Мощность-1000W",
+    "category": "Автотовары",
+    "section": "Колонки",
+    "price": 1750,
+    "prices": [
+      1750,
+      1950
+    ],
+    "image": "assets/p0133.jpg",
+    "sheet": "Авто Товары",
+    "row": 40
+  },
+  {
+    "id": 164,
+    "name": "Dv-Pioneer.Ok 6980 Колонки ✅Размер динамика-6/9 овалы ✅Мощность-1000W",
+    "category": "Автотовары",
+    "section": "Колонки",
+    "price": 1750,
+    "prices": [
+      1750
+    ],
+    "image": "assets/p0129.jpg",
+    "sheet": "Авто Товары",
+    "row": 41
+  },
+  {
+    "id": 165,
+    "name": "Bos-5088 Колонки ✅Размер динамика-13 см ✅Мощность-60W",
+    "category": "Автотовары",
+    "section": "Колонки",
+    "price": 1550,
+    "prices": [
+      1550
+    ],
+    "image": "assets/p0154.jpg",
+    "sheet": "Авто Товары",
+    "row": 42
+  },
+  {
+    "id": 166,
+    "name": "Bos-6588 Колонки ✅Размер динамика-16 см ✅Мощность-80W",
+    "category": "Автотовары",
+    "section": "Колонки",
+    "price": 1800,
+    "prices": [
+      1800
+    ],
+    "image": "assets/p0153.jpg",
+    "sheet": "Авто Товары",
+    "row": 43
+  },
+  {
+    "id": 167,
+    "name": "E5-3006 Сабвуферы и комплектующие ✅Размер динамика-6\" ✅Сабвуфер активный ✅Мощность Max-2200W",
+    "category": "Автотовары",
+    "section": "Cабвуферы",
+    "price": 2850,
+    "prices": [
+      3900,
+      2850
+    ],
+    "image": "assets/p0155.jpg",
+    "sheet": "Авто Товары",
+    "row": 45
+  }
+]
