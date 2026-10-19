@@ -125,40 +125,25 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{aspect-ratio:1/1;height:auto}.cardbody{padding:9px}.name{font-size:12px;line-height:1.35;margin:7px 0 10px}.price{font-size:17px}.add{font-size:11px;padding:9px 5px}.qty{width:56px;padding:8px 4px}.heroMain{padding:24px 19px}.product-modal{padding:7px}.product-dialog{max-height:95dvh;border-radius:15px}.product-gallery{margin:0 12px;height:32vh;min-height:180px}.product-dialog-body{padding:12px}.product-dialog-description{font-size:13px}.sectionhead h2{font-size:23px}}
 
 
-/* Final catalog polish: consistent light product photography and responsive grid */
-:root{--bg:#fbfaff;--panel:#fff;--panel2:#f4eaff;--line:#e9e1f2;--text:#241832;--muted:#766b83;--lime:#a855f7;--lime2:#d946ef;--accent:#a855f7}
-.top{background:#fff;border-bottom:1px solid #e9e1f2}
-.photo{background:#fff;border-bottom:1px solid #f0ebf5;aspect-ratio:1/1;height:auto;padding:8px}
-.photo img{width:100%;height:100%;object-fit:contain;object-position:center;padding:0;background:#fff}
-/* Compact cards: clamp descriptions and keep a visible details icon */
-.card .name{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:4!important;overflow:hidden!important;overflow-wrap:anywhere;min-height:0!important;max-height:calc(1.3em * 4)!important}
-.card .photo{position:relative}
-.details-icon{position:absolute;right:7px;top:7px;width:27px;height:27px;border:1px solid #c084fc;border-radius:50%;background:#a855f7;color:#fff;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #24183235;cursor:pointer;z-index:5;padding:0}
-.product-gallery{background:#fff}
-.product-gallery img{object-fit:contain;background:#fff}
-.noimg{background:#faf7ff;color:#8b7a9d}
-@media(min-width:951px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
-@media(max-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.photo{aspect-ratio:1/1;height:auto;padding:4px}.cardbody{padding:7px}.name{font-size:11px;line-height:1.3;margin:6px 0 8px}.price{font-size:15px}.qty{width:42px;padding:7px 2px;font-size:11px}.add{font-size:10px;padding:8px 3px}.buyrow{gap:4px}.category{font-size:9px;letter-spacing:.4px}}
 
-/* Telegram channel CTA in hero */
-.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}.hero-actions>a{text-decoration:none}.hero-actions .top-telegram{width:auto;min-height:44px;padding:12px 16px;border-radius:11px;font-size:13px;box-shadow:0 6px 18px #229ed925}.hero-actions .top-telegram span{font-size:18px}@media(max-width:650px){.hero-actions{display:grid;grid-template-columns:1fr;gap:10px}.hero-actions>a,.hero-actions>a button,.hero-actions .top-telegram{width:100%;text-align:center;justify-content:center}.hero-actions .top-telegram{font-size:13px;padding:13px 10px}}
-/* Make Telegram channel the first and most visible hero action */
-.hero-actions{display:flex;flex-direction:column;align-items:flex-start;gap:11px;margin-top:18px}.hero-actions .top-telegram{order:0;background:#229ED9;color:#fff;display:flex;align-items:center;justify-content:center;min-height:48px;width:min(100%,360px);padding:14px 18px;font-size:14px;font-weight:850;border:1px solid #168ac2;box-shadow:0 7px 18px #229ed930}.hero-actions>a:not(.top-telegram){order:1}.hero-actions .top-telegram:hover{background:#168ac2}@media(max-width:650px){.hero-actions{display:flex;align-items:stretch}.hero-actions .top-telegram,.hero-actions>a:not(.top-telegram),.hero-actions>a button{width:100%;max-width:none;text-align:center;justify-content:center}}
-/* Fill product photo frames edge-to-edge on mobile; remove empty side gutters */
-@media(max-width:650px){.photo{padding:0!important;overflow:hidden!important}.photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;padding:0!important;display:block!important}.details-icon{right:6px;top:6px;width:24px;height:24px;font-size:13px}}
-/* Apply the same whitespace-removal treatment to every product photo, on every screen */
-.photo{padding:0!important;overflow:hidden!important;background:#fff!important}
-.photo img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;padding:0!important;background:#fff!important}
-@media(max-width:650px){.photo{padding:0!important}.photo img{width:100%!important;height:100%!important;object-fit:cover!important}}
-/* Guaranteed visible Telegram button in mobile hero */
-.hero-actions{display:flex!important;flex-direction:column!important;gap:12px!important;margin-top:18px!important;align-items:stretch!important}
-.hero-actions .top-telegram{display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:2!important;order:-1!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:100%!important;min-height:54px!important;padding:15px 12px!important;margin:0!important;background:#229ED9!important;color:#fff!important;border:2px solid #168ac2!important;border-radius:13px!important;font-size:15px!important;font-weight:900!important;line-height:1.3!important;text-align:center!important;text-decoration:none!important;box-shadow:0 7px 20px #229ed940!important}
-.hero-actions .top-telegram span{display:inline-block!important;margin-right:8px!important;font-size:20px!important}
-.hero-actions>a:not(.top-telegram){order:1!important;display:block!important}
-@media(max-width:650px){.hero-actions{display:flex!important}.hero-actions .top-telegram,.hero-actions>a:not(.top-telegram),.hero-actions>a button{width:100%!important;max-width:100%!important;box-sizing:border-box!important}}
-</style></head><body><header class="top"><div class="wrap topin"><div><div class="logo">MOTOVICH <span>OPT</span></div><div class="tag">ОПТОВАЯ ЭЛЕКТРОНИКА И ТРЕНДОВЫЕ ТОВАРЫ</div></div><nav class="nav"><a href="#catalog">Каталог</a><a href="#terms">Условия заказа</a><a href="https://t.me/motovichopt" target="_blank">Telegram</a></nav><button class="cartbtn" id="openCart">Корзина · <span id="cartCount">0</span></button></div></header><main class="wrap"><section class="hero"><div class="heroMain"><div class="eyebrow">Wholesale · Motovich Opt</div><h1>Оптовые цены.<br><span style="color:var(--lime)">Удобный заказ.</span></h1><p>Электроника, аксессуары и техника в одном оптовом каталоге. Выбирайте позиции, указывайте количество и отправляйте готовую заявку менеджеру.</p><div class="hero-actions"><a href="https://t.me/motovichopt" target="_blank" rel="noopener noreferrer" aria-label="Открыть Telegram-канал MOTOVICH OPT" style="display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:10!important;box-sizing:border-box!important;width:100%!important;max-width:360px!important;min-height:54px!important;align-items:center!important;justify-content:center!important;gap:9px!important;margin:0 0 12px!important;padding:15px 12px!important;background:#229ED9!important;color:#fff!important;border:2px solid #168ac2!important;border-radius:13px!important;font-size:15px!important;font-weight:900!important;line-height:1.3!important;text-align:center!important;text-decoration:none!important;box-shadow:0 7px 20px #229ed940!important"><span aria-hidden="true" style="display:inline-block!important;font-size:20px!important">➤</span> Подписаться на Telegram-канал</a><a href="#catalog"><button class="primary">Перейти в каталог ↘</button></a></div></div></section>
+/* Uniform light product photography style */
+.photo{background:#f6f7fb!important;position:relative;isolation:isolate}
+.photo img{width:100%;height:100%;object-fit:contain!important;object-position:center;padding:13px!important;display:block;background:#f6f7fb;mix-blend-mode:multiply}
+.photo-placeholder{height:100%;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:16px;background:linear-gradient(145deg,#fff,#f2f4f8);color:#7a8495;text-align:center;font-size:11px;line-height:1.4}
+.photo-placeholder-icon{display:grid;place-items:center;width:45px;height:45px;border:1px solid #e5e9f0;background:#fff;border-radius:14px;color:#9a6bda;font-size:22px}
+.photo-spinner{width:18px;height:18px;border:2px solid #e3d8f2;border-top-color:#a855f7;border-radius:50%;animation:photoSpin .8s linear infinite}
+@keyframes photoSpin{to{transform:rotate(360deg)}}
+.photo-credit{position:absolute;right:6px;bottom:6px;z-index:2;padding:4px 6px;border:1px solid #e5e9f0;border-radius:7px;background:#ffffffed;color:#626b7c!important;text-decoration:none!important;font-size:8px;line-height:1.2;box-shadow:0 2px 8px #1720330c}
+.photo-credit:hover{background:#fff;color:#7c3aed!important}
+.photo-disclaimer{margin:-7px 0 16px;color:#7a8495;font-size:11px;line-height:1.45}
+#productGallery{background:#f6f7fb!important;position:relative;overflow:hidden}
+#productGallery img{width:100%;height:100%;object-fit:contain!important;padding:18px!important;mix-blend-mode:multiply;background:#f6f7fb}
+#productGallery .photo-placeholder{min-height:100%;font-size:12px}
+@media(max-width:650px){.photo img{padding:7px!important}.photo-credit{font-size:7px;right:4px;bottom:4px;padding:3px 4px}}
 
-<section id="catalog"><div class="sectionhead"><div><div class="eyebrow">Каталог товаров</div><h2>Выбирай товары</h2></div><div class="count" id="resultCount">Загрузка каталога…</div></div><div class="filters"><input id="search" placeholder="Поиск по названию товара…" aria-label="Поиск товаров"><select id="sort"><option value="default">Сначала по каталогу</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="az">По названию А–Я</option></select></div><div class="tabs" id="tabs"></div><div class="grid" id="products"><div class="empty">Загружаем каталог…</div></div></section>
+</style></head><body><header class="top"><div class="wrap topin"><div><div class="logo">MOTOVICH <span>OPT</span></div><div class="tag">ОПТОВАЯ ЭЛЕКТРОНИКА И ТРЕНДОВЫЕ ТОВАРЫ</div></div><nav class="nav"><a href="#catalog">Каталог</a><a href="#terms">Условия заказа</a><a href="https://t.me/motovichopt" target="_blank">Telegram</a></nav><button class="cartbtn" id="openCart">Корзина · <span id="cartCount">0</span></button></div></header><main class="wrap"><section class="hero"><div class="heroMain"><div class="eyebrow">Wholesale · Motovich Opt</div><h1>Оптовые цены.<br><span style="color:var(--lime)">Удобный заказ.</span></h1><p>Электроника, аксессуары и техника в одном оптовом каталоге. Выбирайте позиции, указывайте количество и отправляйте готовую заявку менеджеру.</p><a href="#catalog"><button class="primary">Перейти в каталог ↘</button></a></div></section>
+
+<section id="catalog"><div class="sectionhead"><div><div class="eyebrow">Каталог товаров</div><h2>Выбирай товары</h2></div><div class="count" id="resultCount">Загрузка каталога…</div></div><div class="filters"><input id="search" placeholder="Поиск по названию товара…" aria-label="Поиск товаров"><select id="sort"><option value="default">Сначала по каталогу</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="az">По названию А–Я</option></select></div><p class="photo-disclaimer">Фотографии найдены по модели товара в открытых источниках и служат иллюстрацией. Цвет, комплект и фактический вид уточняйте у менеджера.</p><div class="tabs" id="tabs"></div><div class="grid" id="products"><div class="empty">Загружаем каталог…</div></div></section>
 
 <section id="terms" style="margin-top:45px"><div class="sectionhead"><div><div class="eyebrow">Как заказать</div><h2>Условия сотрудничества</h2></div></div><div class="features"><div class="feature"><b>Минимальный заказ — 5 000 ₽</b><span>Можно собрать микс из разных товарных групп.</span></div><div class="feature"><b>Оплата и отправка</b><span>Условия и наличие подтверждает менеджер перед оплатой.</span></div><div class="feature"><b>Крупный опт</b><span>Индивидуальные цены обсуждаются с менеджером.</span></div></div></section>
 
@@ -182,13 +167,13 @@ body{background:var(--bg);color:var(--text)}
 
 <script>
 
-const CATEGORIES=["Dyson","Яблоко","Marshall","Samsung","JBL","Xiaomi","HK (HUAHONG)","Наушники","Наручные часы","Зарядки / Блоки / Кабели","Аккумуляторы / Power Bank","Мышки / Клавиатуры / Стилусы","Аксессуары","Смартфоны / Планшеты","Колонки","Роутеры / Сеть / Wi Fi","Приставки / Для TV","Геймпады","Бытовая техника / Для дома","Электроинструмент/Инструменты","Камеры видеонаблюдения","Хиты продаж"];
+const CATEGORIES=["Dyson","Яблоко","Marshall","Samsung","JBL","Xiaomi","HK (HUAHONG)","Наушники","Наручные часы","Зарядки / Блоки / Кабели","Аккумуляторы / Power Bank","Мышки / Клавиатуры / Стилусы","Аксессуары","Смартфоны / Планшеты","Колонки","Роутеры / Сеть / Wi Fi","Приставки / Для TV","Бытовая техника / Для дома","Электроинструмент/Инструменты","Камеры видеонаблюдения","Хиты продаж"];
 
 const CATEGORY_RULES=[
 
 ["Dyson",/dyson/i],["Яблоко",/apple|iphone|ipad|air\s?pods|lightning|magsafe|\bip\s?\d/i],["Marshall",/marshall/i],["Samsung",/samsung|galaxy|buds/i],["JBL",/\bjbl\b/i],["Xiaomi",/xiaomi|redmi|\bpoco\b|\bmi\s?(?:wifi|band|pad)/i],["HK (HUAHONG)",/huahong|\bhk\s?\d/i],
 
-["Наушники",/наушник|headphone|earbud|air\s?pods|buds|tws|marshall major/i],["Наручные часы",/watch|смарт.?часы|часы|hk 11|x 9 call/i],["Зарядки / Блоки / Кабели",/заряд|кабел|cable|адаптер|adapter|блок питания|usb[- ]?c|lightning/i],["Аккумуляторы / Power Bank",/power\s?bank|аккумулятор|battery|battery pack|повербанк/i],["Мышки / Клавиатуры / Стилусы",/мыш|mouse|клавиатур|keyboard|stylus|стилус/i],["Аксессуары",/чехол|стекло|ремеш|аксессуар|кошел.?к|защитн|держател|расческ/i],["Смартфоны / Планшеты",/смартфон|планшет|iphone|ipad|телефон|tablet|smartphone|galaxy s\d/i],["Колонки",/колонк|speaker|jbl flip|boombox/i],["Роутеры / Сеть / Wi Fi",/роутер|router|wi.?fi|wifi|маршрутизатор|сеть/i],["Геймпады",/геймпад|gamepad|dualsense|dualshock|джойстик/i],["Приставки / Для TV",/ps5|playstation|геймпад|пристав|tv box|android box|для tv|dualshock|dualsense/i],["Бытовая техника / Для дома",/dyson|фен|выпрямитель|стайлер|расческ|пылесос|проектор|бытов/i],["Электроинструмент/Инструменты",/дрель|шуруповерт|электроинструмент|инструмент/i],["Камеры видеонаблюдения",/камера|camera|видеонаблюд|v380/i]];
+["Наушники",/наушник|headphone|earbud|air\s?pods|buds|tws|marshall major/i],["Наручные часы",/watch|смарт.?часы|часы|hk 11|x 9 call/i],["Зарядки / Блоки / Кабели",/заряд|кабел|cable|адаптер|adapter|блок питания|usb[- ]?c|lightning/i],["Аккумуляторы / Power Bank",/power\s?bank|аккумулятор|battery|battery pack|повербанк/i],["Мышки / Клавиатуры / Стилусы",/мыш|mouse|клавиатур|keyboard|stylus|стилус/i],["Аксессуары",/чехол|стекло|ремеш|аксессуар|кошел.?к|защитн|держател|расческ/i],["Смартфоны / Планшеты",/смартфон|планшет|iphone|ipad|телефон|tablet|smartphone|galaxy s\d/i],["Колонки",/колонк|speaker|jbl flip|boombox/i],["Роутеры / Сеть / Wi Fi",/роутер|router|wi.?fi|wifi|маршрутизатор|сеть/i],["Приставки / Для TV",/ps5|playstation|геймпад|пристав|tv box|android box|для tv|dualshock|dualsense/i],["Бытовая техника / Для дома",/dyson|фен|выпрямитель|стайлер|расческ|пылесос|проектор|бытов/i],["Электроинструмент/Инструменты",/дрель|шуруповерт|электроинструмент|инструмент/i],["Камеры видеонаблюдения",/камера|camera|видеонаблюд|v380/i]];
 
 const HIT_RULE=/air\s?pods pro|airpods pro|dyson.*(фен|стайлер)|marshall major|jbl flip|apple watch ultra|galaxy buds|hk 11|xiaomi повербанк|dual(?:sense|shock)|iphone xr/i;
 
@@ -208,11 +193,156 @@ function calcTier(){const base=Object.keys(cart).reduce((sum,id)=>{const p=allPr
 
 function tierText(){return ['от 5 000 ₽','от 20 000 ₽','от 40 000 ₽'][activeTier]}
 
+/* Product photos are selected from Wikimedia Commons by product/model name.
+   Old catalogue image paths are intentionally not used. Source/license is linked on each photo. */
+const PHOTO_CACHE_PREFIX='motovich-opt-photo-v1:';
+const photoMemory=new Map(),photoRequests=new Map();
+let photoObserver=null;
+
+function photoSearchQueries(p){
+ const s=((p.name||'')+' '+(p.section||'')).toLowerCase();
+ const rules=[
+  [/air\s*pods?\s*pro\s*3|air\s*pro\s*3|airpods pro 3/,'Apple AirPods Pro 3 earbuds'],
+  [/air\s*pods?\s*pro\s*2|airpods pro 2|air pro gen2/,'Apple AirPods Pro 2 earbuds'],
+  [/air\s*pods?\s*pro\b|air pods pro/,'Apple AirPods Pro earbuds'],
+  [/air\s*pods?\s*4|airpods 4/,'Apple AirPods 4 earbuds'],
+  [/air\s*pods?\s*3|airpods 3/,'Apple AirPods 3 earbuds'],
+  [/air\s*pods?\s*2|airpods 2/,'Apple AirPods 2 earbuds'],
+  [/\bair\s*max\b/,'Apple AirPods Max headphones'],
+  [/marshall major\s*v\b|marshall major\s*5/,'Marshall Major V headphones'],
+  [/marshall major\s*4/,'Marshall Major IV headphones'],
+  [/marshall/,'Marshall wireless headphones'],
+  [/galaxy.*buds\s*3\s*pro|bads 3 pro/,'Samsung Galaxy Buds3 Pro earbuds'],
+  [/galaxy.*buds/,'Samsung Galaxy Buds wireless earbuds'],
+  [/jbl.*flip\s*7|flip\s*6.?7/,'JBL Flip 7 portable Bluetooth speaker'],
+  [/jbl.*flip\s*6/,'JBL Flip 6 portable Bluetooth speaker'],
+  [/\bjbl\b/,'JBL portable Bluetooth speaker'],
+  [/dualsense|dual\s*sense|геймпад ps5|ps5.*геймпад/,'Sony PlayStation 5 DualSense controller'],
+  [/dualshock|ps4.*геймпад|геймпад ps4/,'Sony PlayStation 4 DualShock 4 controller'],
+  [/геймпад|gamepad/,'video game controller white background'],
+  [/dyson.*pencil/,'Dyson Pencil vacuum cleaner'],
+  [/dyson.*(выпрямитель|airstrait)/,'Dyson Airstrait hair straightener'],
+  [/dyson.*(стайлер|airwrap|hs\s*0[589])/,'Dyson Airwrap multi-styler'],
+  [/dyson.*(расчес|comb)/,'Dyson hair brush'],
+  [/dyson.*(фен|hair dryer|hd-0[58])/,'Dyson Supersonic hair dryer'],
+  [/dyson/,'Dyson hair styling product'],
+  [/apple watch ultra|watch ultra/,'Apple Watch Ultra smartwatch'],
+  [/apple watch|watch 9|ремешки для apple watch|ремешок для часов/,'Apple Watch smartwatch'],
+  [/iphone xr.*17/,'Apple iPhone XR smartphone'],
+  [/iphone\s*17\s*pro/,'Apple iPhone 17 Pro smartphone'],
+  [/iphone\s*16\s*pro/,'Apple iPhone 16 Pro smartphone'],
+  [/iphone\s*15\s*pro/,'Apple iPhone 15 Pro smartphone'],
+  [/\biphone\b|смартфон/,'Apple iPhone smartphone'],
+  [/ipad|pencil pro|apple pencil/,'Apple Pencil stylus'],
+  [/xiaomi.*(повербанк|power bank)|mi power bank|\bmi power bank/,'Xiaomi Mi power bank'],
+  [/hoco.*power bank/,'Hoco power bank'],
+  [/power bank|повербанк|battery pack|аккумулятор/,'portable power bank'],
+  [/magsafe|mag\s*safe|ip battery pack/,'Apple MagSafe charger battery pack'],
+  [/ноутбук htex|htex h16/,'HTEX H16 Pro laptop'],
+  [/моноблок|all in one pc/,'all-in-one desktop computer'],
+  [/проектор|projector|lingbo/,'portable projector product'],
+  [/ray ban|очки с камерой/,'Ray-Ban smart glasses'],
+  [/garmin/,'Garmin smartwatch'],
+  [/мини принтер|mini printer/,'mini thermal printer'],
+  [/wifi.*камера|wi fi.*камера|камера видеонаблюдения|security camera|v380/,'Wi-Fi security camera'],
+  [/роутер|wi.?fi|router/,'Wi-Fi router'],
+  [/pioneer.*колон|dv-pioneer.*колон|колонки.*pioneer|автомобильные динамики|car speaker/,'Pioneer car audio speakers'],
+  [/сабвуфер|subwoofer/,'car subwoofer speaker'],
+  [/магнитол|car stereo|android магнитол|pioneer|deh-mp|mvh-/,'Pioneer car stereo head unit'],
+  [/мотоциклетные led-фары|led-фары|motorcycle.*light/,'motorcycle LED auxiliary headlights'],
+  [/bluetooth speaker|колонка|динамик|speaker/,'portable Bluetooth speaker'],
+  [/смарт.?часы|smartwatch|\bhk\s*\d+|\bx\s*9\s*call|hw\s*6/,'smartwatch product photo'],
+  [/стекло|чехол|ремеш|ремешок|кошелек|кошелёк|strap|case|wallet|защитное стекло/,'smartphone and smartwatch accessories product photo'],
+  [/кабель|type.?c|lightning|usb|адаптер|блок mi|заряд|charger|charging/,'USB-C charger and cable product photo'],
+  [/очки|glasses/,'smart glasses product photo'],
+  [/камера|camera/,'compact Wi-Fi camera product photo']
+ ];
+ let query='';for(const [re,q] of rules){if(re.test(s)){query=q;break;}}
+ if(!query){
+  const compact=(p.name||'').replace(/[✅🎧📱]/g,' ').replace(/\([^)]*\)/g,' ').replace(/\b(lux|premium|опт|оптом|цвет по запросу|цвета по запросу|все цвета|все цвета|обзор)\b/ig,' ').replace(/[^\p{L}\p{N}\s+-]/gu,' ').replace(/\s+/g,' ').trim().split(' ').slice(0,6).join(' ');
+  query=compact?compact+' product photo':'consumer electronics product photo';
+ }
+ // Include a colour in the search where it can materially change the product image.
+ const colorMatch=s.match(/(перламутров\w*|камуфляж|черн\w*|бел\w*|красн\w*|син\w*|фиолет\w*|розов\w*|золот\w*|сер\w*|тиффан\w*)/i);
+ if(colorMatch && /airpods max|dualsense|dualshock|dyson|hair dryer|hair straightener|airwrap|game controller/i.test(query)){
+  const colors={'черный':'black','черные':'black','черный':'black','белый':'white','белые':'white','красный':'red','красные':'red','синий':'blue','синие':'blue','фиолетовый':'purple','розовый':'pink','золотой':'gold','серый':'gray','перламутровый':'pearl','камуфляж':'camouflage'};
+  const raw=colorMatch[1].toLowerCase();const c=Object.keys(colors).find(k=>raw.startsWith(k));if(c)query+=' '+colors[c];
+ }
+ let fallback='consumer electronics product photo white background';
+ if(/airpods|earbuds|headphones|buds|наушник|marshall/i.test(s))fallback='wireless earbuds or headphones product photo';
+ else if(/dyson|фен|выпрямитель|стайлер|расчес/i.test(s))fallback='hair styling tool product photo';
+ else if(/геймпад|dualsense|dualshock|ps5|ps4/i.test(s))fallback='video game controller product photo';
+ else if(/колонк|speaker|динамик|jbl/i.test(s))fallback='portable Bluetooth speaker product photo';
+ else if(/watch|часы|ремеш/i.test(s))fallback='smartwatch product photo';
+ else if(/камера|camera|видеонаблюд/i.test(s))fallback='Wi-Fi camera product photo';
+ else if(/power bank|повербанк|аккумулятор/i.test(s))fallback='portable power bank product photo';
+ else if(/кабель|type.?c|lightning|адаптер|заряд|блок/i.test(s))fallback='USB charger cable adapter product photo';
+ else if(/магнитол|pioneer|deh-mp|mvh-/i.test(s))fallback='car stereo head unit product photo';
+ else if(/сабвуфер|woofer/i.test(s))fallback='car subwoofer product photo';
+ else if(/ноутбук|htex|моноблок|laptop|all in one/i.test(s))fallback='laptop computer product photo';
+ else if(/фары|led|motorcycle|мотоциклет/i.test(s))fallback='motorcycle LED auxiliary light product photo';
+ return [...new Set([query,fallback])];
+}
+
+function photoText(v){return String(v||'').replace(/<[^>]*>/g,' ').replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();}
+function photoCacheRead(q){try{const raw=localStorage.getItem(PHOTO_CACHE_PREFIX+q);if(!raw)return undefined;const x=JSON.parse(raw);if(x&&x.until>Date.now())return x.value;localStorage.removeItem(PHOTO_CACHE_PREFIX+q)}catch(e){}return undefined;}
+function photoCacheWrite(q,value){try{localStorage.setItem(PHOTO_CACHE_PREFIX+q,JSON.stringify({value,until:Date.now()+(value?1000*60*60*24*30:1000*60*60*8)}))}catch(e){}}
+
+async function searchCommonsPhoto(query){
+ try{
+  const params=new URLSearchParams({action:'query',generator:'search',gsrsearch:query,gsrnamespace:'6',gsrlimit:'10',prop:'imageinfo',iiprop:'url|extmetadata',iiurlwidth:'900',format:'json',origin:'*'});
+  const response=await fetch('https://commons.wikimedia.org/w/api.php?'+params.toString(),{mode:'cors',credentials:'omit'});
+  if(!response.ok)throw new Error('Wikimedia API '+response.status);
+  const data=await response.json();const pages=Object.values(data.query?.pages||{});
+  const candidates=pages.map(page=>{const ii=page.imageinfo&&page.imageinfo[0];if(!ii||!(ii.thumburl||ii.url))return null;const meta=ii.extmetadata||{};const title=page.title||'';const license=photoText(meta.LicenseShortName?.value||'Open license');const artist=photoText(meta.Artist?.value||meta.Credit?.value||'Wikimedia Commons');return {url:ii.thumburl||ii.url,source:page.fullurl||('https://commons.wikimedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'))),title,artist,license,width:ii.width||0,height:ii.height||0,description:photoText(meta.ImageDescription?.value||'')};}).filter(Boolean);
+  const bad=/logo|icon|symbol|wordmark|favicon|flag|diagram|screenshot|screencap|manual|instruction|poster|advertisement/i;
+  const usable=candidates.filter(x=>!bad.test(x.title)&&!/\.svg$/i.test(x.title));
+  return usable.find(x=>x.width>=380&&x.height>=260)||usable[0]||null;
+ }catch(e){return null;}
+}
+
+async function resolveProductPhoto(p){
+ const queries=photoSearchQueries(p);const key=queries[0].toLowerCase();
+ if(photoMemory.has(key))return photoMemory.get(key);
+ if(photoRequests.has(key))return photoRequests.get(key);
+ const task=(async()=>{
+  let cached=photoCacheRead(key);if(cached!==undefined){photoMemory.set(key,cached);return cached;}
+  let result=null;
+  for(const query of queries){result=await searchCommonsPhoto(query);if(result)break;}
+  photoCacheWrite(key,result);photoMemory.set(key,result);return result;
+ })();photoRequests.set(key,task);
+ try{return await task}finally{photoRequests.delete(key)}
+}
+
+function photoPlaceholder(loading=true){return '<div class="photo-placeholder">'+(loading?'<span class="photo-spinner" aria-hidden="true"></span><span>Подбираем подходящее фото…</span>':'<span class="photo-placeholder-icon" aria-hidden="true">▧</span><span>Иллюстрация временно недоступна</span>')+'</div>';}
+function photoMarkup(p,result){
+ if(!result)return photoPlaceholder(false);
+ const credit=(result.artist||'Wikimedia Commons')+(result.license?' · '+result.license:'');
+ const visibleCredit=(result.artist||'Wikimedia Commons').replace(/^User:/,'').slice(0,24)+(result.license?' · '+result.license.replace(/Creative Commons Attribution-ShareAlike/,'CC BY-SA').replace(/Creative Commons Attribution/,'CC BY').slice(0,14):'');
+ return '<img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="'+esc(result.url)+'" alt="'+esc(p.name)+'" title="'+esc(credit)+'"><a class="photo-credit" href="'+esc(result.source)+'" target="_blank" rel="noopener noreferrer" title="Автор: '+esc(credit)+'">© '+esc(visibleCredit)+' ↗</a>';
+}
+async function loadPhotoElement(el){
+ if(!el||el.dataset.photoLoaded==='1')return;el.dataset.photoLoaded='1';
+ const p=allProducts.find(x=>x.id===Number(el.dataset.photoId));if(!p)return;
+ const result=await resolveProductPhoto(p);if(!el.isConnected)return;el.innerHTML=photoMarkup(p,result);
+}
+function loadVisiblePhotos(){
+ if(photoObserver){photoObserver.disconnect();photoObserver=null;}
+ const targets=[...document.querySelectorAll('.photo[data-photo-id]:not([data-photo-loaded])')];if(!targets.length)return;
+ if('IntersectionObserver' in window){photoObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){photoObserver.unobserve(entry.target);loadPhotoElement(entry.target)}})},{rootMargin:'320px 0px'});targets.forEach(el=>photoObserver.observe(el));}
+ else targets.forEach(el=>loadPhotoElement(el));
+}
+function loadModalPhoto(p){
+ const gallery=$('#productGallery');gallery.innerHTML=photoPlaceholder(true);
+ resolveProductPhoto(p).then(result=>{if(currentDetail&&currentDetail.id===p.id&&$('#productModal').classList.contains('open'))gallery.innerHTML=photoMarkup(p,result)});
+}
+
+
 async function init(){try{const r=await fetch('./products.json');const source=await r.json();allProducts=source.filter(p=>p.category!=='Автотовары'&&p.sheet!=='Авто Товары');let hits=0;for(const p of allProducts){p.categories=categoryProducts(p);if(HIT_RULE.test((p.name||'')+' '+(p.section||''))&&hits<12){p.categories.push('Хиты продаж');hits++}p.category=p.categories[0]||'Аксессуары';if(p.id===44&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[1],p.prices[1]];if([92,126].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];if([93,127].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];}buildTabs();render();updateCartUI()}catch(e){$('#products').innerHTML='<div class="empty">Не удалось загрузить каталог. Обновите страницу и попробуйте снова.</div>';$('#resultCount').textContent='Ошибка загрузки'}}
 
 function buildTabs(){$('#tabs').innerHTML='<button class="tab active" data-cat="Все товары">Все товары</button>'+CATEGORIES.map(c=>'<button class="tab" data-cat="'+esc(c)+'">'+esc(c)+'</button>').join('')}
 
-function render(){const q=$('#search').value.toLowerCase().trim();let list=allProducts.filter(p=>(activeCat==='Все товары'||(p.categories||[p.category]).includes(activeCat))&&((String(p.name||'')+' '+String(p.section||'')).toLowerCase().includes(q)));const sort=$('#sort').value;if(sort==='low')list.sort((a,b)=>priceFor(a)-priceFor(b));if(sort==='high')list.sort((a,b)=>priceFor(b)-priceFor(a));if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));$('#resultCount').textContent=list.length+' товаров';$('#products').innerHTML=list.length?list.map(p=>'<article class="card" data-product-id="'+p.id+'" tabindex="0" role="button" aria-label="Подробнее: '+esc(p.name)+'"><div class="photo">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">':'<div class="noimg">Фото уточняется</div>')+ '<button class="details-icon" type="button" data-details="'+p.id+'" aria-label="Полное описание" title="Полное описание">i</button></div><div class="cardbody"><div class="category">'+esc(p.category||'Аксессуары')+'</div><div class="name">'+esc(p.name)+'</div><div class="price" data-price-id="'+p.id+'">'+money(priceFor(p))+' <small>/ шт.</small></div><div class="buyrow"><input class="qty" type="number" min="1" step="1" value="1" id="qty'+p.id+'" aria-label="Количество"><button class="add" type="button" data-add="'+p.id+'">+ В корзину</button></div></div></article>').join(''):'<div class="empty">В этой категории пока нет товаров в прайсе.</div>';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.cat===activeCat))}
+function render(){const q=$('#search').value.toLowerCase().trim();let list=allProducts.filter(p=>(activeCat==='Все товары'||(p.categories||[p.category]).includes(activeCat))&&((String(p.name||'')+' '+String(p.section||'')).toLowerCase().includes(q)));const sort=$('#sort').value;if(sort==='low')list.sort((a,b)=>priceFor(a)-priceFor(b));if(sort==='high')list.sort((a,b)=>priceFor(b)-priceFor(a));if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));$('#resultCount').textContent=list.length+' товаров';$('#products').innerHTML=list.length?list.map(p=>'<article class="card" data-product-id="'+p.id+'" tabindex="0" role="button" aria-label="Подробнее: '+esc(p.name)+'"><div class="photo" data-photo-id="'+p.id+'">'+photoPlaceholder(true)+'</div><div class="cardbody"><div class="category">'+esc(p.category||'Аксессуары')+'</div><div class="name">'+esc(p.name)+'</div><div class="price" data-price-id="'+p.id+'">'+money(priceFor(p))+' <small>/ шт.</small></div><div class="buyrow"><input class="qty" type="number" min="1" step="1" value="1" id="qty'+p.id+'" aria-label="Количество"><button class="add" type="button" data-add="'+p.id+'">+ В корзину</button></div></div></article>').join(''):'<div class="empty">В этой категории пока нет товаров в прайсе.</div>';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.cat===activeCat));loadVisiblePhotos()}
 
 function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',1800)}
 
@@ -230,7 +360,7 @@ function openCart(){$('#cartpanel').classList.add('open');$('#overlay').classLis
 
 function closeCart(){$('#cartpanel').classList.remove('open');$('#overlay').classList.remove('show')}
 
-function openProduct(id){const p=allProducts.find(x=>x.id===Number(id));if(!p)return;currentDetail=p;$('#productModalTitle').textContent=p.name;$('#productGallery').innerHTML=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">':'<div class="noimg">Фото уточняется</div>';$('#productModalMeta').innerHTML=(p.categories||[p.category]).filter(Boolean).slice(0,5).map(x=>'<span>'+esc(x)+'</span>').join('');$('#productModalDescription').textContent=p.description||p.details||p.image_note||('Раздел: '+(p.section||'Электроника и аксессуары')+'. Уточните комплектацию и наличие у менеджера перед оплатой.');$('#productModalPrice').textContent=money(priceFor(p))+' / шт.';$('#productModalQty').value='1';$('#productModal').classList.add('open');document.body.style.overflow='hidden'}
+function openProduct(id){const p=allProducts.find(x=>x.id===Number(id));if(!p)return;currentDetail=p;$('#productModalTitle').textContent=p.name;loadModalPhoto(p);$('#productModalMeta').innerHTML=(p.categories||[p.category]).filter(Boolean).slice(0,5).map(x=>'<span>'+esc(x)+'</span>').join('');$('#productModalDescription').textContent=p.description||p.details||p.image_note||('Раздел: '+(p.section||'Электроника и аксессуары')+'. Уточните комплектацию и наличие у менеджера перед оплатой.');$('#productModalPrice').textContent=money(priceFor(p))+' / шт.';$('#productModalQty').value='1';$('#productModal').classList.add('open');document.body.style.overflow='hidden'}
 
 function closeProduct(){$('#productModal').classList.remove('open');document.body.style.overflow=''}
 
@@ -238,7 +368,7 @@ function showPaymentStep(message,total,contact,delivery){pendingOrder={message,t
 
 function closePayment(){$('#paymentModal').classList.remove('open');document.body.style.overflow=''}
 
-$('#products').addEventListener('click',e=>{const detailsBtn=e.target.closest('[data-details]');if(detailsBtn){e.stopPropagation();openProduct(detailsBtn.dataset.details);return}const addBtn=e.target.closest('[data-add]');if(addBtn){e.stopPropagation();const id=Number(addBtn.dataset.add);add(id,$('#qty'+id)?.value);return}if(e.target.closest('input'))return;const card=e.target.closest('[data-product-id]');if(card)openProduct(card.dataset.productId)});
+$('#products').addEventListener('click',e=>{if(e.target.closest('.photo-credit')){e.stopPropagation();return}const addBtn=e.target.closest('[data-add]');if(addBtn){e.stopPropagation();const id=Number(addBtn.dataset.add);add(id,$('#qty'+id)?.value);return}if(e.target.closest('input'))return;const card=e.target.closest('[data-product-id]');if(card)openProduct(card.dataset.productId)});
 
 $('#products').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest('[data-product-id]')&&!e.target.closest('input,button')){e.preventDefault();openProduct(e.target.closest('[data-product-id]').dataset.productId)}});
 
