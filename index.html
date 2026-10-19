@@ -130,10 +130,10 @@ body{background:var(--bg);color:var(--text)}
 .top{background:#fff;border-bottom:1px solid #e9e1f2}
 .photo{background:#fff;border-bottom:1px solid #f0ebf5;aspect-ratio:1/1;height:auto;padding:8px}
 .photo img{width:100%;height:100%;object-fit:contain;object-position:center;padding:0;background:#fff}
-/* Short card descriptions; full text stays in the product popup */
-.name{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;overflow-wrap:anywhere;min-height:0}
-.photo{position:relative}
-.details-icon{position:absolute;right:6px;bottom:6px;width:25px;height:25px;border:1px solid #dfc5ff;border-radius:50%;background:#fff;color:#9333ea;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #24183220;cursor:pointer;z-index:2;padding:0}
+/* Compact cards: clamp descriptions and keep a visible details icon */
+.card .name{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:4!important;overflow:hidden!important;overflow-wrap:anywhere;min-height:0!important;max-height:calc(1.3em * 4)!important}
+.card .photo{position:relative}
+.details-icon{position:absolute;right:7px;top:7px;width:27px;height:27px;border:1px solid #c084fc;border-radius:50%;background:#a855f7;color:#fff;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #24183235;cursor:pointer;z-index:5;padding:0}
 .product-gallery{background:#fff}
 .product-gallery img{object-fit:contain;background:#fff}
 .noimg{background:#faf7ff;color:#8b7a9d}
