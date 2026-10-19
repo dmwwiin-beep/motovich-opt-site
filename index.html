@@ -124,6 +124,18 @@ body{background:var(--bg);color:var(--text)}
 
 @media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{aspect-ratio:1/1;height:auto}.cardbody{padding:9px}.name{font-size:12px;line-height:1.35;margin:7px 0 10px}.price{font-size:17px}.add{font-size:11px;padding:9px 5px}.qty{width:56px;padding:8px 4px}.heroMain{padding:24px 19px}.product-modal{padding:7px}.product-dialog{max-height:95dvh;border-radius:15px}.product-gallery{margin:0 12px;height:32vh;min-height:180px}.product-dialog-body{padding:12px}.product-dialog-description{font-size:13px}.sectionhead h2{font-size:23px}}
 
+
+/* Final catalog polish: consistent light product photography and responsive grid */
+:root{--bg:#fbfaff;--panel:#fff;--panel2:#f4eaff;--line:#e9e1f2;--text:#241832;--muted:#766b83;--lime:#a855f7;--lime2:#d946ef;--accent:#a855f7}
+.top{background:#fff;border-bottom:1px solid #e9e1f2}
+.photo{background:#fff;border-bottom:1px solid #f0ebf5;aspect-ratio:1/1;height:auto;padding:8px}
+.photo img{width:100%;height:100%;object-fit:contain;object-position:center;padding:0;background:#fff}
+.product-gallery{background:#fff}
+.product-gallery img{object-fit:contain;background:#fff}
+.noimg{background:#faf7ff;color:#8b7a9d}
+@media(min-width:951px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+@media(max-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.photo{aspect-ratio:1/1;height:auto;padding:4px}.cardbody{padding:7px}.name{font-size:11px;line-height:1.3;margin:6px 0 8px}.price{font-size:15px}.qty{width:42px;padding:7px 2px;font-size:11px}.add{font-size:10px;padding:8px 3px}.buyrow{gap:4px}.category{font-size:9px;letter-spacing:.4px}}
+
 </style></head><body><header class="top"><div class="wrap topin"><div><div class="logo">MOTOVICH <span>OPT</span></div><div class="tag">ОПТОВАЯ ЭЛЕКТРОНИКА И ТРЕНДОВЫЕ ТОВАРЫ</div></div><nav class="nav"><a href="#catalog">Каталог</a><a href="#terms">Условия заказа</a><a href="https://t.me/motovichopt" target="_blank">Telegram</a></nav><button class="cartbtn" id="openCart">Корзина · <span id="cartCount">0</span></button></div></header><main class="wrap"><section class="hero"><div class="heroMain"><div class="eyebrow">Wholesale · Motovich Opt</div><h1>Оптовые цены.<br><span style="color:var(--lime)">Удобный заказ.</span></h1><p>Электроника, аксессуары и техника в одном оптовом каталоге. Выбирайте позиции, указывайте количество и отправляйте готовую заявку менеджеру.</p><a href="#catalog"><button class="primary">Перейти в каталог ↘</button></a></div></section>
 
 <section id="catalog"><div class="sectionhead"><div><div class="eyebrow">Каталог товаров</div><h2>Выбирай товары</h2></div><div class="count" id="resultCount">Загрузка каталога…</div></div><div class="filters"><input id="search" placeholder="Поиск по названию товара…" aria-label="Поиск товаров"><select id="sort"><option value="default">Сначала по каталогу</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="az">По названию А–Я</option></select></div><div class="tabs" id="tabs"></div><div class="grid" id="products"><div class="empty">Загружаем каталог…</div></div></section>
