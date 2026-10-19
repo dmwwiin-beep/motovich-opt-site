@@ -226,8 +226,9 @@ function photoSearchQueries(p){
   [/dyson.*(расчес|comb)/,'Dyson hair brush'],
   [/dyson.*(фен|hair dryer|hd-0[58])/,'Dyson Supersonic hair dryer'],
   [/dyson/,'Dyson hair styling product'],
+  [/ремешки для apple watch|ремешок для часов/,'Apple Watch bands product photo'],
   [/apple watch ultra|watch ultra/,'Apple Watch Ultra smartwatch'],
-  [/apple watch|watch 9|ремешки для apple watch|ремешок для часов/,'Apple Watch smartwatch'],
+  [/apple watch|watch 9/,'Apple Watch smartwatch'],
   [/iphone xr.*17/,'Apple iPhone XR smartphone'],
   [/iphone\s*17\s*pro/,'Apple iPhone 17 Pro smartphone'],
   [/iphone\s*16\s*pro/,'Apple iPhone 16 Pro smartphone'],
@@ -294,9 +295,9 @@ async function searchCommonsPhoto(query){
   const response=await fetch('https://commons.wikimedia.org/w/api.php?'+params.toString(),{mode:'cors',credentials:'omit'});
   if(!response.ok)throw new Error('Wikimedia API '+response.status);
   const data=await response.json();const pages=Object.values(data.query?.pages||{});
-  const candidates=pages.map(page=>{const ii=page.imageinfo&&page.imageinfo[0];if(!ii||!(ii.thumburl||ii.url))return null;const meta=ii.extmetadata||{};const title=page.title||'';const license=photoText(meta.LicenseShortName?.value||'Open license');const artist=photoText(meta.Artist?.value||meta.Credit?.value||'Wikimedia Commons');return {url:ii.thumburl||ii.url,source:page.fullurl||('https://commons.wikimedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'))),title,artist,license,width:ii.width||0,height:ii.height||0,description:photoText(meta.ImageDescription?.value||'')};}).filter(Boolean);
+  const candidates=pages.map(page=>{const ii=page.imageinfo&&page.imageinfo[0];if(!ii||!(ii.thumburl||ii.url))return null;const meta=ii.extmetadata||{};const title=page.title||'';const license=photoText(meta.LicenseShortName?.value||'Open license');const artist=photoText(meta.Artist?.value||meta.Credit?.value||'Wikimedia Commons');return {url:ii.thumburl||ii.url,source:page.fullurl||('https://commons.wikimedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'))),title,artist,license,width:ii.width||0,height:ii.height||0,rank:page.index||999,description:photoText(meta.ImageDescription?.value||'')};}).filter(Boolean);
   const bad=/logo|icon|symbol|wordmark|favicon|flag|diagram|screenshot|screencap|manual|instruction|poster|advertisement/i;
-  const usable=candidates.filter(x=>!bad.test(x.title)&&!/\.svg$/i.test(x.title));
+  const usable=candidates.filter(x=>!bad.test(x.title)&&!/\.svg$/i.test(x.title)).sort((a,b)=>a.rank-b.rank);
   return usable.find(x=>x.width>=380&&x.height>=260)||usable[0]||null;
  }catch(e){return null;}
 }
