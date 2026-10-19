@@ -1,78 +1,227 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="MOTOVICH OPT — оптовый каталог электроники, трендовых товаров и автотоваров."><title>MOTOVICH OPT — оптовый каталог</title><style>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="MOTOVICH OPT — оптовый каталог электроники, трендовых товаров и аксессуаров."><title>MOTOVICH OPT — оптовый каталог</title><style>
+
 :root{--bg:#f8f6fc;--panel:#ffffff;--panel2:#f1e9ff;--line:#e8def4;--text:#241832;--muted:#766b83;--lime:#a855f7;--lime2:#e879f9;--accent:#a855f7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}a{color:inherit}button,input,select{font:inherit}.wrap{max-width:1240px;margin:auto;padding:0 22px}.top{border-bottom:1px solid var(--line);background:#0b0f12}.topin{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 0}.logo{font-weight:950;letter-spacing:1.2px;font-size:22px}.logo span{color:var(--lime)}.tag{font-size:12px;color:var(--muted);margin-top:3px}.nav{display:flex;gap:20px;color:#c8d0d6;font-size:13px}.nav a{text-decoration:none}.cartbtn,.primary{border:0;background:var(--lime);color:#10150a;font-weight:850;border-radius:11px;padding:12px 16px;cursor:pointer}.hero{padding:46px 0 28px;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:stretch}.heroMain{border:1px solid #293a2a;border-radius:22px;padding:clamp(25px,5vw,54px);background:radial-gradient(ellipse at 80% 20%,#31421c 0,transparent 45%),linear-gradient(135deg,#141c18,#11171b 70%)}.eyebrow{color:var(--lime);font-size:12px;letter-spacing:2px;font-weight:800;text-transform:uppercase}.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.03;margin:15px 0}.hero p{max-width:560px;color:#c0c9ce;line-height:1.65}.heroSide{border:1px solid var(--line);background:var(--panel);border-radius:22px;padding:25px;display:flex;flex-direction:column;justify-content:space-between}.stat{font-size:36px;font-weight:900;color:var(--lime)}.muted{color:var(--muted)}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:4px 0 35px}.feature{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px}.feature b{display:block;margin-bottom:5px;font-size:14px}.feature span{font-size:12px;color:var(--muted)}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:20px 0}.sectionhead h2{font-size:28px;margin:0}.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}.filters input,.filters select{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px 13px;min-width:150px}.filters input{flex:1;min-width:220px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}.tab{border:1px solid var(--line);border-radius:999px;background:transparent;color:#d3dbe0;padding:9px 14px;cursor:pointer}.tab.active{background:var(--lime);border-color:var(--lime);color:#11160b;font-weight:800}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:16px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column;min-width:0}.photo{height:190px;background:#f4f5f4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.photo img{width:100%;height:100%;object-fit:contain}.noimg{background:linear-gradient(135deg,#1c252b,#11171c);color:#7c8b94;font-size:11px;text-align:center;padding:20px;display:flex;align-items:center;justify-content:center;height:100%;width:100%}.cardbody{padding:14px;display:flex;flex-direction:column;flex:1}.category{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--lime);font-weight:800}.name{font-size:13px;line-height:1.45;margin:8px 0 14px;flex:1}.price{font-size:20px;font-weight:900}.price small{font-size:11px;font-weight:500;color:var(--muted)}.buyrow{display:flex;gap:8px;margin-top:12px}.qty{width:70px;min-width:0;background:#0b0f12;border:1px solid var(--line);color:white;border-radius:9px;text-align:center;padding:9px}.add{flex:1;background:var(--panel2);color:var(--lime);border:1px solid #40512c;border-radius:9px;padding:9px 7px;font-size:12px;font-weight:800;cursor:pointer}.add:hover{background:#24311b}.count{color:var(--muted);font-size:13px}.empty{padding:40px;text-align:center;color:var(--muted);grid-column:1/-1}.foot{margin-top:55px;border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:12px;line-height:1.8}.cartpanel{position:fixed;right:0;top:0;height:100dvh;width:min(440px,100%);background:#0d1216;border-left:1px solid var(--line);z-index:5;padding:22px;transform:translateX(105%);transition:transform .25s;overflow:auto;box-shadow:-15px 0 50px #0008}.cartpanel.open{transform:translateX(0)}.carthead{display:flex;justify-content:space-between;align-items:center}.close{background:transparent;border:1px solid var(--line);color:white;border-radius:9px;padding:7px 11px;cursor:pointer}.cartitems{margin:18px 0}.cartitem{border-bottom:1px solid var(--line);padding:13px 0;display:grid;grid-template-columns:1fr auto;gap:10px;font-size:13px}.cartitem small{display:block;color:var(--muted);margin-top:5px}.remove{border:0;background:transparent;color:#ff9c9c;cursor:pointer}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;padding:15px 0}.formfield{display:block;margin:11px 0}.formfield span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.formfield input,.formfield textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px;color:white}.formfield textarea{min-height:70px;resize:vertical}.checkout{width:100%;margin-top:10px}.notice{font-size:11px;line-height:1.5;color:var(--muted)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--lime);color:#111;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:800;display:none;z-index:10}.overlay{position:fixed;inset:0;background:#0008;z-index:4;display:none}.overlay.show{display:block}@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr}.heroSide{min-height:180px}}@media(max-width:650px){.wrap{padding:0 13px}.nav{display:none}.hero{padding-top:22px}.features{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:145px}.cardbody{padding:10px}.name{font-size:12px}.price{font-size:18px}.sectionhead h2{font-size:23px}.filters input{min-width:100%;}.filters select{flex:1;min-width:0}.logo{font-size:19px}.cartbtn{padding:10px 11px;font-size:12px}}
 
 /* Telegram CTA + automatic catalog slideshow */
+
 .top-telegram{background:#229ED9;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 16px;border-radius:14px;font-weight:850;font-size:15px;box-shadow:0 7px 18px #229ed925;transition:background .2s,transform .2s}.top-telegram:hover{background:#168ac2;transform:translateY(-1px)}
+
 .top-showcase{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.85fr);gap:18px;align-items:center;margin:14px 0 4px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}.showcase-copy .eyebrow{margin-bottom:7px}.showcase-copy h2{font-size:clamp(20px,2.7vw,30px);line-height:1.15;margin:0 0 7px}.showcase-copy p{font-size:13px;line-height:1.55;color:var(--muted);margin:0 0 13px}.showcase-cta{display:inline-flex;align-items:center;gap:8px;background:#229ED9;color:#fff;text-decoration:none;border-radius:10px;padding:10px 13px;font-size:13px;font-weight:800}.showcase-view{position:relative;min-width:0;height:220px;background:#f7f5fa;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center}.showcase-view img{width:100%;height:100%;object-fit:contain;padding:12px;transition:opacity .25s}.showcase-caption{position:absolute;left:10px;right:10px;bottom:10px;background:#ffffffed;border:1px solid #eee6f4;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:750;line-height:1.35}.showcase-controls{position:absolute;right:9px;top:9px;display:flex;gap:6px}.showcase-controls button{border:1px solid #e8e0ef;background:#ffffffed;border-radius:9px;width:32px;height:32px;font-size:19px;line-height:1;cursor:pointer;color:var(--text)}.showcase-dots{display:flex;gap:5px;margin-top:10px}.showcase-dots button{width:6px;height:6px;padding:0;border:0;border-radius:10px;background:#d7c9e5;cursor:pointer}.showcase-dots button.active{width:18px;background:var(--accent)}
+
 @media(max-width:650px){.top-showcase{grid-template-columns:1fr;gap:12px;margin-top:12px;padding:12px}.showcase-copy h2{font-size:22px}.showcase-view{height:185px}.top-telegram{font-size:13px;padding:13px 10px;text-align:center}.showcase-copy p{margin-bottom:10px}}
 
 /* Approved MOTOVICH OPT visual direction: bright, premium, white + neon violet */
+
 body{background:var(--bg);color:var(--text)}
+
 .top{background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 18px #29104708}
+
 .nav{color:#655573}.nav a:hover{color:var(--lime)}
+
 .logo span{color:var(--lime)}
+
 .tag{color:#81748e}
+
 .cartbtn,.primary{background:linear-gradient(135deg,#a855f7,#d946ef);color:#fff;box-shadow:0 6px 18px #a855f72b}
+
 .cartbtn:hover,.primary:hover{filter:brightness(1.04);transform:translateY(-1px)}
+
 .heroMain{border:1px solid #e2d0fb;background:radial-gradient(ellipse at 85% 10%,#f0dfff 0,transparent 44%),linear-gradient(135deg,#fff,#fbf7ff 76%);box-shadow:0 12px 35px #4c1d950d}
+
 .hero h1{color:#241832}.hero h1 span{color:#a855f7!important}
+
 .hero p{color:#6c6078}
+
 .eyebrow,.category{color:#9333ea}
+
 .heroSide,.feature,.card{background:#fff;border-color:var(--line);box-shadow:0 5px 20px #38145b08}
+
 .stat{color:#a855f7}
+
 .feature b{color:#2d1d3c}.feature span{color:#766b83}
+
 .filters input,.filters select{background:#fff;border-color:#e3d7ef;color:#241832;box-shadow:0 2px 8px #38145b05}
+
 .filters input:focus,.filters select:focus{outline:2px solid #d8b4fe;outline-offset:1px}
+
 .tab{color:#665675;border-color:#e5d8f2;background:#fff}
+
 .tab.active{background:#a855f7;border-color:#a855f7;color:#fff}
+
 .card{transition:transform .18s,box-shadow .18s,border-color .18s}
+
 .card:hover{transform:translateY(-3px);border-color:#d8b4fe;box-shadow:0 12px 28px #4c1d9512}
+
 .photo{background:#faf8fd}
+
 .noimg{background:linear-gradient(135deg,#f4eaff,#fbf8ff);color:#8b7a9d}
+
 .qty{background:#fff;border-color:#e5d8f2;color:#241832}
+
 .add{background:#f4eaff;color:#9333ea;border-color:#dfc5ff}
+
 .add:hover{background:#ead7ff}
+
 .count{color:#766b83}.empty{color:#766b83}
+
 .foot{border-color:var(--line);color:#766b83}
+
 .cartpanel{background:#fff;color:#241832;border-color:var(--line);box-shadow:-15px 0 50px #28103b1c}
+
 .close{color:#5c4a6d;border-color:#e5d8f2;background:#fff}
+
 .cartitem{border-color:var(--line)}.cartitem small{color:#766b83}
+
 .remove{color:#d9466f}
+
 .formfield span{color:#766b83}
+
 .formfield input,.formfield textarea{background:#fff;border-color:#e5d8f2;color:#241832}
+
 .notice{color:#766b83}
+
 .toast{background:#a855f7;color:#fff;box-shadow:0 8px 25px #a855f740}
+
 .overlay.show{background:#24183255}
+
 .top-showcase{border-color:#e7d9f6;box-shadow:0 8px 26px #4c1d9508}
+
 .showcase-view{background:linear-gradient(135deg,#f7efff,#fcfaff)}
+
 .showcase-cta{background:#a855f7;color:#fff}
+
 .showcase-dots button.active{background:#a855f7}
+
 @media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:135px}.cardbody{padding:9px}.name{font-size:12px;line-height:1.35;margin:7px 0 10px}.price{font-size:17px}.add{font-size:11px;padding:9px 5px}.qty{width:56px;padding:8px 4px}.heroMain{padding:25px 20px}.top-showcase{box-shadow:none}}
-</style></head><body><header class="top"><div class="wrap topin"><div><div class="logo">MOTOVICH <span>OPT</span></div><div class="tag">ОПТОВАЯ ЭЛЕКТРОНИКА И ТРЕНДОВЫЕ ТОВАРЫ</div></div><nav class="nav"><a href="#catalog">Каталог</a><a href="#terms">Условия заказа</a><a href="https://t.me/motovichopt" target="_blank">Telegram</a></nav><button class="cartbtn" id="openCart">Корзина · <span id="cartCount">0</span></button></div></header>
-<div class="wrap" style="padding-top:14px">
-<a class="top-telegram" href="https://t.me/motovichopt" target="_blank" rel="noopener" aria-label="Наш Telegram-канал со всем ассортиментом"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.8 4.2 18.6 19.3c-.24 1.07-.87 1.33-1.76.83l-4.88-3.6-2.35 2.26c-.26.26-.48.48-.98.48l.35-4.97 9.05-8.18c.39-.35-.08-.54-.6-.19L6.25 12.98l-4.8-1.5c-1.04-.32-1.06-1.04.22-1.54L20.45 2.8c.86-.31 1.61.21 1.35 1.4Z"/></svg>Наш Telegram-канал со всем ассортиментом</a>
-<section class="top-showcase" aria-label="Слайд-шоу товаров"><div class="showcase-copy"><div class="eyebrow">MOTOVICH OPT · ВИТРИНА</div><h2>Популярные товары из нашего каталога</h2><p>Листайте ассортимент — фотографии товаров переключаются автоматически.</p><a class="showcase-cta" href="#catalog">Смотреть каталог ↓</a><div class="showcase-dots" id="showcaseDots" aria-label="Выбрать слайд"></div></div><div class="showcase-view" id="showcaseView"><div class="noimg">Загружаем фотографии товаров…</div><div class="showcase-controls"><button type="button" id="showcasePrev" aria-label="Предыдущий товар">‹</button><button type="button" id="showcaseNext" aria-label="Следующий товар">›</button></div></div></section>
-</div>
-<main class="wrap"><section class="hero"><div class="heroMain"><div class="eyebrow">Wholesale · Motovich Opt</div><h1>Оптовые цены.<br><span style="color:var(--lime)">Удобный заказ.</span></h1><p>Электроника, аксессуары, техника и автотовары в одном каталоге. Выбирайте позиции, указывайте количество и отправляйте готовую заявку менеджеру.</p><a href="#catalog"><button class="primary">Перейти в каталог ↘</button></a></div><div class="heroSide"><div><div class="eyebrow">Для оптовых клиентов</div><h3 style="font-size:23px;margin:12px 0">Собирайте заказ миксом</h3><p class="muted" style="font-size:13px;line-height:1.6">Товары из разных категорий можно объединять в одной корзине.</p></div><div><div class="stat">5 000 ₽</div><div class="muted" style="font-size:12px">минимальная сумма заказа по прайсу</div></div></div></section>
-<section class="features"><div class="feature"><b>01 · Каталог</b><span>Товары из твоего прайса</span></div><div class="feature"><b>02 · Быстрый заказ</b><span>Количество и сумма считаются автоматически</span></div><div class="feature"><b>03 · Менеджер</b><span>Заявка формируется для отправки в мессенджер</span></div></section>
-<section id="catalog"><div class="sectionhead"><div><div class="eyebrow">Каталог товаров</div><h2>Выбирай товары</h2></div><div class="count" id="resultCount">Загрузка каталога…</div></div><div class="filters"><input id="search" placeholder="Поиск по названию товара…" aria-label="Поиск товаров"><select id="sort"><option value="default">Сначала по каталогу</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="az">По названию А–Я</option></select></div><div class="tabs" id="tabs"><button class="tab active" data-cat="Все товары">Все товары</button><button class="tab" data-cat="Электроника и аксессуары">Электроника и аксессуары</button><button class="tab" data-cat="Dyson и техника">Dyson и техника</button><button class="tab" data-cat="Автотовары">Автотовары</button></div><div class="grid" id="products"><div class="empty">Загружаем каталог…</div></div></section>
+
+/* MOTOVICH OPT: revised catalog, product details and checkout */
+
+.hero{grid-template-columns:1fr;padding-top:28px}.heroMain{width:100%}
+
+.photo{aspect-ratio:1/1;height:auto;padding:0;overflow:hidden;background:#eee8f7}
+
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center;padding:0;display:block}
+
+.card{cursor:pointer;transition:transform .15s,box-shadow .15s}.card:hover{transform:translateY(-2px);box-shadow:0 9px 25px #38145b12}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}.tab{border:1px solid var(--line);border-radius:999px;background:#fff;color:#655573;padding:9px 13px;cursor:pointer;font-size:12px}.tab.active{background:#a855f7;border-color:#a855f7;color:#fff;font-weight:850}
+
+.product-modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:10px;background:#24183288;backdrop-filter:blur(4px)}.product-modal.open{display:flex}
+
+.product-dialog{width:min(720px,100%);max-height:94dvh;overflow:auto;background:#fff;color:#241832;border:1px solid #e8def4;border-radius:18px;box-shadow:0 24px 80px #160b2480}
+
+.product-dialog-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:15px 16px}.product-dialog-title{font-size:clamp(18px,3vw,25px);line-height:1.25;margin:0;font-weight:900;overflow-wrap:anywhere}
+
+.product-dialog-close{flex:0 0 auto;border:1px solid #e5d8f2;background:#fff;border-radius:10px;padding:8px 11px;cursor:pointer;color:#5c4a6d}
+
+.product-gallery{position:relative;margin:0 16px;height:min(43vh,340px);min-height:190px;background:#faf8fd;border:1px solid #eee4f7;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}.product-gallery img{width:100%;height:100%;object-fit:cover;object-position:center}
+
+.product-dialog-body{padding:14px 16px 18px}.product-dialog-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.product-dialog-meta span{font-size:11px;font-weight:800;color:#7e22ce;background:#f4eaff;border-radius:99px;padding:6px 9px}
+
+.product-dialog-description{white-space:pre-wrap;overflow-wrap:anywhere;color:#5c5068;line-height:1.6;font-size:14px;margin:10px 0 16px}.product-dialog-buy{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid #eee4f7;padding-top:14px}.product-dialog-price{font-size:23px;font-weight:950;margin-right:auto}.product-dialog-buy .qty{width:74px;background:#fff;border-color:#e5d8f2;color:#241832}.product-dialog-buy .add{min-width:130px;padding:11px}
+
+.payment-methods{display:flex;gap:16px;flex-wrap:wrap;margin:15px 0}.payment-methods label{display:flex;align-items:center;gap:8px;padding:12px;border:1px solid #e5d8f2;border-radius:11px;font-weight:750}.payment-methods input{accent-color:#a855f7}#paymentSummary{background:#f8f2ff;border-radius:12px;padding:12px}
+
+@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{aspect-ratio:1/1;height:auto}.cardbody{padding:9px}.name{font-size:12px;line-height:1.35;margin:7px 0 10px}.price{font-size:17px}.add{font-size:11px;padding:9px 5px}.qty{width:56px;padding:8px 4px}.heroMain{padding:24px 19px}.product-modal{padding:7px}.product-dialog{max-height:95dvh;border-radius:15px}.product-gallery{margin:0 12px;height:32vh;min-height:180px}.product-dialog-body{padding:12px}.product-dialog-description{font-size:13px}.sectionhead h2{font-size:23px}}
+
+</style></head><body><header class="top"><div class="wrap topin"><div><div class="logo">MOTOVICH <span>OPT</span></div><div class="tag">ОПТОВАЯ ЭЛЕКТРОНИКА И ТРЕНДОВЫЕ ТОВАРЫ</div></div><nav class="nav"><a href="#catalog">Каталог</a><a href="#terms">Условия заказа</a><a href="https://t.me/motovichopt" target="_blank">Telegram</a></nav><button class="cartbtn" id="openCart">Корзина · <span id="cartCount">0</span></button></div></header><main class="wrap"><section class="hero"><div class="heroMain"><div class="eyebrow">Wholesale · Motovich Opt</div><h1>Оптовые цены.<br><span style="color:var(--lime)">Удобный заказ.</span></h1><p>Электроника, аксессуары и техника в одном оптовом каталоге. Выбирайте позиции, указывайте количество и отправляйте готовую заявку менеджеру.</p><a href="#catalog"><button class="primary">Перейти в каталог ↘</button></a></div></section>
+
+<section id="catalog"><div class="sectionhead"><div><div class="eyebrow">Каталог товаров</div><h2>Выбирай товары</h2></div><div class="count" id="resultCount">Загрузка каталога…</div></div><div class="filters"><input id="search" placeholder="Поиск по названию товара…" aria-label="Поиск товаров"><select id="sort"><option value="default">Сначала по каталогу</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="az">По названию А–Я</option></select></div><div class="tabs" id="tabs"></div><div class="grid" id="products"><div class="empty">Загружаем каталог…</div></div></section>
+
 <section id="terms" style="margin-top:45px"><div class="sectionhead"><div><div class="eyebrow">Как заказать</div><h2>Условия сотрудничества</h2></div></div><div class="features"><div class="feature"><b>Минимальный заказ — 5 000 ₽</b><span>Можно собрать микс из разных товарных групп.</span></div><div class="feature"><b>Оплата и отправка</b><span>Условия и наличие подтверждает менеджер перед оплатой.</span></div><div class="feature"><b>Крупный опт</b><span>Индивидуальные цены обсуждаются с менеджером.</span></div></div></section>
-<footer class="foot"><div class="logo">MOTOVICH <span>OPT</span></div><p>Оптовый каталог электроники, аксессуаров и автотоваров.</p><p>Цены отображаются по данным загруженного прайса и могут меняться. Перед оплатой подтвердите наличие, актуальную цену и условия доставки у менеджера.</p><a href="https://t.me/motovichopt" target="_blank">Telegram-канал MOTOVICH OPT</a><br><small>Демонстрационная версия сайта. Для приёма заказов в рабочем режиме нужно подключить обработку заявок и разместить сайт на хостинге.</small></footer></main>
-<div class="overlay" id="overlay"></div><aside class="cartpanel" id="cartpanel" aria-label="Корзина"><div class="carthead"><h2 style="margin:0">Ваш заказ</h2><button class="close" id="closeCart">Закрыть ✕</button></div><div id="cartitems" class="cartitems"></div><div class="total"><span>Итого</span><span id="total">0 ₽</span></div><div class="notice" id="minimumNotice">Минимальная сумма заказа — 5 000 ₽.</div><form id="orderForm"><label class="formfield"><span>Имя</span><input name="name" placeholder="Как к вам обращаться" required></label><label class="formfield"><span>Телефон или Telegram</span><input name="contact" placeholder="Контакт для связи" required></label><label class="formfield"><span>Город / доставка</span><input name="delivery" placeholder="Город, удобная ТК"></label><label class="formfield"><span>Комментарий</span><textarea name="comment" placeholder="Дополнительные пожелания"></textarea></label><button class="primary checkout" type="submit">Сформировать заказ</button><p class="notice">Кнопка сформирует текст заявки. Для отправки менеджеру потребуется открыть WhatsApp и нажать «Отправить».</p></form></aside><div class="toast" id="toast"></div>
+
+<footer class="foot"><div class="logo">MOTOVICH <span>OPT</span></div><p>Оптовый каталог электроники, аксессуаров и техники.</p><p>Цены отображаются по данным загруженного прайса и могут меняться. Перед оплатой подтвердите наличие, актуальную цену и условия доставки у менеджера.</p><a href="https://t.me/motovichopt" target="_blank">Telegram-канал MOTOVICH OPT</a><br><small>Онлайн-оплата активируется после подключения платёжного провайдера. До этого заявка передается менеджеру для подтверждения наличия и выдачи безопасной ссылки на оплату.</small></footer></main>
+
+<div class="overlay" id="overlay"></div><aside class="cartpanel" id="cartpanel" aria-label="Корзина"><div class="carthead"><h2 style="margin:0">Ваш заказ</h2><button class="close" id="closeCart">Закрыть ✕</button></div><div id="cartitems" class="cartitems"></div><div class="total"><span>Итого</span><span id="total">0 ₽</span></div><div class="notice" id="minimumNotice">Минимальная сумма заказа — 5 000 ₽.</div><form id="orderForm">
+
+<label class="formfield"><span>Ваш номер телефона или Telegram</span><input name="contact" placeholder="@username или номер телефона" autocomplete="tel" required></label>
+
+<label class="formfield"><span>Выберите способ доставки</span><select name="delivery" required><option value="">Выберите доставку</option><option value="Яндекс">Яндекс</option><option value="СДЭК">СДЭК</option><option value="Авито Доставка (обычно самый дешёвый способ)">Авито Доставка — обычно самый дешёвый способ</option></select></label>
+
+<label class="formfield"><span>Комментарии к заказу</span><textarea name="comment" placeholder="Город, адрес и пожелания"></textarea></label>
+
+<button class="primary checkout" type="submit">Оформить заказ →</button>
+
+<p class="notice">После оформления откроется следующий шаг. Для автоматического списания денег нужно подключить платёжный сервис.</p>
+
+</form></aside><div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle"><div class="product-dialog"><div class="product-dialog-head"><h2 class="product-dialog-title" id="productModalTitle">Товар</h2><button class="product-dialog-close" id="productModalClose" type="button">Закрыть ✕</button></div><div class="product-gallery" id="productGallery"></div><div class="product-dialog-body"><div class="product-dialog-meta" id="productModalMeta"></div><div class="product-dialog-description" id="productModalDescription"></div><div class="product-dialog-buy"><div class="product-dialog-price" id="productModalPrice"></div><input class="qty" id="productModalQty" type="number" min="1" step="1" value="1" aria-label="Количество"><button class="add" id="productModalAdd" type="button">+ В корзину</button></div></div></div></div>
+
+<div class="product-modal" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentTitle"><div class="product-dialog"><div class="product-dialog-head"><h2 class="product-dialog-title" id="paymentTitle">Шаг 2. Оплата заказа</h2><button class="product-dialog-close" id="paymentClose" type="button">Закрыть ✕</button></div><div class="product-dialog-body"><p id="paymentSummary" class="product-dialog-description"></p><div class="payment-methods"><label><input type="radio" name="payMethod" value="СБП" checked> Оплата по СБП</label><label><input type="radio" name="payMethod" value="Банковская карта"> Банковская карта</label></div><p class="notice">Платёжный сервис пока не подключён. Сайт не будет запрашивать данные карты. Ниже можно отправить заявку менеджеру и получить безопасную ссылку на оплату.</p><button class="primary checkout" id="requestPayment" type="button">Отправить заказ и запросить ссылку на оплату</button></div></div></div><div class="toast" id="toast"></div>
+
 <script>
-let allProducts=[],cart={},activeCat='Все товары';const $=s=>document.querySelector(s);const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n)+' ₽';
-async function init(){try{const r=await fetch('./products.json');allProducts=await r.json();renderShowcase();render()}catch(e){$('#products').innerHTML='<div class="empty">Не удалось загрузить каталог. Проверьте, что сайт открыт с веб-сервера, а файл products.json находится рядом.</div>';$('#resultCount').textContent='Ошибка загрузки'}}
 
-let showcaseItems=[],showcaseIndex=0,showcaseTimer=null;
-function renderShowcase(){showcaseItems=allProducts.filter(p=>p.image).slice(0,12);const view=$('#showcaseView'),dots=$('#showcaseDots');if(!showcaseItems.length){view.innerHTML='<div class="noimg">Фото товаров скоро появятся</div>';return}function paint(){const p=showcaseItems[showcaseIndex];view.innerHTML='<img src="'+esc(p.image)+'" alt="'+esc(p.name)+'"><div class="showcase-caption">'+esc(p.name)+'</div><div class="showcase-controls"><button type="button" id="showcasePrev" aria-label="Предыдущий товар">‹</button><button type="button" id="showcaseNext" aria-label="Следующий товар">›</button></div>';dots.innerHTML=showcaseItems.slice(0,Math.min(showcaseItems.length,8)).map((x,i)=>'<button type="button" class="'+(i===showcaseIndex?'active':'')+'" data-slide="'+i+'" aria-label="Слайд '+(i+1)+'"></button>').join('');$('#showcasePrev').onclick=()=>moveShowcase(-1);$('#showcaseNext').onclick=()=>moveShowcase(1);dots.querySelectorAll('[data-slide]').forEach(b=>b.onclick=()=>{showcaseIndex=+b.dataset.slide;paint();restartShowcase()})}paint();restartShowcase()}
-function moveShowcase(n){if(!showcaseItems.length)return;showcaseIndex=(showcaseIndex+n+showcaseItems.length)%showcaseItems.length;const p=showcaseItems[showcaseIndex],view=$('#showcaseView'),img=view.querySelector('img'),cap=view.querySelector('.showcase-caption');if(img){img.style.opacity='.2';setTimeout(()=>{img.src=p.image;img.alt=p.name;img.style.opacity='1'},100)}if(cap)cap.textContent=p.name;document.querySelectorAll('#showcaseDots button').forEach((b,i)=>b.classList.toggle('active',i===showcaseIndex))}
-function restartShowcase(){if(showcaseTimer)clearInterval(showcaseTimer);if(showcaseItems.length>1)showcaseTimer=setInterval(()=>moveShowcase(1),3500)}
+const CATEGORIES=["Dyson","Яблоко","Marshall","Samsung","JBL","Xiaomi","HK (HUAHONG)","Наушники","Наручные часы","Зарядки / Блоки / Кабели","Аккумуляторы / Power Bank","Мышки / Клавиатуры / Стилусы","Аксессуары","Смартфоны / Планшеты","Колонки","Роутеры / Сеть / Wi Fi","Приставки / Для TV","Бытовая техника / Для дома","Электроинструмент/Инструменты","Камеры видеонаблюдения","Хиты продаж"];
 
-function render(){let q=$('#search').value.toLowerCase().trim(),list=allProducts.filter(p=>(activeCat==='Все товары'||p.category===activeCat)&&p.name.toLowerCase().includes(q));let sort=$('#sort').value;if(sort==='low')list.sort((a,b)=>a.price-b.price);if(sort==='high')list.sort((a,b)=>b.price-a.price);if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));$('#resultCount').textContent=`${list.length} товаров`;$('#products').innerHTML=list.length?list.map(p=>`<article class="card"><div class="photo">${p.image?`<img loading="lazy" src="${p.image}" alt="${esc(p.name)}" onerror="this.parentElement.innerHTML='<div class=\'noimg\'>Фото уточняется</div>'">`:`<div class="noimg">Фото уточняется</div>`}</div><div class="cardbody"><div class="category">${esc(p.category)}</div><div class="name">${esc(p.name)}</div><div class="price">${money(p.price)} <small>/ шт.</small></div><div class="buyrow"><input class="qty" type="number" min="1" step="1" value="1" id="qty${p.id}" aria-label="Количество"><button class="add" onclick="add(${p.id})">+ В корзину</button></div></div></article>`).join(''):'<div class="empty">По этому запросу товары не найдены.</div>'}
+const CATEGORY_RULES=[
+
+["Dyson",/dyson/i],["Яблоко",/apple|iphone|ipad|air\s?pods|lightning|magsafe|\bip\s?\d/i],["Marshall",/marshall/i],["Samsung",/samsung|galaxy|buds/i],["JBL",/\bjbl\b/i],["Xiaomi",/xiaomi|redmi|\bpoco\b|\bmi\s?(?:wifi|band|pad)/i],["HK (HUAHONG)",/huahong|\bhk\s?\d/i],
+
+["Наушники",/наушник|headphone|earbud|air\s?pods|buds|tws|marshall major/i],["Наручные часы",/watch|смарт.?часы|часы|hk 11|x 9 call/i],["Зарядки / Блоки / Кабели",/заряд|кабел|cable|адаптер|adapter|блок питания|usb[- ]?c|lightning/i],["Аккумуляторы / Power Bank",/power\s?bank|аккумулятор|battery|battery pack|повербанк/i],["Мышки / Клавиатуры / Стилусы",/мыш|mouse|клавиатур|keyboard|stylus|стилус/i],["Аксессуары",/чехол|стекло|ремеш|аксессуар|кошел.?к|защитн|держател|расческ/i],["Смартфоны / Планшеты",/смартфон|планшет|iphone|ipad|телефон|tablet|smartphone|galaxy s\d/i],["Колонки",/колонк|speaker|jbl flip|boombox/i],["Роутеры / Сеть / Wi Fi",/роутер|router|wi.?fi|wifi|маршрутизатор|сеть/i],["Приставки / Для TV",/ps5|playstation|геймпад|пристав|tv box|android box|для tv|dualshock|dualsense/i],["Бытовая техника / Для дома",/dyson|фен|выпрямитель|стайлер|расческ|пылесос|проектор|бытов/i],["Электроинструмент/Инструменты",/дрель|шуруповерт|электроинструмент|инструмент/i],["Камеры видеонаблюдения",/камера|camera|видеонаблюд|v380/i]];
+
+const HIT_RULE=/air\s?pods pro|airpods pro|dyson.*(фен|стайлер)|marshall major|jbl flip|apple watch ultra|galaxy buds|hk 11|xiaomi повербанк|dual(?:sense|shock)|iphone xr/i;
+
+let allProducts=[],cart={},activeCat='Все товары',activeTier=0,pendingOrder=null,currentDetail=null;
+
+const $=s=>document.querySelector(s);const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n)+' ₽';
+
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function add(id){let p=allProducts.find(x=>x.id===id),n=Math.max(1,parseInt($('#qty'+id)?.value||1));cart[id]=(cart[id]||0)+n;updateCart();toast('Добавлено в корзину')}
-function updateCart(){let ids=Object.keys(cart).filter(k=>cart[k]>0),count=ids.reduce((s,k)=>s+cart[k],0),sum=ids.reduce((s,k)=>{let p=allProducts.find(x=>x.id===+k);return s+(p?p.price*cart[k]:0)},0);$('#cartCount').textContent=count;$('#total').textContent=money(sum);$('#cartitems').innerHTML=ids.length?ids.map(k=>{let p=allProducts.find(x=>x.id===+k);return `<div class="cartitem"><div><b>${esc(p.name)}</b><small>${money(p.price)} × ${cart[k]} шт. = ${money(p.price*cart[k])}</small><div style="display:flex;gap:7px;margin-top:8px"><button class="close" onclick="changeQty(${k},-1)">−</button><button class="close" onclick="changeQty(${k},1)">+</button></div></div><button class="remove" onclick="removeItem(${k})">Удалить</button></div>`}).join(''):'<div class="empty">Корзина пока пуста. Добавьте товары из каталога.</div>';$('#minimumNotice').textContent=sum>=5000?'Минимальная сумма заказа выполнена.':`До минимального заказа 5 000 ₽ осталось ${money(5000-sum)}.`}
-function changeQty(id,n){cart[id]=(cart[id]||0)+n;if(cart[id]<=0)delete cart[id];updateCart()}function removeItem(id){delete cart[id];updateCart()}function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',1800)}function openCart(){ $('#cartpanel').classList.add('open');$('#overlay').classList.add('show')}function closeCart(){ $('#cartpanel').classList.remove('open');$('#overlay').classList.remove('show')}
-$('#tabs').addEventListener('click',e=>{let b=e.target.closest('button[data-cat]');if(!b)return;activeCat=b.dataset.cat;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===b));render()});$('#search').addEventListener('input',render);$('#sort').addEventListener('change',render);$('#openCart').onclick=openCart;$('#closeCart').onclick=closeCart;$('#overlay').onclick=closeCart;
-$('#orderForm').addEventListener('submit',e=>{e.preventDefault();let ids=Object.keys(cart).filter(k=>cart[k]>0);if(!ids.length){toast('Сначала добавьте товары в корзину');return}let sum=ids.reduce((s,k)=>s+allProducts.find(p=>p.id===+k).price*cart[k],0);if(sum<5000&&!confirm('Сумма меньше минимального заказа 5 000 ₽. Всё равно сформировать заявку?'))return;let f=new FormData(e.target),lines=ids.map(k=>{let p=allProducts.find(x=>x.id===+k);return `${p.name} — ${cart[k]} шт. × ${p.price} ₽ = ${p.price*cart[k]} ₽`});let message=`ЗАКАЗ MOTOVICH OPT\n\n${lines.join('\n')}\n\nИТОГО: ${sum} ₽\n\nИмя: ${f.get('name')}\nКонтакт: ${f.get('contact')}\nГород/доставка: ${f.get('delivery')||'не указан'}\nКомментарий: ${f.get('comment')||'нет'}\n\nПрошу подтвердить наличие и актуальные цены.`;let url='https://wa.me/79186568581?text='+encodeURIComponent(message);window.open(url,'_blank','noopener');});init();
+
+function categoryProducts(p){const title=(p.name||'')+' '+(p.section||'');let tags=CATEGORY_RULES.filter(([,re])=>re.test(title)).map(([name])=>name);if(!tags.length)tags=['Аксессуары'];return [...new Set(tags)]}
+
+function basePrice(p){const a=Array.isArray(p.prices)?p.prices:[];return Number(a[0]||p.price||0)}
+
+function priceFor(p,tier=activeTier){const a=Array.isArray(p.prices)?p.prices:[];if(a.length<=1)return Number(a[0]||p.price||0);return Number(a[Math.min(Math.max(tier,0),a.length-1)]||a[0]||p.price||0)}
+
+function calcTier(){const base=Object.keys(cart).reduce((sum,id)=>{const p=allProducts.find(x=>x.id===Number(id));return sum+(p?basePrice(p)*cart[id]:0)},0);return base>=40000?2:base>=20000?1:0}
+
+function tierText(){return ['от 5 000 ₽','от 20 000 ₽','от 40 000 ₽'][activeTier]}
+
+async function init(){try{const r=await fetch('./products.json');const source=await r.json();allProducts=source.filter(p=>p.category!=='Автотовары'&&p.sheet!=='Авто Товары');let hits=0;for(const p of allProducts){p.categories=categoryProducts(p);if(HIT_RULE.test((p.name||'')+' '+(p.section||''))&&hits<12){p.categories.push('Хиты продаж');hits++}p.category=p.categories[0]||'Аксессуары';if(p.id===44&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[1],p.prices[1]];if([92,126].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];if([93,127].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];}buildTabs();render();updateCartUI()}catch(e){$('#products').innerHTML='<div class="empty">Не удалось загрузить каталог. Обновите страницу и попробуйте снова.</div>';$('#resultCount').textContent='Ошибка загрузки'}}
+
+function buildTabs(){$('#tabs').innerHTML='<button class="tab active" data-cat="Все товары">Все товары</button>'+CATEGORIES.map(c=>'<button class="tab" data-cat="'+esc(c)+'">'+esc(c)+'</button>').join('')}
+
+function render(){const q=$('#search').value.toLowerCase().trim();let list=allProducts.filter(p=>(activeCat==='Все товары'||(p.categories||[p.category]).includes(activeCat))&&((String(p.name||'')+' '+String(p.section||'')).toLowerCase().includes(q)));const sort=$('#sort').value;if(sort==='low')list.sort((a,b)=>priceFor(a)-priceFor(b));if(sort==='high')list.sort((a,b)=>priceFor(b)-priceFor(a));if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));$('#resultCount').textContent=list.length+' товаров';$('#products').innerHTML=list.length?list.map(p=>'<article class="card" data-product-id="'+p.id+'" tabindex="0" role="button" aria-label="Подробнее: '+esc(p.name)+'"><div class="photo">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">':'<div class="noimg">Фото уточняется</div>')+'</div><div class="cardbody"><div class="category">'+esc(p.category||'Аксессуары')+'</div><div class="name">'+esc(p.name)+'</div><div class="price" data-price-id="'+p.id+'">'+money(priceFor(p))+' <small>/ шт.</small></div><div class="buyrow"><input class="qty" type="number" min="1" step="1" value="1" id="qty'+p.id+'" aria-label="Количество"><button class="add" type="button" data-add="'+p.id+'">+ В корзину</button></div></div></article>').join(''):'<div class="empty">В этой категории пока нет товаров в прайсе.</div>';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.cat===activeCat))}
+
+function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',1800)}
+
+function sync(){activeTier=calcTier();render();updateCartUI()}
+
+function add(id,n){const p=allProducts.find(x=>x.id===Number(id));if(!p)return;cart[id]=(cart[id]||0)+Math.max(1,Number(n)||1);sync();toast('Добавлено в корзину')}
+
+function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];sync()}
+
+function removeItem(id){delete cart[id];sync()}
+
+function updateCartUI(){const ids=Object.keys(cart).filter(k=>cart[k]>0);const count=ids.reduce((s,k)=>s+cart[k],0);const total=ids.reduce((s,k)=>{const p=allProducts.find(x=>x.id===Number(k));return s+(p?priceFor(p)*cart[k]:0)},0);$('#cartCount').textContent=count;$('#total').textContent=money(total);$('#minimumNotice').textContent='Применены цены '+tierText()+'. Минимальный заказ — 5 000 ₽; уровень рассчитывается по сумме корзины по первой колонке прайса.';$('#cartitems').innerHTML=ids.length?ids.map(k=>{const p=allProducts.find(x=>x.id===Number(k));return '<div class="cartitem"><div><b>'+esc(p.name)+'</b><small>'+money(priceFor(p))+' × '+cart[k]+' шт. = '+money(priceFor(p)*cart[k])+'</small><div style="display:flex;gap:7px;margin-top:8px"><button class="close" type="button" onclick="changeQty('+k+',-1)">−</button><button class="close" type="button" onclick="changeQty('+k+',1)">+</button></div></div><button class="remove" type="button" onclick="removeItem('+k+')">Удалить</button></div>'}).join(''):'<div class="empty">Корзина пока пуста. Добавьте товары из каталога.</div>';document.querySelectorAll('[data-price-id]').forEach(el=>{const p=allProducts.find(x=>x.id===Number(el.dataset.priceId));if(p)el.innerHTML=money(priceFor(p))+' <small>/ шт.</small>'})}
+
+function openCart(){$('#cartpanel').classList.add('open');$('#overlay').classList.add('show')}
+
+function closeCart(){$('#cartpanel').classList.remove('open');$('#overlay').classList.remove('show')}
+
+function openProduct(id){const p=allProducts.find(x=>x.id===Number(id));if(!p)return;currentDetail=p;$('#productModalTitle').textContent=p.name;$('#productGallery').innerHTML=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">':'<div class="noimg">Фото уточняется</div>';$('#productModalMeta').innerHTML=(p.categories||[p.category]).filter(Boolean).slice(0,5).map(x=>'<span>'+esc(x)+'</span>').join('');$('#productModalDescription').textContent=p.description||p.details||p.image_note||('Раздел: '+(p.section||'Электроника и аксессуары')+'. Уточните комплектацию и наличие у менеджера перед оплатой.');$('#productModalPrice').textContent=money(priceFor(p))+' / шт.';$('#productModalQty').value='1';$('#productModal').classList.add('open');document.body.style.overflow='hidden'}
+
+function closeProduct(){$('#productModal').classList.remove('open');document.body.style.overflow=''}
+
+function showPaymentStep(message,total,contact,delivery){pendingOrder={message,total,contact,delivery};$('#paymentSummary').textContent='К оплате по выбранному уровню: '+money(total)+'. Доставка: '+delivery+'. Контакт: '+contact+'.';$('#paymentModal').classList.add('open');document.body.style.overflow='hidden'}
+
+function closePayment(){$('#paymentModal').classList.remove('open');document.body.style.overflow=''}
+
+$('#products').addEventListener('click',e=>{const addBtn=e.target.closest('[data-add]');if(addBtn){e.stopPropagation();const id=Number(addBtn.dataset.add);add(id,$('#qty'+id)?.value);return}if(e.target.closest('input'))return;const card=e.target.closest('[data-product-id]');if(card)openProduct(card.dataset.productId)});
+
+$('#products').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest('[data-product-id]')&&!e.target.closest('input,button')){e.preventDefault();openProduct(e.target.closest('[data-product-id]').dataset.productId)}});
+
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(!b)return;activeCat=b.dataset.cat;render()});$('#search').addEventListener('input',render);$('#sort').addEventListener('change',render);
+
+$('#openCart').onclick=openCart;$('#closeCart').onclick=closeCart;$('#overlay').onclick=closeCart;
+
+$('#productModalClose').onclick=closeProduct;$('#productModal').addEventListener('click',e=>{if(e.target.id==='productModal')closeProduct()});$('#productModalAdd').onclick=()=>{if(currentDetail)add(currentDetail.id,$('#productModalQty').value);closeProduct()};
+
+$('#paymentClose').onclick=closePayment;$('#paymentModal').addEventListener('click',e=>{if(e.target.id==='paymentModal')closePayment()});
+
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const ids=Object.keys(cart).filter(k=>cart[k]>0);if(!ids.length){toast('Сначала добавьте товары в корзину');return}const total=ids.reduce((s,k)=>{const p=allProducts.find(x=>x.id===Number(k));return s+priceFor(p)*cart[k]},0);if(total<5000){toast('Минимальный заказ — 5 000 ₽');return}const f=new FormData(e.target);const contact=String(f.get('contact')||'').trim(),delivery=String(f.get('delivery')||''),comment=String(f.get('comment')||'').trim();const lines=ids.map(k=>{const p=allProducts.find(x=>x.id===Number(k));return p.name+' — '+cart[k]+' шт. × '+priceFor(p)+' ₽ = '+(cart[k]*priceFor(p))+' ₽'});const message='ЗАКАЗ MOTOVICH OPT\n\n'+lines.join('\n')+'\n\nИТОГО: '+money(total)+'\nУровень прайса: '+tierText()+'\nКонтакт: '+contact+'\nДоставка: '+delivery+'\nКомментарий: '+(comment||'нет')+'\n\nПрошу подтвердить наличие и прислать ссылку на оплату ('+(document.querySelector('input[name="payMethod"]:checked')?.value||'СБП')+').';showPaymentStep(message,total,contact,delivery);pendingOrder.message=message+'\nКомментарий: '+(comment||'нет')});
+
+$('#requestPayment').onclick=()=>{if(!pendingOrder)return;const method=document.querySelector('input[name="payMethod"]:checked')?.value||'СБП';const msg=pendingOrder.message+'\nСпособ оплаты: '+method;window.open('https://wa.me/79186568581?text='+encodeURIComponent(msg),'_blank','noopener');closePayment();closeCart()};
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();closePayment()}});init();
+
 </script></body></html>
