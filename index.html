@@ -130,6 +130,10 @@ body{background:var(--bg);color:var(--text)}
 .top{background:#fff;border-bottom:1px solid #e9e1f2}
 .photo{background:#fff;border-bottom:1px solid #f0ebf5;aspect-ratio:1/1;height:auto;padding:8px}
 .photo img{width:100%;height:100%;object-fit:contain;object-position:center;padding:0;background:#fff}
+/* Short card descriptions; full text stays in the product popup */
+.name{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;overflow-wrap:anywhere;min-height:0}
+.photo{position:relative}
+.details-icon{position:absolute;right:6px;bottom:6px;width:25px;height:25px;border:1px solid #dfc5ff;border-radius:50%;background:#fff;color:#9333ea;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #24183220;cursor:pointer;z-index:2;padding:0}
 .product-gallery{background:#fff}
 .product-gallery img{object-fit:contain;background:#fff}
 .noimg{background:#faf7ff;color:#8b7a9d}
@@ -192,7 +196,7 @@ async function init(){try{const r=await fetch('./products.json');const source=aw
 
 function buildTabs(){$('#tabs').innerHTML='<button class="tab active" data-cat="Все товары">Все товары</button>'+CATEGORIES.map(c=>'<button class="tab" data-cat="'+esc(c)+'">'+esc(c)+'</button>').join('')}
 
-function render(){const q=$('#search').value.toLowerCase().trim();let list=allProducts.filter(p=>(activeCat==='Все товары'||(p.categories||[p.category]).includes(activeCat))&&((String(p.name||'')+' '+String(p.section||'')).toLowerCase().includes(q)));const sort=$('#sort').value;if(sort==='low')list.sort((a,b)=>priceFor(a)-priceFor(b));if(sort==='high')list.sort((a,b)=>priceFor(b)-priceFor(a));if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));$('#resultCount').textContent=list.length+' товаров';$('#products').innerHTML=list.length?list.map(p=>'<article class="card" data-product-id="'+p.id+'" tabindex="0" role="button" aria-label="Подробнее: '+esc(p.name)+'"><div class="photo">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">':'<div class="noimg">Фото уточняется</div>')+'</div><div class="cardbody"><div class="category">'+esc(p.category||'Аксессуары')+'</div><div class="name">'+esc(p.name)+'</div><div class="price" data-price-id="'+p.id+'">'+money(priceFor(p))+' <small>/ шт.</small></div><div class="buyrow"><input class="qty" type="number" min="1" step="1" value="1" id="qty'+p.id+'" aria-label="Количество"><button class="add" type="button" data-add="'+p.id+'">+ В корзину</button></div></div></article>').join(''):'<div class="empty">В этой категории пока нет товаров в прайсе.</div>';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.cat===activeCat))}
+function render(){const q=$('#search').value.toLowerCase().trim();let list=allProducts.filter(p=>(activeCat==='Все товары'||(p.categories||[p.category]).includes(activeCat))&&((String(p.name||'')+' '+String(p.section||'')).toLowerCase().includes(q)));const sort=$('#sort').value;if(sort==='low')list.sort((a,b)=>priceFor(a)-priceFor(b));if(sort==='high')list.sort((a,b)=>priceFor(b)-priceFor(a));if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));$('#resultCount').textContent=list.length+' товаров';$('#products').innerHTML=list.length?list.map(p=>'<article class="card" data-product-id="'+p.id+'" tabindex="0" role="button" aria-label="Подробнее: '+esc(p.name)+'"><div class="photo">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">':'<div class="noimg">Фото уточняется</div>')+ '<button class="details-icon" type="button" data-details="'+p.id+'" aria-label="Полное описание" title="Полное описание">i</button></div><div class="cardbody"><div class="category">'+esc(p.category||'Аксессуары')+'</div><div class="name">'+esc(p.name)+'</div><div class="price" data-price-id="'+p.id+'">'+money(priceFor(p))+' <small>/ шт.</small></div><div class="buyrow"><input class="qty" type="number" min="1" step="1" value="1" id="qty'+p.id+'" aria-label="Количество"><button class="add" type="button" data-add="'+p.id+'">+ В корзину</button></div></div></article>').join(''):'<div class="empty">В этой категории пока нет товаров в прайсе.</div>';document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.cat===activeCat))}
 
 function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',1800)}
 
@@ -218,7 +222,7 @@ function showPaymentStep(message,total,contact,delivery){pendingOrder={message,t
 
 function closePayment(){$('#paymentModal').classList.remove('open');document.body.style.overflow=''}
 
-$('#products').addEventListener('click',e=>{const addBtn=e.target.closest('[data-add]');if(addBtn){e.stopPropagation();const id=Number(addBtn.dataset.add);add(id,$('#qty'+id)?.value);return}if(e.target.closest('input'))return;const card=e.target.closest('[data-product-id]');if(card)openProduct(card.dataset.productId)});
+$('#products').addEventListener('click',e=>{const detailsBtn=e.target.closest('[data-details]');if(detailsBtn){e.stopPropagation();openProduct(detailsBtn.dataset.details);return}const addBtn=e.target.closest('[data-add]');if(addBtn){e.stopPropagation();const id=Number(addBtn.dataset.add);add(id,$('#qty'+id)?.value);return}if(e.target.closest('input'))return;const card=e.target.closest('[data-product-id]');if(card)openProduct(card.dataset.productId)});
 
 $('#products').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest('[data-product-id]')&&!e.target.closest('input,button')){e.preventDefault();openProduct(e.target.closest('[data-product-id]').dataset.productId)}});
 
