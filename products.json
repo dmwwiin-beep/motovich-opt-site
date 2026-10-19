@@ -2318,5 +2318,62 @@
     "image": "assets/p0155.jpg",
     "sheet": "Авто Товары",
     "row": 45
+  },
+  
+  {
+    "id": 168,
+    "name": "Ремешки для Apple Watch",
+    "category": "Электроника и аксессуары",
+    "section": "Ремешки",
+    "price": 90,
+    "prices": [90],
+    "image": "IMG_0742.jpg",
+    "sheet": "Новые товары",
+    "row": 1
+  },
+  {
+    "id": 169,
+    "name": "Колонка JBL Flip 6–7",
+    "category": "Электроника и аксессуары",
+    "section": "Колонки",
+    "price": 650,
+    "prices": [650],
+    "image": "IMG_0746.jpg",
+    "sheet": "Новые товары",
+    "row": 2
+  },
+  {
+    "id": 170,
+    "name": "Геймпад PS5 DualSense",
+    "category": "Электроника и аксессуары",
+    "section": "Игровые приставки",
+    "price": 2400,
+    "prices": [2400],
+    "image": "IMG_0748.jpg",
+    "sheet": "Новые товары",
+    "row": 3
+  },
+  {
+    "id": 171,
+    "name": "Мотоциклетные LED-фары 60W",
+    "category": "Автотовары",
+    "section": "Свет",
+    "price": 3490,
+    "prices": [3490],
+    "image": "IMG_0753.jpg",
+    "sheet": "Новые товары",
+    "row": 4
+  },
+  {
+    "id": 172,
+    "name": "Наушники Marshall Major V",
+    "category": "Электроника и аксессуары",
+    "section": "Наушники",
+    "price": 4200,
+    "prices": [4200],
+    "image": "IMG_0759.jpg",
+    "sheet": "Новые товары",
+    "row": 5
   }
+
 ]
