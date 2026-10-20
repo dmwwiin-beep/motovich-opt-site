@@ -1076,46 +1076,6 @@
     "row": 124
   },
   {
-    "id": 84,
-    "name": "Стайлер DYSON PREMIUM HS 05 (6 насадок) (LONG)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 5490,
-    "prices": [
-      5490
-    ],
-    "image": "assets/p0019.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 125
-  },
-  {
-    "id": 85,
-    "name": "Стайлер DYSON PREMIUM HS 08 все цвета",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 6500,
-    "prices": [
-      6500
-    ],
-    "image": "assets/p0035.png",
-    "sheet": "Электроника|Аксессуары",
-    "row": 126
-  },
-  {
-    "id": 86,
-    "name": "Стайлер DYSON PREMIUM HS 09 все цвета",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 6790,
-    "prices": [
-      6790
-    ],
-    "image": "https://imobile.market/assets/galleries/2661/wn84fjwyaye2gospr464u2hpnxr17eb8.jpeg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 127,
-    "image_source": "internet_reference"
-  },
-  {
     "id": 96,
     "name": "Очки с камерой Ray Ban",
     "category": "Электроника и аксессуары",
@@ -1375,21 +1335,6 @@
     "image": "assets/p0112.jpg",
     "sheet": "Dyson",
     "row": 18
-  },
-  {
-    "id": 120,
-    "name": "Стайлер DYSON PREMIUM HS 05 (6 насадок) (LONG)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 8300,
-    "prices": [
-      8500,
-      8400,
-      8300
-    ],
-    "image": "assets/p0104.jpg",
-    "sheet": "Dyson",
-    "row": 19
   },
   {
     "id": 130,
