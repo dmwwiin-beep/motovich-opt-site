@@ -150,6 +150,9 @@ body{background:var(--bg);color:var(--text)}
 .photo{padding:0!important;overflow:hidden!important;background:#fff!important}
 .photo img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;padding:0!important;background:#fff!important}
 @media(max-width:650px){.photo{padding:0!important}.photo img{width:100%!important;height:100%!important;object-fit:cover!important}}
+
+/* Center the product photo inside the Watch Ultra 2 box card */
+.card[data-product-id="52"] .photo img{object-fit:contain!important;object-position:center!important;transform:scale(1.08) translateX(4%)!important;background:#fff!important}
 /* Guaranteed visible Telegram button in mobile hero */
 .hero-actions{display:flex!important;flex-direction:column!important;gap:12px!important;margin-top:18px!important;align-items:stretch!important}
 .hero-actions .top-telegram{display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:2!important;order:-1!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:100%!important;min-height:54px!important;padding:15px 12px!important;margin:0!important;background:#229ED9!important;color:#fff!important;border:2px solid #168ac2!important;border-radius:13px!important;font-size:15px!important;font-weight:900!important;line-height:1.3!important;text-align:center!important;text-decoration:none!important;box-shadow:0 7px 20px #229ed940!important}
