@@ -1680,9 +1680,16 @@
     "prices": [
       4200
     ],
-    "image": "IMG_0759.jpg",
+    "image": "assets/marshall-major-v-1.webp",
     "sheet": "Новые товары",
-    "row": 5
+    "row": 5,
+    "images": [
+      "assets/marshall-major-v-1.webp",
+      "assets/marshall-major-v-2.webp",
+      "assets/marshall-major-v-3.webp",
+      "assets/marshall-major-v-4.webp",
+      "assets/marshall-major-v-5.webp"
+    ]
   },
   {
     "id": 173,
