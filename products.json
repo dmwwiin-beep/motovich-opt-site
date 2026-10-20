@@ -1130,20 +1130,6 @@
     "row": 133
   },
   {
-    "id": 95,
-    "name": "ПРОЕКТОР Lingbo T4 - Т6 max Обзор",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 4350,
-    "prices": [
-      4350
-    ],
-    "image": "https://static.insales-cdn.com/images/products/1/6115/712652771/7279-3.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 136,
-    "image_source": "internet_reference"
-  },
-  {
     "id": 96,
     "name": "Очки с камерой Ray Ban",
     "category": "Электроника и аксессуары",
@@ -1221,46 +1207,6 @@
     "image": "assets/p0042.jpg",
     "sheet": "Электроника|Аксессуары",
     "row": 844
-  },
-  {
-    "id": 103,
-    "name": "Мини ретро камера",
-    "category": "Электроника и аксессуары",
-    "section": "Новинки",
-    "price": 650,
-    "prices": [
-      650
-    ],
-    "image": "assets/p0041.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 845
-  },
-  {
-    "id": 104,
-    "name": "Hoco power Bank",
-    "category": "Электроника и аксессуары",
-    "section": "Новинки",
-    "price": 1350,
-    "prices": [
-      1350
-    ],
-    "image": "assets/p0037.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 847
-  },
-  {
-    "id": 105,
-    "name": "Wi fi камера",
-    "category": "Электроника и аксессуары",
-    "section": "Новинки",
-    "price": 990,
-    "prices": [
-      990
-    ],
-    "image": "https://www.geewiz.co.za/546007-large_default/indoor-wi-fi-pt-tuya-camera-smart-home-security-pan-tilt-camera-bsy-3318.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 848,
-    "image_source": "internet_reference"
   },
   {
     "id": 106,
@@ -1486,19 +1432,6 @@
     "image": "https://wizemart.ru/images/item/85/28/noutbuk_s_horoshimi_har_kami_htex_enlinx_h16_pro_ssd_512gb_ddr4_16gb_ppocessor_intel_seleron_n5095a_2_00_gnz_videokarta_intel_nd_graphics_ekran_15_6-4702493pic8.jpg",
     "sheet": "Dyson",
     "row": 25
-  },
-  {
-    "id": 129,
-    "name": "ПРОЕКТОР Lingbo T4 - Т6 max Обзор",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 4350,
-    "prices": [
-      4350
-    ],
-    "image": "https://static.insales-cdn.com/images/products/1/5971/735254355/7278-1.jpg",
-    "sheet": "Dyson",
-    "row": 28
   },
   {
     "id": 130,
