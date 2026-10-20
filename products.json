@@ -285,32 +285,6 @@
     "image_source": "internet_reference"
   },
   {
-    "id": 26,
-    "name": "Колонка JBL FLIP 6",
-    "category": "Электроника и аксессуары",
-    "section": "БЕСПРОВОДНЫЕ КОЛОНКИ",
-    "price": 850,
-    "prices": [
-      850
-    ],
-    "image": "assets/jbl_flip6_new.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 51
-  },
-  {
-    "id": 27,
-    "name": "Колонка JBL FLIP 7",
-    "category": "Электроника и аксессуары",
-    "section": "БЕСПРОВОДНЫЕ КОЛОНКИ",
-    "price": 990,
-    "prices": [
-      990
-    ],
-    "image": "https://gomagcdn.ro/domains2/mobishop.md/files/product/large/boxa-portabila-jbl-flip-7-alb-557148.webp",
-    "sheet": "Электроника|Аксессуары",
-    "row": 52
-  },
-  {
     "id": 28,
     "name": "AIR Max (Черные) AA",
     "category": "Электроника и аксессуары",
