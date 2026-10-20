@@ -1108,9 +1108,12 @@
       530,
       520
     ],
-    "image": "assets/p0107.jpg",
+    "image": "assets/dyson-combs.jpg",
     "sheet": "Dyson",
-    "row": 13
+    "row": 13,
+    "images": [
+      "assets/dyson-combs.jpg"
+    ]
   },
   {
     "id": 135,
