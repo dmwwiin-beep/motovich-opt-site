@@ -1116,71 +1116,6 @@
     "image_source": "internet_reference"
   },
   {
-    "id": 87,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) ОРАНЖЕВЫЙ (LONG)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0093.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 128
-  },
-  {
-    "id": 88,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) ЗОЛОТО (СИНИЙ) (LONG)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0094.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 129
-  },
-  {
-    "id": 89,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) РОЗОВЫЙ (LONG)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0095.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 130
-  },
-  {
-    "id": 90,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) СЕРЫЙ (LONG)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0096.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 131
-  },
-  {
-    "id": 91,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) ТИФФАНИ (LONG)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0097.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 132
-  },
-  {
     "id": 92,
     "name": "Ноутбук HTEX H16 Pro (15.6 дюйма FullHD, N5095, 16gb RAM, 512gb SSD)",
     "category": "Электроника и аксессуары",
@@ -1193,35 +1128,6 @@
     "image": "https://wizemart.ru/images/item/85/28/noutbuk_s_horoshimi_har_kami_htex_enlinx_h16_pro_ssd_512gb_ddr4_16gb_ppocessor_intel_seleron_n5095a_2_00_gnz_videokarta_intel_nd_graphics_ekran_15_6-4702493pic8.jpg",
     "sheet": "Электроника|Аксессуары",
     "row": 133
-  },
-  {
-    "id": 93,
-    "name": "Моноблок All in One PC (23.8 дюйма FullHD, I73610, 16gb RAM, 256gb SSD, в комплекте клавиатура и мышь)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 21000,
-    "prices": [
-      21500,
-      21000
-    ],
-    "image": "https://abo.express/Smartstore/media/20522/catalog/HP_AIO_24_27cr_02_3986.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 134,
-    "image_source": "internet_reference"
-  },
-  {
-    "id": 94,
-    "name": "Колонка BT-2307 \"6в1\"",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 850,
-    "prices": [
-      850
-    ],
-    "image": "https://www.newsciencetech.com/cdn/shop/files/40230-web.jpg?v=1718788580",
-    "sheet": "Электроника|Аксессуары",
-    "row": 135,
-    "image_source": "internet_reference"
   },
   {
     "id": 95,
@@ -1302,19 +1208,6 @@
     "image": "assets/p0050.jpg",
     "sheet": "Электроника|Аксессуары",
     "row": 842
-  },
-  {
-    "id": 101,
-    "name": "Hoco Power Bank 30 000",
-    "category": "Электроника и аксессуары",
-    "section": "Новинки",
-    "price": 890,
-    "prices": [
-      890
-    ],
-    "image": "assets/p0043.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 843
   },
   {
     "id": 102,
@@ -1581,71 +1474,6 @@
     "row": 19
   },
   {
-    "id": 121,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) ОРАНЖЕВЫЙ (LONG)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0113.jpg",
-    "sheet": "Dyson",
-    "row": 20
-  },
-  {
-    "id": 122,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) ЗОЛОТО (СИНИЙ) (LONG)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0114.jpg",
-    "sheet": "Dyson",
-    "row": 21
-  },
-  {
-    "id": 123,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) РОЗОВЫЙ (LONG)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0115.jpg",
-    "sheet": "Dyson",
-    "row": 22
-  },
-  {
-    "id": 124,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) СЕРЫЙ (LONG)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0116.jpg",
-    "sheet": "Dyson",
-    "row": 23
-  },
-  {
-    "id": 125,
-    "name": "Стайлер DYSON PREMIUM (6 насадок) ТИФФАНИ (LONG)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 12800,
-    "prices": [
-      12800
-    ],
-    "image": "assets/p0117.jpg",
-    "sheet": "Dyson",
-    "row": 24
-  },
-  {
     "id": 126,
     "name": "Ноутбук HTEX H16 Pro (15.6 дюйма FullHD, N5095, 16gb RAM, 512gb SSD)",
     "category": "Dyson и техника",
@@ -1658,33 +1486,6 @@
     "image": "https://wizemart.ru/images/item/85/28/noutbuk_s_horoshimi_har_kami_htex_enlinx_h16_pro_ssd_512gb_ddr4_16gb_ppocessor_intel_seleron_n5095a_2_00_gnz_videokarta_intel_nd_graphics_ekran_15_6-4702493pic8.jpg",
     "sheet": "Dyson",
     "row": 25
-  },
-  {
-    "id": 127,
-    "name": "Моноблок All in One PC (23.8 дюйма FullHD, I73610, 16gb RAM, 256gb SSD, в комплекте клавиатура и мышь)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 21000,
-    "prices": [
-      21500,
-      21000
-    ],
-    "image": "https://abo.express/Smartstore/media/20522/catalog/HP_AIO_24_27cr_02_3986.jpg",
-    "sheet": "Dyson",
-    "row": 26
-  },
-  {
-    "id": 128,
-    "name": "Колонка BT-2307 \"6в1\"",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 850,
-    "prices": [
-      850
-    ],
-    "image": "https://www.newsciencetech.com/cdn/shop/files/40230-web.jpg?v=1718788580",
-    "sheet": "Dyson",
-    "row": 27
   },
   {
     "id": 129,
