@@ -1667,5 +1667,17 @@
     ],
     "image": "https://i02.appmifile.com/229_operator_sg/21/07/2021/6cc06b7f1bb4f655a63cb98d4f83b711.png",
     "description": "Компактная TV-приставка Xiaomi для подключения к телевизору через HDMI. Поддержка Android TV, Wi-Fi, голосового управления и популярных стриминговых приложений."
+  },
+  {
+    "id": 177,
+    "name": "Очки с камерой Ray-Ban Meta",
+    "category": "Электроника и аксессуары",
+    "section": "Умные очки",
+    "price": 4600,
+    "prices": [
+      4600
+    ],
+    "description": "🆘 Очки с камерой Ray-Ban Meta\n\n➡️ Хит продаж сезона\n\n➡️ AI-ассистент\n\n➡️ Автоматический переводчик\n\n➡️ Качественный микрофон",
+    "image": "https://images2.ray-ban.com//prod-onecp-record-files/pieyewear/49bd4cd4-674a-453b-bed8-b39e00baa248/0RW4013__601_MF__P21__shad__al31.png?impolicy=RB_Product_clone&width=720&bgc=%23f2f2f2"
   }
 ]
