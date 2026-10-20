@@ -1111,20 +1111,6 @@
     "row": 11
   },
   {
-    "id": 113,
-    "name": "Набор расчесок Dyson ( разные цвета)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 1090,
-    "prices": [
-      1090
-    ],
-    "image": "https://shop-dyson.kz/assets/cache_image/products/621/971430-02_550x550_29b.png",
-    "sheet": "Dyson",
-    "row": 12,
-    "image_source": "internet_reference"
-  },
-  {
     "id": 114,
     "name": "Расческа DYSON",
     "category": "Dyson и техника",
