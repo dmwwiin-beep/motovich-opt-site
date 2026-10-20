@@ -1098,19 +1098,6 @@
     "image_source": "internet_reference"
   },
   {
-    "id": 112,
-    "name": "Выпрямитель dyson ( цвет по запросу)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 6900,
-    "prices": [
-      6900
-    ],
-    "image": "assets/p0106.jpg",
-    "sheet": "Dyson",
-    "row": 11
-  },
-  {
     "id": 114,
     "name": "Расческа DYSON",
     "category": "Dyson и техника",
