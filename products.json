@@ -1679,5 +1679,31 @@
     ],
     "description": "🆘 Очки с камерой Ray-Ban Meta\n\n➡️ Хит продаж сезона\n\n➡️ AI-ассистент\n\n➡️ Автоматический переводчик\n\n➡️ Качественный микрофон",
     "image": "https://images2.ray-ban.com//prod-onecp-record-files/pieyewear/49bd4cd4-674a-453b-bed8-b39e00baa248/0RW4013__601_MF__P21__shad__al31.png?impolicy=RB_Product_clone&width=720&bgc=%23f2f2f2"
+  },
+  {
+    "id": 26,
+    "name": "Колонка JBL FLIP 6",
+    "category": "Электроника и аксессуары",
+    "section": "БЕСПРОВОДНЫЕ КОЛОНКИ",
+    "price": 850,
+    "prices": [
+      850
+    ],
+    "image": "assets/jbl_flip6_new.jpg",
+    "sheet": "Электроника|Аксессуары",
+    "row": 51
+  },
+  {
+    "id": 27,
+    "name": "Колонка JBL FLIP 7",
+    "category": "Электроника и аксессуары",
+    "section": "БЕСПРОВОДНЫЕ КОЛОНКИ",
+    "price": 990,
+    "prices": [
+      990
+    ],
+    "image": "https://gomagcdn.ro/domains2/mobishop.md/files/product/large/boxa-portabila-jbl-flip-7-alb-557148.webp",
+    "sheet": "Электроника|Аксессуары",
+    "row": 52
   }
 ]
