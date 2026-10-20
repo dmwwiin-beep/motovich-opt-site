@@ -1643,5 +1643,29 @@
     "sheet": "Новые товары",
     "row": 7,
     "description": "Беспроводной контроллер PS5 DualSense в перламутровой расцветке. Качественный микрофон, виброотклик. Доступные цвета уточняйте у менеджера."
+  },
+  {
+    "id": 175,
+    "name": "Xiaomi TV Box S 2nd Gen",
+    "category": "Электроника и аксессуары",
+    "section": "ТВ-приставки",
+    "price": 1100,
+    "prices": [
+      1100
+    ],
+    "image": "https://mi-shop.com/upload/iblock/e72/njexuyjk1mjcbn2nxrbx8zcknrq56pks.png",
+    "description": "📺 Xiaomi TV Box S 2nd Gen — превратите обычный телевизор в Smart TV!\n\nСмотрите фильмы, YouTube и любимые онлайн-сервисы в 4K Ultra HD с удобным управлением через Google TV.\n\n✅ 4K Ultra HD\n🎬 Google TV\n🎙️ Голосовое управление Google Assistant\n📱 YouTube, Netflix, Prime Video и другие приложения\n⚡ Быстрая и удобная работа\n🎮 Компактный формат — занимает минимум места\n\nПодключите Xiaomi TV Box S — и получите полноценный Smart TV за несколько минут!"
+  },
+  {
+    "id": 176,
+    "name": "TV Stick Xiaomi",
+    "category": "Электроника и аксессуары",
+    "section": "ТВ-приставки",
+    "price": 1950,
+    "prices": [
+      1950
+    ],
+    "image": "https://i02.appmifile.com/229_operator_sg/21/07/2021/6cc06b7f1bb4f655a63cb98d4f83b711.png",
+    "description": "Компактная TV-приставка Xiaomi для подключения к телевизору через HDMI. Поддержка Android TV, Wi-Fi, голосового управления и популярных стриминговых приложений."
   }
 ]
