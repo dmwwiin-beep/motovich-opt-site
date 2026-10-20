@@ -298,19 +298,6 @@
     "row": 54
   },
   {
-    "id": 29,
-    "name": "AIR Max (Белый) AA",
-    "category": "Электроника и аксессуары",
-    "section": "AIR MAX",
-    "price": 1400,
-    "prices": [
-      1400
-    ],
-    "image": "assets/p0016.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 55
-  },
-  {
     "id": 30,
     "name": "AIR Max 2 с Шумкой 1 в 1 (Черные) (Пластик)",
     "category": "Электроника и аксессуары",
@@ -990,21 +977,6 @@
     "image_source": "internet_reference"
   },
   {
-    "id": 80,
-    "name": "Расческа DYSON",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 520,
-    "prices": [
-      540,
-      530,
-      520
-    ],
-    "image": "assets/p0089.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 121
-  },
-  {
     "id": 96,
     "name": "Очки с камерой Ray Ban",
     "category": "Электроника и аксессуары",
@@ -1029,19 +1001,6 @@
     "image": "assets/p0051.jpg",
     "sheet": "Электроника|Аксессуары",
     "row": 839
-  },
-  {
-    "id": 99,
-    "name": "Hw 6 mini",
-    "category": "Электроника и аксессуары",
-    "section": "Новинки",
-    "price": 1690,
-    "prices": [
-      1690
-    ],
-    "image": "assets/p0049.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 841
   },
   {
     "id": 100,
@@ -1107,19 +1066,6 @@
     "image": "assets/p0046.jpg",
     "sheet": "Электроника|Аксессуары",
     "row": 851
-  },
-  {
-    "id": 109,
-    "name": "Блок Mi",
-    "category": "Электроника и аксессуары",
-    "section": "Новинки",
-    "price": 290,
-    "prices": [
-      290
-    ],
-    "image": "assets/p0048.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 852
   },
   {
     "id": 110,
