@@ -1116,20 +1116,6 @@
     "image_source": "internet_reference"
   },
   {
-    "id": 92,
-    "name": "Ноутбук HTEX H16 Pro (15.6 дюйма FullHD, N5095, 16gb RAM, 512gb SSD)",
-    "category": "Электроника и аксессуары",
-    "section": "DYSON",
-    "price": 19300,
-    "prices": [
-      19900,
-      19300
-    ],
-    "image": "https://wizemart.ru/images/item/85/28/noutbuk_s_horoshimi_har_kami_htex_enlinx_h16_pro_ssd_512gb_ddr4_16gb_ppocessor_intel_seleron_n5095a_2_00_gnz_videokarta_intel_nd_graphics_ekran_15_6-4702493pic8.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 133
-  },
-  {
     "id": 96,
     "name": "Очки с камерой Ray Ban",
     "category": "Электроника и аксессуары",
@@ -1154,20 +1140,6 @@
     "image": "assets/p0051.jpg",
     "sheet": "Электроника|Аксессуары",
     "row": 839
-  },
-  {
-    "id": 98,
-    "name": "Wi fi смарт камера",
-    "category": "Электроника и аксессуары",
-    "section": "Новинки",
-    "price": 1100,
-    "prices": [
-      1100
-    ],
-    "image": "https://www.geewiz.co.za/546007-large_default/indoor-wi-fi-pt-tuya-camera-smart-home-security-pan-tilt-camera-bsy-3318.jpg",
-    "sheet": "Электроника|Аксессуары",
-    "row": 840,
-    "image_source": "internet_reference"
   },
   {
     "id": 99,
@@ -1418,20 +1390,6 @@
     "image": "assets/p0104.jpg",
     "sheet": "Dyson",
     "row": 19
-  },
-  {
-    "id": 126,
-    "name": "Ноутбук HTEX H16 Pro (15.6 дюйма FullHD, N5095, 16gb RAM, 512gb SSD)",
-    "category": "Dyson и техника",
-    "section": "DYSON",
-    "price": 19300,
-    "prices": [
-      19900,
-      19300
-    ],
-    "image": "https://wizemart.ru/images/item/85/28/noutbuk_s_horoshimi_har_kami_htex_enlinx_h16_pro_ssd_512gb_ddr4_16gb_ppocessor_intel_seleron_n5095a_2_00_gnz_videokarta_intel_nd_graphics_ekran_15_6-4702493pic8.jpg",
-    "sheet": "Dyson",
-    "row": 25
   },
   {
     "id": 130,
@@ -1959,19 +1917,6 @@
     "image": "IMG_0742.jpg",
     "sheet": "Новые товары",
     "row": 1
-  },
-  {
-    "id": 169,
-    "name": "Колонка JBL Flip 6–7",
-    "category": "Электроника и аксессуары",
-    "section": "Колонки",
-    "price": 650,
-    "prices": [
-      650
-    ],
-    "image": "IMG_0746.jpg",
-    "sheet": "Новые товары",
-    "row": 2
   },
   {
     "id": 170,
