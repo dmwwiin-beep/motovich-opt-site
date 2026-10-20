@@ -1130,9 +1130,12 @@
     "prices": [
       11990
     ],
-    "image": "assets/p0047.jpg",
+    "image": "assets/iphone-xr-case-17-new.webp",
     "sheet": "Электроника|Аксессуары",
-    "row": 853
+    "row": 853,
+    "images": [
+      "assets/iphone-xr-case-17-new.webp"
+    ]
   },
   {
     "id": 111,
