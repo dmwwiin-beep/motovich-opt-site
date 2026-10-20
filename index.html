@@ -190,7 +190,7 @@ body{background:var(--bg);color:var(--text)}
 
 <label class="formfield"><span>Комментарии к заказу</span><textarea name="comment" placeholder="Город, адрес и пожелания"></textarea></label>
 
-<button class="primary checkout" type="submit">Оформить заказ →</button>
+<button class="primary checkout" type="submit">Отправить заказ в WhatsApp →</button>
 
 <p class="notice">После оформления откроется следующий шаг. Для автоматического списания денег нужно подключить платёжный сервис.</p>
 
@@ -285,7 +285,7 @@ $('#productModalClose').onclick=closeProduct;$('#productModal').addEventListener
 
 $('#paymentClose').onclick=closePayment;$('#paymentModal').addEventListener('click',e=>{if(e.target.id==='paymentModal')closePayment()});
 
-$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const ids=Object.keys(cart).filter(k=>cart[k]>0);if(!ids.length){toast('Сначала добавьте товары в корзину');return}const total=ids.reduce((sum,k)=>{const p=allProducts.find(x=>x.id===Number(k));return sum+(p?priceFor(p)*cart[k]:0)},0);if(total<5000){toast('Минимальный заказ — 5 000 ₽');return}const f=new FormData(e.target);const contact=String(f.get('contact')||'').trim(),delivery=String(f.get('delivery')||''),comment=String(f.get('comment')||'').trim();const lines=ids.map(k=>{const p=allProducts.find(x=>x.id===Number(k));return p.name+' — '+cart[k]+' шт. × '+money(priceFor(p))+' = '+money(cart[k]*priceFor(p))});const method=document.querySelector('input[name="payMethod"]:checked')?.value||'СБП';const message='ЗАКАЗ MOTOVICH OPT\\n\\n'+lines.join('\\n')+'\\n\\nИТОГО: '+money(total)+'\\nУровень прайса: '+tierText()+'\\nКонтакт покупателя: '+contact+'\\nДоставка: '+delivery+'\\nКомментарий: '+(comment||'нет')+'\\nПредпочтительный способ оплаты: '+method+'\\n\\nПрошу подтвердить наличие и прислать ссылку на оплату.';const whatsappUrl='https://wa.me/79186568581?text='+encodeURIComponent(message);window.open(whatsappUrl,'_blank','noopener,noreferrer');toast('Открываем WhatsApp для отправки заказа')});
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const ids=Object.keys(cart).filter(k=>cart[k]>0);if(!ids.length){toast('Сначала добавьте товары в корзину');return}const total=ids.reduce((sum,k)=>{const p=allProducts.find(x=>x.id===Number(k));return sum+(p?priceFor(p)*cart[k]:0)},0);if(total<5000){toast('Минимальный заказ — 5 000 ₽');return}const f=new FormData(e.target);const contact=String(f.get('contact')||'').trim(),delivery=String(f.get('delivery')||''),comment=String(f.get('comment')||'').trim();const lines=ids.map(k=>{const p=allProducts.find(x=>x.id===Number(k));return p.name+' — '+cart[k]+' шт. × '+money(priceFor(p))+' = '+money(cart[k]*priceFor(p))});const method=document.querySelector('input[name="payMethod"]:checked')?.value||'СБП';const message=['ЗАКАЗ MOTOVICH OPT','',...lines,'','ИТОГО: '+money(total),'Уровень прайса: '+tierText(),'Контакт покупателя: '+contact,'Доставка: '+delivery,'Комментарий: '+(comment||'нет'),'Предпочтительный способ оплаты: '+method,'','Прошу подтвердить наличие и прислать ссылку на оплату.'].join('\n');const whatsappUrl='https://wa.me/79186568581?text='+encodeURIComponent(message);window.location.assign(whatsappUrl)});
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();closePayment()}});init();
 
