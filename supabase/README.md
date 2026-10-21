@@ -10,6 +10,7 @@ This folder contains the secure backend for optional cloud persistence and the r
 - `tests/manual_security_checks.sql` — read-only structural checks for RLS and grants.
 - `migrations/202610210002_motovich_push.sql` — stores browser push subscriptions under owner-only RLS.
 - `functions/push-send/index.ts` — internal server-side sender, protected by `MOTOVICH_PUSH_CRON_SECRET`; it deletes expired 404/410 subscriptions and never returns endpoint values.
+- `functions/delete-account/index.ts` — authenticated account-deletion endpoint; it validates the caller's JWT and deletes only that caller's account.
 - `functions/.env.example` — names of local secrets without any real values.
 
 ## Deployment outline
@@ -18,7 +19,7 @@ This folder contains the secure backend for optional cloud persistence and the r
 2. Apply both SQL migrations using `supabase db push`, or execute the migration files in order in the project's SQL Editor.
 3. Copy `functions/.env.example` to `functions/.env` for local development; do not commit the real file.
 4. Configure the Edge Function secrets in the Supabase dashboard or CLI. Set `OPENAI_API_KEY`, `OPENAI_MODEL`, and `MOTOVICH_ALLOWED_ORIGIN`. For push delivery also configure `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `MOTOVICH_PUSH_CRON_SECRET`, and `SUPABASE_SERVICE_ROLE_KEY` as server-only secrets. The model name must be one available to the configured OpenAI project. Supabase's function environment must also provide `SUPABASE_URL` and a publishable/anon key.
-5. Deploy the AI endpoint with `supabase functions deploy coach` and the internal sender with `supabase functions deploy push-send`. Keep the cron secret and service-role key server-side.
+5. Deploy the AI endpoint with `supabase functions deploy coach` the internal sender with `supabase functions deploy push-send`, and account deletion with `supabase functions deploy delete-account`. Keep the cron secret and service-role key server-side.
 6. Configure a trusted scheduler to POST to the push-send function with the `x-motovich-cron-secret` header; do not expose that secret to the browser. Schedule only reminders users have explicitly enabled.
 7. Apply `tests/manual_security_checks.sql` in SQL Editor to verify table RLS, grants, policies, and quota RPC access.
 

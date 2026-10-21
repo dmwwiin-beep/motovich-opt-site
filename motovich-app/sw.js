@@ -1,11 +1,13 @@
 /* MOTOVICH PWA service worker: offline shell + Web Push notifications. */
 'use strict';
-const CACHE = 'motovich-shell-v18';
+const CACHE = 'motovich-shell-v19';
 const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
   './icon.svg',
+  './icon-192.png',
+  './icon-512.png',
   './advanced.js',
   './pro.js',
   './cloud-sync.js',

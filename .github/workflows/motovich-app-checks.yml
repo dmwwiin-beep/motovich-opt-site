@@ -81,11 +81,17 @@ jobs:
           }
           fs.writeFileSync('/tmp/motovich-inline.js', match[1]);
           const manifest = JSON.parse(fs.readFileSync('motovich-app/manifest.webmanifest', 'utf8'));
-          if (!manifest.name || !manifest.start_url || !manifest.scope) {
+          if (!manifest.name || !manifest.id || !manifest.start_url || !manifest.scope) {
             throw new Error('PWA manifest is missing required fields');
           }
+          if (!manifest.icons || !manifest.icons.some(i => i.src === 'icon-192.png' && i.sizes === '192x192') || !manifest.icons.some(i => i.src === 'icon-512.png' && i.sizes === '512x512')) throw new Error('PWA install icons must include raster 192 and 512 px assets');
+          for (const legalFile of ['motovich-app/privacy.html', 'motovich-app/account-deletion.html', 'motovich-app/PLAY-STORE-READINESS.md']) if (!fs.existsSync(legalFile)) throw new Error('Missing Play release prerequisite: ' + legalFile);
+          if (!html.includes('./privacy.html') || !html.includes('./account-deletion.html')) throw new Error('In-app legal/data deletion links are missing');
+          const icon192 = fs.readFileSync('motovich-app/icon-192.png');
+          const icon512 = fs.readFileSync('motovich-app/icon-512.png');
+          if (icon192.readUInt32BE(16) !== 192 || icon192.readUInt32BE(20) !== 192 || icon512.readUInt32BE(16) !== 512 || icon512.readUInt32BE(20) !== 512) throw new Error('PWA raster icon dimensions do not match manifest');
           const sw = fs.readFileSync('motovich-app/sw.js', 'utf8');
-          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './advanced.js', './pro.js', './cloud-sync.js', './voice-task.js']) {
+          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './advanced.js', './pro.js', './cloud-sync.js', './voice-task.js']) {
             if (!sw.includes("'" + asset + "'")) throw new Error('Service worker does not cache ' + asset);
           }
           NODE
@@ -222,6 +228,7 @@ jobs:
         run: |
           deno check supabase/functions/coach/index.ts
           deno check supabase/functions/push-send/index.ts
+          deno check supabase/functions/delete-account/index.ts
       - name: Validate backend security contract
         run: |
           node - <<'NODE'
@@ -230,6 +237,7 @@ jobs:
           const pushSql = fs.readFileSync('supabase/migrations/202610210002_motovich_push.sql', 'utf8');
           const fn = fs.readFileSync('supabase/functions/coach/index.ts', 'utf8');
           const pushFn = fs.readFileSync('supabase/functions/push-send/index.ts', 'utf8');
+          const deleteFn = fs.readFileSync('supabase/functions/delete-account/index.ts', 'utf8');
           const cfg = fs.readFileSync('supabase/config.toml', 'utf8');
           const gitignore = fs.readFileSync('supabase/.gitignore', 'utf8');
           for (const policy of ['motovich state select own', 'motovich state insert own', 'motovich state update own', 'motovich state delete own']) {
@@ -252,10 +260,12 @@ jobs:
             if (!pushFn.includes(token)) throw new Error('Missing protected push sender safeguard: ' + token);
           }
           if (!cfg.includes('[functions.push-send]') || !cfg.includes('verify_jwt = false')) throw new Error('Internal push function config missing');
+          for (const token of ['auth.getUser', 'auth.admin.deleteUser', 'DELETE_MY_ACCOUNT', 'Access-Control-Allow-Origin']) if (!deleteFn.includes(token)) throw new Error('Missing secure account deletion safeguard: ' + token);
+          if (!cfg.includes('[functions.delete-account]') || !cfg.includes('verify_jwt = true')) throw new Error('Account deletion must require an authenticated JWT');
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
           const cloudClient = fs.readFileSync('motovich-app/cloud-sync.js', 'utf8');
-          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission', 'LAST_SYNC_KEY', 'renderLastSync()', 'saveLastSync(', 'id="cloudLastSync"']) {
+          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'cloudDeleteAccount', 'deleteCloudAccount', 'delete-account', 'DELETE_MY_ACCOUNT', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission', 'LAST_SYNC_KEY', 'renderLastSync()', 'saveLastSync(', 'id="cloudLastSync"']) {
             if (!cloudClient.includes(token)) throw new Error('Cloud client safety feature missing: ' + token);
           }
           if (!cloudClient.includes("'/rest/v1/motovich_user_state?on_conflict=user_id'")) {

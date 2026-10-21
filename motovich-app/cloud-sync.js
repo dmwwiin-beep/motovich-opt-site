@@ -152,6 +152,7 @@
     const pushKey = ($('cloudVapidPublicKey')?.value || localStorage.getItem(PUSH_KEY) || '').trim();
     if ($('cloudPushEnable')) $('cloudPushEnable').disabled = busy || !configured || !signedIn || !pushSupported || !pushKey;
     if ($('cloudPushDisable')) $('cloudPushDisable').disabled = busy || !configured || !signedIn || !pushSupported;
+    if ($('cloudDeleteAccount')) $('cloudDeleteAccount').disabled = busy || !configured || !signedIn;
     if ($('cloudSaveConfig')) $('cloudSaveConfig').disabled = busy;
     if ($('cloudRestoreLocal')) $('cloudRestoreLocal').disabled = busy || !localStorage.getItem(PRE_PULL_KEY);
     accountLabel();
@@ -369,6 +370,23 @@
     showStatus('Уведомления разрешены для этого устройства. Реальная доставка начнётся после настройки серверного отправителя.', 'success');
     updateButtons();
   }
+  async function deleteCloudAccount() {
+    if (!session?.access_token || !session?.user?.id) throw new Error('Сначала выполни вход в облачный аккаунт.');
+    if (!confirm('Удалить облачный аккаунт MOTOVICH и все облачные данные этого аккаунта? Локальные данные на этом устройстве останутся.')) return;
+    if (prompt('Для подтверждения введи УДАЛИТЬ') !== 'УДАЛИТЬ') {
+      showStatus('Удаление отменено: подтверждение не совпало.', '');
+      return;
+    }
+    const registration = await navigator.serviceWorker.ready.catch(() => null);
+    const subscription = registration ? await registration.pushManager?.getSubscription().catch(() => null) : null;
+    await request('/functions/v1/delete-account', { method:'POST', body:{confirmation:'DELETE_MY_ACCOUNT'} });
+    session = null;
+    localStorage.removeItem(SESSION_KEY);
+    if (subscription) await subscription.unsubscribe().catch(() => {});
+    showStatus('Облачный аккаунт удалён. Локальные данные на этом устройстве сохранены.', 'success');
+    updateButtons();
+  }
+
   async function disablePushOnThisDevice() {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
       throw new Error('Web Push не поддерживается этим браузером.');
@@ -431,7 +449,7 @@
     <label class="small" for="cloudVapidPublicKey" style="display:block;margin-top:12px">Публичный VAPID-ключ для Web Push</label>
     <input id="cloudVapidPublicKey" class="field" type="password" autocomplete="off" placeholder="Заполняется только после настройки отправителя">
     <p class="cloud-warning">Нужен публичный ключ от пары VAPID; приватный ключ и cron-секрет сюда вводить нельзя. Браузер запросит разрешение на уведомления.</p>
-    <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div>
+    <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div><p class="cloud-warning">Разрешение браузера регистрирует устройство, но реальные уведомления при закрытом приложении требуют серверного отправителя и расписания.</p><div class="cloud-actions"><button id="cloudDeleteAccount" class="advanced-button danger" type="button">Удалить облачный аккаунт и данные</button></div><p class="cloud-warning">Удаление аккаунта удаляет связанные облачные записи и Push-подписки; локальные данные на этом устройстве остаются.</p>
     <div class="cloud-actions"><button id="cloudPush" class="advanced-button" type="button">Отправить локальные данные</button><button id="cloudPull" class="advanced-button" type="button">Загрузить из облака</button></div>
     <div class="cloud-actions"><button id="cloudRestoreLocal" class="advanced-button" type="button">Вернуть локальные данные до загрузки</button></div>
     <p id="cloudLastSync" class="small" style="margin-top:10px">Последняя синхронизация: ещё не выполнялась</p>
@@ -488,6 +506,7 @@
   $('cloudVapidPublicKey').addEventListener('input', updateButtons);
   $('cloudPushEnable').addEventListener('click', () => runAction(enablePushOnThisDevice));
   $('cloudPushDisable').addEventListener('click', () => runAction(disablePushOnThisDevice));
+  $('cloudDeleteAccount').addEventListener('click', () => runAction(deleteCloudAccount));
   $('cloudPush').addEventListener('click', () => runAction(pushLocalState));
   $('cloudPull').addEventListener('click', () => runAction(pullRemoteState));
   $('cloudRestoreLocal').addEventListener('click', () => runAction(restorePrePullState));

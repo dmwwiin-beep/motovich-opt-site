@@ -7,3 +7,7 @@ verify_jwt = true
 [functions.push-send]
 # Internal scheduler only. The function verifies a separate high-entropy secret header.
 verify_jwt = false
+
+[functions.delete-account]
+# Require the authenticated user's JWT for account deletion.
+verify_jwt = true

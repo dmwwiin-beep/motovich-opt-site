@@ -95,3 +95,14 @@ Workflow проверяет синтаксис встроенного и вне�
 - Extra timer presets/full-screen controls are injected only once, even if the advanced and pro scripts load in different orders.
 - The service worker shell cache is versioned (`motovich-shell-v15`) so updated app assets can replace stale cached files.
 - CI checks the current cache version and validates timer placement and timer-control guards.
+
+
+## Подготовка к публикации Android / Google Play
+
+См. [PLAY-STORE-READINESS.md](./PLAY-STORE-READINESS.md) — там перечислены ограничения текущего размещения GitHub Pages, требования Android API 36, закрытое тестирование, Digital Asset Links, настройка Push-секретов и публикационная проверка.
+
+Политика конфиденциальности: https://dmwwiin-beep.github.io/motovich-opt-site/motovich-app/privacy.html
+
+Удаление аккаунта и данных: https://dmwwiin-beep.github.io/motovich-opt-site/motovich-app/account-deletion.html
+
+Эти страницы и код удаления подготовлены в репозитории, но реальную работу облачного аккаунта и уведомлений необходимо проверить после настройки отдельного Supabase-проекта и серверных секретов.

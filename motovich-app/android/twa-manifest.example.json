@@ -1,0 +1,30 @@
+{
+  "packageId": "app.motovich.productivity",
+  "host": "dmwwiin-beep.github.io",
+  "name": "MOTOVICH — система эффективности",
+  "launcherName": "MOTOVICH",
+  "display": "standalone",
+  "themeColor": "#10130f",
+  "themeColorDark": "#10130f",
+  "navigationColor": "#10130f",
+  "navigationColorDark": "#10130f",
+  "backgroundColor": "#0d100e",
+  "enableNotifications": true,
+  "startUrl": "/motovich-opt-site/motovich-app/",
+  "iconUrl": "https://dmwwiin-beep.github.io/motovich-opt-site/motovich-app/icon-512.png",
+  "maskableIconUrl": "https://dmwwiin-beep.github.io/motovich-opt-site/motovich-app/icon-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "appVersionCode": 1,
+  "appVersion": "1.0.0",
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "android"
+  },
+  "generatorApp": "Bubblewrap",
+  "fallbackType": "customtabs",
+  "enableSiteSettingsShortcut": true,
+  "orientation": "portrait",
+  "minSdkVersion": 23,
+  "webManifestUrl": "https://dmwwiin-beep.github.io/motovich-opt-site/motovich-app/manifest.webmanifest",
+  "additionalTrustedOrigins": []
+}

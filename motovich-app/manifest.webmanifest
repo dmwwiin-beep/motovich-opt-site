@@ -1,19 +1,46 @@
 {
+  "id": "/motovich-opt-site/motovich-app/",
   "name": "MOTOVICH — система эффективности",
   "short_name": "MOTOVICH",
   "lang": "ru",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/motovich-opt-site/motovich-app/",
+  "scope": "/motovich-opt-site/motovich-app/",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "background_color": "#0d100e",
   "theme_color": "#10130f",
-  "description": "Личная система продуктивности, привычек и восстановления.",
+  "description": "Личная система продуктивности, задач, привычек и восстановления.",
+  "categories": [
+    "productivity",
+    "lifestyle"
+  ],
   "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
