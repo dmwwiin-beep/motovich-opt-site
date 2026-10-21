@@ -18,10 +18,37 @@ function json(data: unknown, status = 200) {
 function timingSafeEqual(a: string, b: string): boolean {
   const left = new TextEncoder().encode(a);
   const right = new TextEncoder().encode(b);
-  if (left.length !== right.length) return false;
-  let difference = 0;
-  for (let i = 0; i < left.length; i++) difference |= left[i] ^ right[i];
+  const maxLength = Math.max(left.length, right.length);
+  let difference = left.length ^ right.length;
+  for (let i = 0; i < maxLength; i++) {
+    difference |= (left[i] ?? 0) ^ (right[i] ?? 0);
+  }
   return difference === 0;
+}
+
+async function readBoundedJson(req: Request): Promise<unknown> {
+  if (!req.body) return {};
+  const reader = req.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  while (true) {
+    const part = await reader.read();
+    if (part.done) break;
+    total += part.value.byteLength;
+    if (total > MAX_BODY_BYTES) {
+      await reader.cancel();
+      throw new RangeError("request_too_large");
+    }
+    chunks.push(part.value);
+  }
+  if (!total) return {};
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return JSON.parse(new TextDecoder().decode(bytes));
 }
 
 Deno.serve(async (req: Request) => {
@@ -39,20 +66,15 @@ Deno.serve(async (req: Request) => {
   if (bodyLength > MAX_BODY_BYTES) return json({ error: "request_too_large", requestId }, 413);
 
   let body: { title?: unknown; message?: unknown; tag?: unknown } = {};
-  if (bodyLength > 0) {
-    try {
-      const text = await req.text();
-      if (new TextEncoder().encode(text).byteLength > MAX_BODY_BYTES) {
-        return json({ error: "request_too_large", requestId }, 413);
-      }
-      const parsed: unknown = JSON.parse(text);
-      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-        return json({ error: "invalid_request", requestId }, 400);
-      }
-      body = parsed as { title?: unknown; message?: unknown; tag?: unknown };
-    } catch {
-      return json({ error: "invalid_json", requestId }, 400);
+  try {
+    const parsed: unknown = await readBoundedJson(req);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return json({ error: "invalid_request", requestId }, 400);
     }
+    body = parsed as { title?: unknown; message?: unknown; tag?: unknown };
+  } catch (error) {
+    if (error instanceof RangeError) return json({ error: "request_too_large", requestId }, 413);
+    return json({ error: "invalid_json", requestId }, 400);
   }
 
   const title = typeof body.title === "string" ? body.title.trim().slice(0, 80) : "MOTOVICH";
@@ -85,14 +107,21 @@ Deno.serve(async (req: Request) => {
   const admin = createClient(supabaseUrl, serviceRoleKey, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
-  const { data: subscriptions, error } = await admin
-    .from("motovich_push_subscriptions")
-    .select("id,endpoint,p256dh,auth_secret")
-    .limit(2_000);
-
-  if (error) {
-    console.error("MOTOVICH push subscription lookup failed", { requestId, code: error.code });
-    return json({ error: "subscription_lookup_failed", requestId }, 503);
+  const subscriptions: Array<{ id: number; endpoint: string; p256dh: string; auth_secret: string }> = [];
+  const PAGE_SIZE = 500;
+  const MAX_SUBSCRIPTIONS = 10_000;
+  for (let offset = 0; offset < MAX_SUBSCRIPTIONS; offset += PAGE_SIZE) {
+    const { data, error } = await admin
+      .from("motovich_push_subscriptions")
+      .select("id,endpoint,p256dh,auth_secret")
+      .order("id", { ascending: true })
+      .range(offset, offset + PAGE_SIZE - 1);
+    if (error) {
+      console.error("MOTOVICH push subscription lookup failed", { requestId, code: error.code });
+      return json({ error: "subscription_lookup_failed", requestId }, 503);
+    }
+    subscriptions.push(...(data ?? []));
+    if ((data ?? []).length < PAGE_SIZE) break;
   }
 
   const payload = JSON.stringify({ title, body: message, tag, url: APP_PATH });
@@ -100,8 +129,8 @@ Deno.serve(async (req: Request) => {
   let failed = 0;
   let removed = 0;
 
-  for (let offset = 0; offset < (subscriptions ?? []).length; offset += BATCH_SIZE) {
-    const batch = (subscriptions ?? []).slice(offset, offset + BATCH_SIZE);
+  for (let offset = 0; offset < subscriptions.length; offset += BATCH_SIZE) {
+    const batch = subscriptions.slice(offset, offset + BATCH_SIZE);
     const settled = await Promise.allSettled(batch.map(async row => {
       const subscription = {
         endpoint: row.endpoint,
@@ -139,7 +168,8 @@ Deno.serve(async (req: Request) => {
   // Report counts only; never return or log personal endpoints or subscription keys.
   return json({
     requestId,
-    targeted: subscriptions?.length ?? 0,
+    targeted: subscriptions.length,
+    truncatedAtSafetyLimit: subscriptions.length >= MAX_SUBSCRIPTIONS,
     sent,
     failed,
     expiredSubscriptionsRemoved: removed,
