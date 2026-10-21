@@ -371,7 +371,7 @@
     if (!persistJson(PUSH_KEY, vapidPublicKey)) {
       throw new Error('Не удалось сохранить публичный VAPID-ключ. Подписка создана; сохрани ключ и попробуй снова.');
     }
-    showStatus('Уведомления разрешены для этого устройства. Реальная доставка начнётся после настройки серверного отправителя.', 'success');
+    showStatus('Подписка устройства сохранена. Для теста разверни push-test; для напоминаний — push-schedule и cron каждую минуту. После изменения задач снова выгрузи данные в облако.', 'success');
     updateButtons();
   }
   async function sendTestPush() {
@@ -463,7 +463,7 @@
     <label class="small" for="cloudVapidPublicKey" style="display:block;margin-top:12px">Публичный VAPID-ключ для Web Push</label>
     <input id="cloudVapidPublicKey" class="field" type="password" autocomplete="off" placeholder="Заполняется только после настройки отправителя">
     <p class="cloud-warning">Нужен публичный ключ от пары VAPID; приватный ключ и cron-секрет сюда вводить нельзя. Браузер запросит разрешение на уведомления.</p>
-    <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div><div class="cloud-actions"><button id="cloudPushTest" class="advanced-button" type="button">Отправить тестовое уведомление мне</button></div><p class="cloud-warning">Тест проверяет доставку на твои подписанные устройства. Для напоминаний по задачам нужна серверная функция push-schedule, запущенная cron каждую минуту.</p><div class="cloud-actions"><button id="cloudDeleteAccount" class="advanced-button danger" type="button">Удалить облачный аккаунт и данные</button></div><p class="cloud-warning">Удаление аккаунта удаляет связанные облачные записи и Push-подписки; локальные данные на этом устройстве остаются.</p>
+    <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div><div class="cloud-actions"><button id="cloudPushTest" class="advanced-button" type="button">Отправить тестовое уведомление мне</button></div><p class="cloud-warning">Тест проверяет доставку на твои подписанные устройства. Для напоминаний нужна функция push-schedule и cron каждую минуту. После изменения дат/времени задач повторно нажимай «Отправить локальные данные».</p><div class="cloud-actions"><button id="cloudDeleteAccount" class="advanced-button danger" type="button">Удалить облачный аккаунт и данные</button></div><p class="cloud-warning">Удаление аккаунта удаляет связанные облачные записи и Push-подписки; локальные данные на этом устройстве остаются.</p>
     <div class="cloud-actions"><button id="cloudPush" class="advanced-button" type="button">Отправить локальные данные</button><button id="cloudPull" class="advanced-button" type="button">Загрузить из облака</button></div>
     <div class="cloud-actions"><button id="cloudRestoreLocal" class="advanced-button" type="button">Вернуть локальные данные до загрузки</button></div>
     <p id="cloudLastSync" class="small" style="margin-top:10px">Последняя синхронизация: ещё не выполнялась</p>

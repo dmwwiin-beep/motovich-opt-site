@@ -26,6 +26,18 @@ This folder contains the secure backend for optional cloud persistence and the r
 6. Enable `pg_cron`, `pg_net`, and Vault in Supabase. Set `MOTOVICH_PUSH_CRON_SECRET` as a server-side Edge Function secret, then run `setup/push-schedule-cron.sql` after replacing the project URL and the same random secret in the template. The script stores the URL and cron secret in Vault and schedules `push-schedule` every minute through `x-motovich-cron-secret`; do not expose the secret to the browser. Run the template only once unless you first update the existing Vault values. The scheduler uses the last explicitly uploaded cloud snapshot and only tasks with both `date` and `time`. Users must upload local data again after changing tasks. `push-send` remains a generic internal broadcaster; `push-test` sends only to the signed-in user's subscriptions.
 7. Apply `tests/manual_security_checks.sql` in SQL Editor to verify table RLS, grants, policies, and quota RPC access.
 
+
+### Generate VAPID keys (only once)
+
+Install the official `web-push` CLI on a trusted computer and create one pair:
+
+```bash
+npm install --global web-push
+web-push generate-vapid-keys --json
+```
+
+Store `publicKey` as the Supabase Edge Function secret `VAPID_PUBLIC_KEY` and paste that value into MOTOVICH Settings. Store `privateKey` only in Supabase Edge Function secrets as `VAPID_PRIVATE_KEY`. Choose a verified developer contact for `VAPID_SUBJECT=mailto:...`. **Generate once and retain the same pair**; replacing the pair invalidates existing browser Push subscriptions. Do not commit the output or send the private key in chat/email. Reference: https://github.com/web-push-libs/web-push#command-line
+
 ## Security notes
 
 - Never place an OpenAI secret key or Supabase secret/service-role key in `motovich-app/`, GitHub Pages, or a client-side environment variable.

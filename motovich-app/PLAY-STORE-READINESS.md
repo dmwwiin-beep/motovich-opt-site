@@ -61,3 +61,8 @@ Google Play's account-deletion policy requires a discoverable in-app path and an
 ## Дополнительный риск для аккаунта с платежным профилем России
 
 Если платежный профиль Google Play и банковский счёт для выплат зарегистрированы в России, проверь официальное ограничение для разработчиков из России. Google сообщает, что с 26 декабря 2024 года перестала обрабатывать выплаты на банковские счета, открытые в России; новые бесплатные приложения при этом могут публиковаться, но монетизацию с таким счётом не следует считать доступной. Условия зависят от фактической страны платёжного профиля и могут меняться: https://support.google.com/googleplay/android-developer/answer/15685001
+
+
+### Generate the VAPID pair
+
+On a trusted computer run `npm install --global web-push`, then `web-push generate-vapid-keys --json`. Store the public key as `VAPID_PUBLIC_KEY` (also entered in the app) and private key only as server-side `VAPID_PRIVATE_KEY`. Keep one permanent pair; changing it breaks existing subscriptions. Official CLI notes: https://github.com/web-push-libs/web-push#command-line
