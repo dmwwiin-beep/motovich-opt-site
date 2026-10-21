@@ -6,6 +6,7 @@
   const CONFIG_KEY = 'motovich.cloud.config';
   const SESSION_KEY = 'motovich.cloud.session';
   const PUSH_KEY = 'motovich.push.vapidPublicKey';
+  const LAST_SYNC_KEY = 'motovich.cloud.lastSync';
   const PRE_PULL_KEY = KEY + '.beforeCloudPull';
   const MAX_STATE_BYTES = 2 * 1024 * 1024;
   let config = readJson(CONFIG_KEY, null);
@@ -25,6 +26,21 @@
     if (!node) return;
     node.textContent = message;
     node.className = 'cloud-status' + (type ? ' ' + type : '');
+  }
+  function renderLastSync() {
+    const node = $('cloudLastSync');
+    if (!node) return;
+    const record = readJson(LAST_SYNC_KEY, null);
+    if (!record || !record.at) {
+      node.textContent = 'Последняя синхронизация: ещё не выполнялась';
+      return;
+    }
+    const date = new Date(record.at);
+    node.textContent = 'Последняя синхронизация: ' + (Number.isNaN(date.getTime()) ? 'дата неизвестна' : date.toLocaleString('ru-RU')) + (record.direction ? ' · ' + record.direction : '');
+  }
+  function saveLastSync(direction, timestamp) {
+    const at = timestamp && !Number.isNaN(new Date(timestamp).getTime()) ? new Date(timestamp).toISOString() : new Date().toISOString();
+    if (persistJson(LAST_SYNC_KEY, { at, direction })) renderLastSync();
   }
   function accountLabel() {
     const node = $('cloudAccount');
@@ -291,6 +307,7 @@
     });
     const row = Array.isArray(saved) ? saved[0] : saved;
     showStatus('Выгрузка завершена · ревизия ' + (row?.revision ?? 'сохранена') + (row?.updated_at ? ' · ' + new Date(row.updated_at).toLocaleString('ru-RU') : ''), 'success');
+    saveLastSync('Отправлено в облако', row?.updated_at);
   }
   async function pullRemoteState() {
     const row = await getRemoteState();
@@ -304,6 +321,7 @@
     persist();
     render();
     showStatus('Загрузка завершена · облачная ревизия ' + row.revision + '. Локальные данные до загрузки сохранены.', 'success');
+    saveLastSync('Загружено из облака', row.updated_at);
     updateButtons();
   }
   async function enablePushOnThisDevice() {
@@ -416,6 +434,7 @@
     <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div>
     <div class="cloud-actions"><button id="cloudPush" class="advanced-button" type="button">Отправить локальные данные</button><button id="cloudPull" class="advanced-button" type="button">Загрузить из облака</button></div>
     <div class="cloud-actions"><button id="cloudRestoreLocal" class="advanced-button" type="button">Вернуть локальные данные до загрузки</button></div>
+    <p id="cloudLastSync" class="small" style="margin-top:10px">Последняя синхронизация: ещё не выполнялась</p>
     <p id="cloudStatus" class="cloud-status" role="status" aria-live="polite">Облако не подключено. Локальный режим работает независимо.</p>
   `;
   card.appendChild(panel);
@@ -488,4 +507,5 @@
     localStorage.removeItem(SESSION_KEY);
   }
   updateButtons();
+  renderLastSync();
 })();
