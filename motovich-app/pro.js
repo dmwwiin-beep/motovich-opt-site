@@ -11,6 +11,26 @@ function addSection(id,title,desc,html){if($(id)||!main)return;const s=document.
 [['calendar','▦','Календарь'],['routines','↻','Рутины'],['achievements','🏆','Достижения']].forEach(x=>addNav(...x));
 /* Reconcile all navigation entries after an app update. */
 [['planner','▦','План на неделю'],['water','💧','Вода'],['inbox','✎','Быстрые заметки'],['review','✓','Итоги недели'],['calendar','▦','Календарь'],['routines','↻','Рутины'],['achievements','🏆','Достижения']].forEach(([id,ico,label])=>{addNav(id,ico,label);const b=nav&&nav.querySelector('[data-section="'+id+'"]');if(b){b.onclick=()=>show(id);b.setAttribute('type','button')}});
+/* Final menu reconciliation: keep original sections, backup/settings, and all new modules reachable. */
+const completeMenu=[
+ ['today','⌂','Сегодня'],['tasks','✓','Задачи'],['habits','↻','Привычки'],['focus','◷','Фокус'],
+ ['wellbeing','♡','Самочувствие'],['coach','✦','AI-коуч'],['stats','▥','Статистика'],
+ ['meditation','◉','Медитация'],['journal','✎','Дневник'],['goals','⚑','Цели'],
+ ['backup','⇅','Резервная копия'],['settings','⚙','Настройки'],['planner','▦','План на неделю'],
+ ['water','💧','Вода'],['inbox','✎','Быстрые заметки'],['review','✓','Итоги недели'],
+ ['calendar','▦','Календарь'],['routines','↻','Рутины'],['achievements','🏆','Достижения']
+];
+completeMenu.forEach(([id,ico,label])=>{
+ const section=$(id);
+ if(!section)return;
+ if(nav&&!nav.querySelector('[data-section="'+id+'"]')){
+   const b=document.createElement('button');b.type='button';b.className='navbtn';b.dataset.section=id;b.textContent=label;b.onclick=()=>show(id);nav.appendChild(b);
+ }
+ if(drawer&&!drawer.querySelector('.drawer-link[data-section="'+id+'"]')){
+   const b=document.createElement('button');b.type='button';b.className='drawer-link';b.dataset.section=id;b.innerHTML='<span class="menu-ico">'+ico+'</span><span>'+label+'</span>';b.onclick=()=>{show(id);closeMenu()};drawer.insertBefore(b,drawer.querySelector('.drawer-foot'));
+ }
+});
+
 
 addSection('calendar','Календарь задач','Месячный обзор дедлайнов. Нажми на день, чтобы назначить срок задаче.','<div class="row"><button id="calPrev" class="pro-btn">←</button><strong id="calTitle"></strong><button id="calNext" class="pro-btn">→</button></div><div class="pro-calendar" id="calGrid"></div><div class="pro-row"><strong id="calSelectedLabel">Выбери дату</strong><span id="calCount" class="pro-chip">0 задач</span></div><div id="calTasks"></div><button id="calAdd" class="bigbtn" style="margin-top:12px">＋ Задача на выбранную дату</button><button id="calExport" class="pro-btn" style="margin-top:10px">Экспорт календаря (.ics)</button>');
 addSection('routines','Ежедневные рутины','Чек-листы для утра, работы и вечера. Отметки сохраняются по датам.','<div class="row"><span id="routineProgress" class="pro-chip">0%</span><button id="routineReset" class="pro-btn">Снять отметки</button></div><div id="routineList"></div>');
