@@ -33,6 +33,23 @@ create policy "motovich state delete own"
   on public.motovich_user_state for delete to authenticated
   using ((select auth.uid()) = user_id);
 
+create or replace function public.motovich_touch_state_revision()
+returns trigger
+language plpgsql
+set search_path = ''
+as $
+begin
+  new.updated_at := now();
+  new.revision := old.revision + 1;
+  return new;
+end;
+$;
+
+drop trigger if exists motovich_user_state_touch on public.motovich_user_state;
+create trigger motovich_user_state_touch
+  before update on public.motovich_user_state
+  for each row execute function public.motovich_touch_state_revision();
+
 create table if not exists public.motovich_ai_daily_usage (
   user_id uuid not null references auth.users(id) on delete cascade,
   usage_date date not null default ((now() at time zone 'utc')::date),
