@@ -139,14 +139,18 @@ setupVoiceTaskInput();
  function submitTask(raw){
   const parsed=parseSpokenTask(raw);
   if(!parsed.name){if(hint)hint.textContent='Скажи или напиши, что нужно сделать';return}
+  // Every quick/voice task gets a calendar date: spoken date when present, otherwise today.
+  const taskDate=parsed.date||dateKey();
   $('editId').value='';
   $('taskName').value=parsed.name;
-  $('taskDate').value=parsed.date||'';
+  $('taskDate').value=taskDate;
   $('taskPriority').value='Средний';
   $('taskForm').requestSubmit();
+  // Select the task's date in the calendar and open that month when the calendar module is available.
+  window.dispatchEvent(new CustomEvent('motovich:task-added',{detail:{date:taskDate,name:parsed.name}}));
   input.value='';
-  if(hint)hint.textContent=parsed.date?'Добавлено в задачи · срок '+parsed.date:'Задача добавлена в список';
-  toast(parsed.date?'Задача добавлена · '+parsed.date:'Задача добавлена');
+  if(hint)hint.textContent='Добавлено в календарь · '+new Date(taskDate+'T12:00:00').toLocaleDateString('ru-RU',{day:'numeric',month:'long'});
+  toast('Задача добавлена в календарь');
  }
  form.addEventListener('submit',e=>{e.preventDefault();if(listening&&recognition){try{recognition.stop()}catch(_){}}submitTask(input.value)});
  mic.addEventListener('click',()=>{
