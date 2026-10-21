@@ -25,11 +25,38 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Test Russian voice task parsing
+        run: |
+          node - <<'NODE'
+          const assert = require('node:assert/strict');
+          const voice = require('./motovich-app/voice-task.js');
+          const now = new Date(2026, 9, 21, 12, 0, 0);
+          const one = voice.parseOne('Позвонить поставщику завтра в 10 утра срочно', now);
+          assert.equal(one.name, 'Позвонить поставщику');
+          assert.equal(one.date, '2026-10-22');
+          assert.equal(one.time, '10:00');
+          assert.equal(one.priority, 'Высокий');
+
+          const many = voice.parseTasks('Купить молоко завтра в 18; Позвонить поставщику в пятницу в 10:30; Отправить отчёт 25.10.2026', now);
+          assert.equal(many.length, 3, JSON.stringify(many));
+          assert.equal(many[0].name, 'Купить молоко');
+          assert.equal(many[0].date, '2026-10-22');
+          assert.equal(many[0].time, '18:00');
+          assert.equal(many[1].date, '2026-10-23');
+          assert.equal(many[1].time, '10:30');
+          assert.equal(many[2].date, '2026-10-25');
+          assert.equal(voice.parseOne('Подготовить презентацию 5 ноября', now).date, '2026-11-05');
+          assert.equal(voice.parseOne('Купить хлеб через 3 дня', now).date, '2026-10-24');
+          assert.equal(voice.parseOne('Позвонить клиенту в 7 вечера', now).time, '19:00');
+          assert.equal(voice.parseOne('Сделать задачу 31.02.2026', now).date, '');
+          console.log('Voice parser tests passed: dates, weekdays, time, priorities, and batches.');
+          NODE
       - name: Check external JavaScript
         run: |
           node --check motovich-app/advanced.js
           node --check motovich-app/pro.js
           node --check motovich-app/cloud-sync.js
+          node --check motovich-app/voice-task.js
           node --check motovich-app/sw.js
       - name: Extract and check inline JavaScript
         run: |
@@ -38,7 +65,7 @@ jobs:
           const html = fs.readFileSync('motovich-app/index.html', 'utf8');
           const match = html.match(/<script>([\s\S]*?)<\/script>/);
           if (!match) throw new Error('Inline app script was not found');
-          for (const file of ['advanced.js', 'pro.js', 'cloud-sync.js']) {
+          for (const file of ['advanced.js', 'pro.js', 'cloud-sync.js', 'voice-task.js']) {
             if (!html.includes('<script src="' + file + '"></script>')) {
               throw new Error('Missing script link: ' + file);
             }
@@ -49,7 +76,7 @@ jobs:
             throw new Error('PWA manifest is missing required fields');
           }
           const sw = fs.readFileSync('motovich-app/sw.js', 'utf8');
-          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './advanced.js', './pro.js', './cloud-sync.js']) {
+          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './advanced.js', './pro.js', './cloud-sync.js', './voice-task.js']) {
             if (!sw.includes("'" + asset + "'")) throw new Error('Service worker does not cache ' + asset);
           }
           NODE
