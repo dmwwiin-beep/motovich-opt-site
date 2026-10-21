@@ -141,11 +141,26 @@ jobs:
           for (const token of ["const TIMER_KEY=KEY+'.focusTimer'", 'function saveTimerState()', 'function restoreTimerState()', 'function startTimer(resume=false)', 'Math.ceil((timerDeadline-Date.now())/1000)', 'deadline:timerDeadline||0', 'restoreTimerState();']) {
             if (!html.includes(token)) throw new Error('Persistent focus timer safeguard missing: ' + token);
           }
+          for (const token of ['function recordFocusCompletion()', 'state.focusHistory.push({id:String(Date.now())', 'id="weeklyFocusChart"', 'id="weeklyFocusSummary"']) {
+            if (!html.includes(token)) throw new Error('Focus history/statistics feature missing: ' + token);
+          }
           for (const token of ['id="calQuickTaskForm"', 'id="calQuickTaskName"', 'id="calQuickTaskDate"', "state.tasks.push({id:String(Date.now())", "renderCalendar();", "Задача добавлена в календарь"]) {
             if (!pro.includes(token)) throw new Error('Calendar quick-task workflow missing: ' + token);
           }
+          for (const token of ['calendar-task', 'Отметить задачу: ', 'Редактировать ', 'Удалить задачу «']) {
+            if (!pro.includes(token)) throw new Error('Calendar task management control missing: ' + token);
+          }
           for (const token of ["addSection('music'", "const musicTracks=", "meditation:[", "work:[", "function playMusic(i)", "function stopMusic()", "data-music-category", "renderMusic();"]) {
             if (!pro.includes(token)) throw new Error('Music section/player feature missing: ' + token);
+          }
+          for (const token of ['musicSleepDeadline', 'function updateMusicSleepTimer()', 'id="musicSleepTimer"', 'id="musicSleepStart"', "localStorage.setItem('motovich.music.sleepDeadline'", "document.addEventListener('visibilitychange'"]) {
+            if (!pro.includes(token)) throw new Error('Music sleep timer feature missing: ' + token);
+          }
+          for (const token of ["if($('coachGoal')&&!$('coachTemplatesPro')&&!$('coachTemplates'))", 'id="coachTemplatesPro"']) {
+            if (!pro.includes(token)) throw new Error('AI coach prompt deduplication safeguard missing: ' + token);
+          }
+          for (const token of ["routines:[{id:'morning'", "const optionalArrays=['taskHistory','wellbeingHistory','focusHistory','quickNotes','routines']", "const optionalObjects=['habitHistory','waterLog','routineLog','weeklyReviews','achievements','wellbeing','preferences','energyHistory']"]) {
+            if (!html.includes(token)) throw new Error('Backup recovery compatibility safeguard missing: ' + token);
           }
           if (!html.includes("{id:'music',name:'Музыка',icon:'♫'}")) {
             throw new Error('Music section is missing from home dashboard catalogue');
@@ -204,7 +219,7 @@ jobs:
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
           const cloudClient = fs.readFileSync('motovich-app/cloud-sync.js', 'utf8');
-          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission']) {
+          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission', 'LAST_SYNC_KEY', 'renderLastSync()', 'saveLastSync(', 'id="cloudLastSync"']) {
             if (!cloudClient.includes(token)) throw new Error('Cloud client safety feature missing: ' + token);
           }
           if (!cloudClient.includes("'/rest/v1/motovich_user_state?on_conflict=user_id'")) {
