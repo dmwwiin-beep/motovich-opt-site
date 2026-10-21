@@ -90,6 +90,9 @@ jobs:
           for (const token of ["e.key==='Escape'", "e.key!=='Tab'", "aria-expanded", "aria-controls"]) {
             if (!pro.includes(token)) throw new Error('Drawer accessibility feature missing: ' + token);
           }
+          for (const token of ["e.ctrlKey||e.metaKey", "e.key.toLowerCase()==='k'", "quickAddTask()"]) {
+            if (!advanced.includes(token)) throw new Error('Keyboard quick-add shortcut missing: ' + token);
+          }
           if (!html.includes("a.download='motovich-backup-'")) {
             throw new Error('Backup download action is missing');
           }
