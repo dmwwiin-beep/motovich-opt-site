@@ -130,6 +130,28 @@ if($('planner')&&!$('weeklyLoadPro')){const section=document.createElement('div'
 function renderWeeklyLoad(){const root=$('weeklyLoadChartPro');if(!root)return;const days=[];for(let i=0;i<7;i++){const d=new Date();d.setDate(d.getDate()-((d.getDay()+6)%7)+i);const key=d.toLocaleDateString('sv-SE'),n=state.tasks.filter(t=>t.date===key&&!t.done).reduce((s,t)=>s+(Number(t.estimate)||0),0);days.push({label:d.toLocaleDateString('ru-RU',{weekday:'short'}),n})}const max=Math.max(30,...days.map(x=>x.n));root.innerHTML=days.map(x=>'<div class="barcol"><span class="barvalue">'+x.n+'</span><div class="bar" style="height:'+Math.max(3,x.n/max*95)+'px"></div><span class="barlabel">'+esc(x.label)+'</span></div>').join('')}
 const appRenderV2=render;render=function(){appRenderV2();renderGoalDeadlines();renderEnergyTrend();renderWeeklyLoad()};
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){renderGoalDeadlines();renderEnergyTrend();renderWeeklyLoad()}});
+// Keyboard access for the full side drawer: focus management, Escape, and Tab containment.
+const menuToggle=$('menuBtn');
+if(menuToggle&&drawer){
+ menuToggle.setAttribute('aria-controls','sideDrawer');
+ menuToggle.setAttribute('aria-expanded',drawer.classList.contains('open')?'true':'false');
+ const originalCloseMenu=closeMenu;
+ closeMenu=function(){originalCloseMenu();menuToggle.setAttribute('aria-expanded','false');if(menuToggle.isConnected)menuToggle.focus()};
+ menuToggle.addEventListener('click',()=>{
+   const opened=drawer.classList.contains('open');
+   menuToggle.setAttribute('aria-expanded',opened?'true':'false');
+   if(opened)setTimeout(()=>drawer.querySelector('.drawer-link:not([disabled])')?.focus(),0);
+ });
+ document.addEventListener('keydown',e=>{
+   if(e.key==='Escape'&&drawer.classList.contains('open')){closeMenu();return}
+   if(e.key!=='Tab'||!drawer.classList.contains('open'))return;
+   const focusable=[...drawer.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(x=>x.getClientRects().length);
+   if(!focusable.length)return;
+   const first=focusable[0],last=focusable[focusable.length-1];
+   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+ });
+}
 renderGoalDeadlines();renderEnergyTrend();renderWeeklyLoad();
 render();
 })();
