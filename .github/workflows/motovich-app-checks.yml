@@ -159,7 +159,7 @@ jobs:
           for (const token of ['motovich_push_subscriptions', 'enable row level security', 'motovich push select own', 'motovich push insert own', 'motovich push update own', 'motovich push delete own']) {
             if (!pushSql.includes(token)) throw new Error('Missing owner-only Web Push security control: ' + token);
           }
-          for (const token of ['MOTOVICH_PUSH_CRON_SECRET', 'timingSafeEqual', 'VAPID_PRIVATE_KEY', 'sendNotification', 'statusCode === 404 || statusCode === 410']) {
+          for (const token of ['MOTOVICH_PUSH_CRON_SECRET', 'timingSafeEqual', 'VAPID_PRIVATE_KEY', 'sendNotification', 'statusCode === 404 || statusCode === 410', 'readBoundedJson', 'MAX_BODY_BYTES', 'truncatedAtSafetyLimit']) {
             if (!pushFn.includes(token)) throw new Error('Missing protected push sender safeguard: ' + token);
           }
           if (!cfg.includes('[functions.push-send]') || !cfg.includes('verify_jwt = false')) throw new Error('Internal push function config missing');
