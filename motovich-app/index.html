@@ -51,7 +51,7 @@ function setupVoiceTaskInput(){
    });
    return;
  }
- let recognition=null,listening=false;
+ let recognition=null,listening=false,baseText='';
  button.addEventListener('click',()=>{
    if(listening){try{recognition.stop()}catch(_){}return}
    try{
@@ -61,6 +61,7 @@ function setupVoiceTaskInput(){
      recognition.interimResults=true;
      recognition.maxAlternatives=1;
      let finalText='';
+     baseText=input.value.trim();
      recognition.onstart=()=>{
        listening=true;button.classList.add('listening');button.textContent='■ Остановить запись';
        status.textContent='Слушаю… Скажи текст задачи';
@@ -73,7 +74,7 @@ function setupVoiceTaskInput(){
          else interim+=phrase;
        }
        const transcript=(finalText||interim).trim();
-       if(transcript)input.value=(input.value.trim()?input.value.trim()+' ':'')+transcript;
+       input.value=[baseText,transcript].filter(Boolean).join(' ').slice(0,160);
        status.textContent=transcript?'Распознано: '+transcript:'Слушаю…';
      };
      recognition.onerror=event=>{
