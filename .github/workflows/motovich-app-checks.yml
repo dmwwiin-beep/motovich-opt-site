@@ -295,6 +295,8 @@ jobs:
           }
           if (!cloudClient.includes('id="cloudVapidPublicKey" class="field" type="text"')) throw new Error('Public VAPID key must be visible/copyable (not hidden as a secret)');
           if (!cloudClient.includes('Быстрая инструкция по запуску')) throw new Error('Cloud panel is missing its setup checklist');
+          if (!html.includes('window.MOTOVICHBuildLocalCoachPlan = function(goalValue)')) throw new Error('Local coach fallback function is missing');
+          if (!cloudClient.includes('MOTOVICHBuildLocalCoachPlan(prompt)') || !cloudClient.includes('Внешний AI-коуч недоступен; показан локальный план.')) throw new Error('Cloud coach must fall back to local plan when remote AI fails');
           if (!cloudClient.includes("'/rest/v1/motovich_user_state?on_conflict=user_id'")) {
             throw new Error('Cloud sync must target the RLS-protected user-state table');
           }

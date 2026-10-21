@@ -500,8 +500,20 @@
       try {
         answer.textContent = await window.MOTOVICHCloudCoach.ask(prompt);
       } catch (error) {
-        answer.textContent = 'Не удалось получить ответ AI-коуча. Проверь соединение, серверную настройку и лимит запросов. ' +
-          (error instanceof Error ? error.message : '');
+        const fallback = typeof window.MOTOVICHBuildLocalCoachPlan === 'function'
+          ? window.MOTOVICHBuildLocalCoachPlan(prompt)
+          : null;
+        if (fallback) {
+          answer.style.whiteSpace = 'normal';
+          answer.innerHTML = fallback;
+          const note = document.createElement('p');
+          note.className = 'small';
+          note.textContent = 'Внешний AI-коуч недоступен; показан локальный план. Проверь серверную настройку и лимит запросов.';
+          answer.appendChild(note);
+        } else {
+          answer.textContent = 'Не удалось получить ответ AI-коуча. Проверь соединение, серверную настройку и лимит запросов. ' +
+            (error instanceof Error ? error.message : '');
+        }
       } finally {
         button.disabled = false;
       }
