@@ -82,17 +82,38 @@
   }
   function normalizeState(data) {
     validateState(data);
-    const out = { ...defaultState(), ...data, schemaVersion: 2 };
-    for (const key of ['tasks', 'habits', 'goals', 'journal']) {
-      out[key] = out[key].filter(x => x && typeof x === 'object' && !Array.isArray(x));
-    }
-    for (const key of ['taskHistory', 'wellbeingHistory']) {
+    const out = {
+      waterLog: {}, quickNotes: [], weeklyReviews: {}, focusHistory: [],
+      taskCategories: ['Бизнес', 'Работа', 'Личное', 'Здоровье', 'Учёба', 'Дом', 'Другое'],
+      waterTarget: 8, profileName: '', focusMinutesTotal: 0, routines: [],
+      routineLog: {}, achievements: {}, energyHistory: {}, pinnedTasks: [],
+      ...defaultState(), ...data, schemaVersion: 2
+    };
+    for (const key of ['tasks', 'habits', 'goals', 'journal', 'taskHistory', 'wellbeingHistory', 'focusHistory', 'quickNotes']) {
       if (!Array.isArray(out[key])) out[key] = [];
       else out[key] = out[key].filter(x => x && typeof x === 'object' && !Array.isArray(x));
     }
-    if (!out.habitHistory || typeof out.habitHistory !== 'object' || Array.isArray(out.habitHistory)) out.habitHistory = {};
-    if (!out.preferences || typeof out.preferences !== 'object' || Array.isArray(out.preferences)) out.preferences = { accent: '#c3f36b' };
-    if (!out.wellbeing || typeof out.wellbeing !== 'object' || Array.isArray(out.wellbeing)) out.wellbeing = { sleep: 8, mood: 'Спокойное', move: 30 };
+    if (!Array.isArray(out.taskCategories) || !out.taskCategories.every(x => typeof x === 'string')) {
+      out.taskCategories = ['Бизнес', 'Работа', 'Личное', 'Здоровье', 'Учёба', 'Дом', 'Другое'];
+    }
+    if (!Array.isArray(out.pinnedTasks)) out.pinnedTasks = [];
+    else out.pinnedTasks = out.pinnedTasks.filter(x => typeof x === 'string').slice(0, 3);
+    if (!Array.isArray(out.routines)) out.routines = [];
+    out.routines = out.routines.filter(x => x && typeof x === 'object' && !Array.isArray(x))
+      .map((r, i) => ({ id: String(r.id || 'routine-' + i), name: String(r.name || 'Рутина').slice(0, 80),
+        items: Array.isArray(r.items) ? r.items.filter(s => typeof s === 'string').slice(0, 30) : [] })).slice(0, 50);
+    for (const key of ['habitHistory', 'preferences', 'wellbeing', 'waterLog', 'weeklyReviews', 'routineLog', 'achievements', 'energyHistory']) {
+      if (!out[key] || typeof out[key] !== 'object' || Array.isArray(out[key])) out[key] = {};
+    }
+    out.preferences = { accent: '#c3f36b', ...out.preferences };
+    out.wellbeing = { sleep: 8, mood: 'Спокойное', move: 30, ...out.wellbeing };
+    out.waterTarget = Math.min(30, Math.max(1, Number(out.waterTarget) || 8));
+    out.cycles = Math.max(0, Number(out.cycles) || 0);
+    out.energy = Math.min(5, Math.max(1, Number(out.energy) || 3));
+    out.focusMinutesTotal = Math.max(0, Number(out.focusMinutesTotal) || 0);
+    out.profileName = typeof out.profileName === 'string' ? out.profileName.slice(0, 50) : '';
+    if (typeof out.calendarMonth !== 'string' || !/^\\d{4}-\\d{2}$/.test(out.calendarMonth)) out.calendarMonth = dateKey().slice(0, 7);
+    if (typeof out.habitDate !== 'string') out.habitDate = dateKey();
     return out;
   }
   function updateButtons() {
@@ -118,6 +139,7 @@
     const response = await fetch(config.url + '/auth/v1/token?grant_type=refresh_token', {
       method: 'POST',
       headers: baseHeaders(false),
+      signal: AbortSignal.timeout(20_000),
       body: JSON.stringify({ refresh_token: session.refresh_token })
     });
     const data = await response.json().catch(() => ({}));
@@ -135,6 +157,7 @@
     const headers = { ...baseHeaders(options.withSession !== false), ...(options.headers || {}) };
     const init = { method: options.method || 'GET', headers };
     if (options.body !== undefined) init.body = JSON.stringify(options.body);
+    init.signal = AbortSignal.timeout(20_000);
     const response = await fetch(config.url + path, init);
     if (response.status === 401 && retry && session?.refresh_token && await refreshSession()) {
       return request(path, options, false);
@@ -183,8 +206,11 @@
     if (!email || !password) throw new Error('Введи email и пароль.');
     if (password.length < 10) throw new Error('Для облачного аккаунта используй пароль длиной не менее 10 символов.');
     const result = await request('/auth/v1/signup', { method: 'POST', withSession: false, body: { email, password } }, false);
+    $('cloudPassword').value = '';
     if (result.access_token && result.refresh_token && result.user) {
-      session = result; persistJson(SESSION_KEY, session); showStatus('Аккаунт создан; вход выполнен.', 'success');
+      session = result;
+      if (!persistJson(SESSION_KEY, session)) { session = null; throw new Error('Не удалось сохранить сессию в браузере.'); }
+      showStatus('Аккаунт создан; вход выполнен.', 'success');
     } else {
       showStatus('Запрос на регистрацию отправлен. Подтверди email, затем выполни вход.', 'success');
     }
@@ -197,7 +223,8 @@
     const result = await request('/auth/v1/token?grant_type=password', { method: 'POST', withSession: false, body: { email, password } }, false);
     if (!result.access_token || !result.refresh_token || !result.user?.id) throw new Error('Supabase не вернул действующую сессию.');
     session = result;
-    if (!persistJson(SESSION_KEY, session)) throw new Error('Браузеру не удалось сохранить сессию. Освободи место в хранилище.');
+    if (!persistJson(SESSION_KEY, session)) { session = null; throw new Error('Браузеру не удалось сохранить сессию. Освободи место в хранилище.'); }
+    $('cloudPassword').value = '';
     showStatus('Вход выполнен. Данные пока не отправлены в облако.', 'success');
     updateButtons();
   }
