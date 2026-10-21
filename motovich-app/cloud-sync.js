@@ -152,6 +152,7 @@
     const pushKey = ($('cloudVapidPublicKey')?.value || localStorage.getItem(PUSH_KEY) || '').trim();
     if ($('cloudPushEnable')) $('cloudPushEnable').disabled = busy || !configured || !signedIn || !pushSupported || !pushKey;
     if ($('cloudPushDisable')) $('cloudPushDisable').disabled = busy || !configured || !signedIn || !pushSupported;
+    if ($('cloudPushTest')) $('cloudPushTest').disabled = busy || !configured || !signedIn || !pushSupported || !pushKey;
     if ($('cloudDeleteAccount')) $('cloudDeleteAccount').disabled = busy || !configured || !signedIn;
     if ($('cloudSaveConfig')) $('cloudSaveConfig').disabled = busy;
     if ($('cloudRestoreLocal')) $('cloudRestoreLocal').disabled = busy || !localStorage.getItem(PRE_PULL_KEY);
@@ -295,6 +296,9 @@
     showStatus('Связь с Supabase работает. Теперь можно войти или создать аккаунт.', 'success');
   }
   async function pushLocalState() {
+    state.preferences = state.preferences || {};
+    state.preferences.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || state.preferences.timeZone || 'UTC';
+    persist();
     validateState(state);
     const existing = await getRemoteState();
     const warning = existing
@@ -370,6 +374,16 @@
     showStatus('Уведомления разрешены для этого устройства. Реальная доставка начнётся после настройки серверного отправителя.', 'success');
     updateButtons();
   }
+  async function sendTestPush() {
+    if (!session?.access_token || !session?.user?.id) throw new Error('Сначала выполни вход в облачный аккаунт.');
+    const result = await request('/functions/v1/push-test', { method:'POST', body:{} });
+    const sent = Number(result?.sent) || 0;
+    const failed = Number(result?.failed) || 0;
+    if (sent > 0) showStatus('Тестовое уведомление отправлено на твои устройства: ' + sent + (failed ? '; ошибок: ' + failed : '') + '. Если оно не появилось, проверь разрешения ОС и браузера.', 'success');
+    else if (failed > 0) showStatus('Подписка найдена, но отправка не удалась. Проверь VAPID-секреты серверной функции.', 'error');
+    else showStatus('Активная Push-подписка не найдена. Сначала включи уведомления на этом устройстве.', 'error');
+  }
+
   async function deleteCloudAccount() {
     if (!session?.access_token || !session?.user?.id) throw new Error('Сначала выполни вход в облачный аккаунт.');
     if (!confirm('Удалить облачный аккаунт MOTOVICH и все облачные данные этого аккаунта? Локальные данные на этом устройстве останутся.')) return;
@@ -449,7 +463,7 @@
     <label class="small" for="cloudVapidPublicKey" style="display:block;margin-top:12px">Публичный VAPID-ключ для Web Push</label>
     <input id="cloudVapidPublicKey" class="field" type="password" autocomplete="off" placeholder="Заполняется только после настройки отправителя">
     <p class="cloud-warning">Нужен публичный ключ от пары VAPID; приватный ключ и cron-секрет сюда вводить нельзя. Браузер запросит разрешение на уведомления.</p>
-    <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div><p class="cloud-warning">Разрешение браузера регистрирует устройство, но реальные уведомления при закрытом приложении требуют серверного отправителя и расписания.</p><div class="cloud-actions"><button id="cloudDeleteAccount" class="advanced-button danger" type="button">Удалить облачный аккаунт и данные</button></div><p class="cloud-warning">Удаление аккаунта удаляет связанные облачные записи и Push-подписки; локальные данные на этом устройстве остаются.</p>
+    <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div><div class="cloud-actions"><button id="cloudPushTest" class="advanced-button" type="button">Отправить тестовое уведомление мне</button></div><p class="cloud-warning">Тест проверяет доставку на твои подписанные устройства. Для напоминаний по задачам нужна серверная функция push-schedule, запущенная cron каждую минуту.</p><div class="cloud-actions"><button id="cloudDeleteAccount" class="advanced-button danger" type="button">Удалить облачный аккаунт и данные</button></div><p class="cloud-warning">Удаление аккаунта удаляет связанные облачные записи и Push-подписки; локальные данные на этом устройстве остаются.</p>
     <div class="cloud-actions"><button id="cloudPush" class="advanced-button" type="button">Отправить локальные данные</button><button id="cloudPull" class="advanced-button" type="button">Загрузить из облака</button></div>
     <div class="cloud-actions"><button id="cloudRestoreLocal" class="advanced-button" type="button">Вернуть локальные данные до загрузки</button></div>
     <p id="cloudLastSync" class="small" style="margin-top:10px">Последняя синхронизация: ещё не выполнялась</p>
@@ -506,6 +520,7 @@
   $('cloudVapidPublicKey').addEventListener('input', updateButtons);
   $('cloudPushEnable').addEventListener('click', () => runAction(enablePushOnThisDevice));
   $('cloudPushDisable').addEventListener('click', () => runAction(disablePushOnThisDevice));
+  $('cloudPushTest').addEventListener('click', () => runAction(sendTestPush));
   $('cloudDeleteAccount').addEventListener('click', () => runAction(deleteCloudAccount));
   $('cloudPush').addEventListener('click', () => runAction(pushLocalState));
   $('cloudPull').addEventListener('click', () => runAction(pullRemoteState));

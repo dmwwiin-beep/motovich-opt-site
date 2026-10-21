@@ -5,6 +5,7 @@ declare
   state_rls boolean;
   usage_rls boolean;
   push_rls boolean;
+  delivery_rls boolean;
   policy_count integer;
 begin
   select c.relrowsecurity into state_rls
@@ -27,6 +28,17 @@ begin
   if coalesce(push_rls, false) is not true then
     raise exception 'RLS must be enabled on public.motovich_push_subscriptions';
   end if;
+  select c.relrowsecurity into delivery_rls
+  from pg_class c join pg_namespace n on n.oid = c.relnamespace
+  where n.nspname = 'public' and c.relname = 'motovich_push_deliveries';
+  if coalesce(delivery_rls, false) is not true then
+    raise exception 'RLS must be enabled on public.motovich_push_deliveries';
+  end if;
+  if has_table_privilege('anon', 'public.motovich_push_deliveries', 'select')
+     or has_table_privilege('authenticated', 'public.motovich_push_deliveries', 'select') then
+    raise exception 'Browser roles must not read the server-only push delivery ledger';
+  end if;
+
   if has_table_privilege('anon', 'public.motovich_push_subscriptions', 'select') then
     raise exception 'anon must not read push subscription records';
   end if;
@@ -79,5 +91,5 @@ begin
     raise exception 'anon must not call the quota RPC';
   end if;
 
-  raise notice 'MOTOVICH cloud and Web Push schema security checks passed.';
+  raise notice 'MOTOVICH cloud, Web Push, and scheduled-reminder ledger security checks passed.';
 end $$;

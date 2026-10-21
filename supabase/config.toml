@@ -11,3 +11,11 @@ verify_jwt = false
 [functions.delete-account]
 # Require the authenticated user's JWT for account deletion.
 verify_jwt = true
+
+[functions.push-test]
+# User-authenticated one-off notification sent only to that user's subscriptions.
+verify_jwt = true
+
+[functions.push-schedule]
+# Internal cron-only personal task reminder scheduler, guarded by x-motovich-cron-secret.
+verify_jwt = false

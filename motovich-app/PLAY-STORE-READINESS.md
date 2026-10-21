@@ -7,7 +7,7 @@
 - Service worker с новой версией кэша и проверками CI.
 - Отдельные страницы политики конфиденциальности и удаления аккаунта; ссылки доступны в настройках приложения.
 - Серверная функция удаления Supabase-аккаунта с проверкой JWT; пользователь удаляет только собственный аккаунт.
-- Web Push-клиент, хранилище подписок под RLS и внутренний sender — но реальная доставка требует реального Supabase-проекта, секретов и настроенного расписания.
+- Web Push-клиент, user-scoped test sender, cron-based per-task scheduler and a server-only deduplication ledger. Real delivery still requires applying migrations, a live Supabase project, server secrets, a manually uploaded cloud snapshot and an enabled cron schedule.
 
 ## Важно перед Google Play
 1. **Новый Android-релиз должен target Android 16 / API 36 или выше.** Google Play применяет это требование к новым приложениям и обновлениям с 31 августа 2026 г.: https://support.google.com/googleplay/android-developer/answer/11926878
@@ -37,6 +37,6 @@
 
 ## Чего ещё нет / не утверждается
 - В репозитории нет собранного подписанного AAB, keystore, реального Digital Asset Links fingerprint или опубликованного релиза Play Console.
-- Не настроены Supabase project secrets и серверный cron, поэтому push-доставка не активна лишь от факта включения разрешения.
+- Не настроены Supabase project secrets, миграции в реальном проекте и серверный cron, поэтому push-доставка не станет активной только от включения разрешения.
 - Не выполнен реальный тест на Android-устройстве и в Google Play Console.
 - Уникальность app.motovich.productivity, название листинга и контакт разработчика нужно проверить до первой отправки.

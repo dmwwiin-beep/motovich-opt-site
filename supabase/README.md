@@ -19,8 +19,8 @@ This folder contains the secure backend for optional cloud persistence and the r
 2. Apply both SQL migrations using `supabase db push`, or execute the migration files in order in the project's SQL Editor.
 3. Copy `functions/.env.example` to `functions/.env` for local development; do not commit the real file.
 4. Configure the Edge Function secrets in the Supabase dashboard or CLI. Set `OPENAI_API_KEY`, `OPENAI_MODEL`, and `MOTOVICH_ALLOWED_ORIGIN`. For push delivery also configure `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `MOTOVICH_PUSH_CRON_SECRET`, and `SUPABASE_SERVICE_ROLE_KEY` as server-only secrets. The model name must be one available to the configured OpenAI project. Supabase's function environment must also provide `SUPABASE_URL` and a publishable/anon key.
-5. Deploy the AI endpoint with `supabase functions deploy coach` the internal sender with `supabase functions deploy push-send`, and account deletion with `supabase functions deploy delete-account`. Keep the cron secret and service-role key server-side.
-6. Configure a trusted scheduler to POST to the push-send function with the `x-motovich-cron-secret` header; do not expose that secret to the browser. Schedule only reminders users have explicitly enabled.
+5. Deploy `coach`, `push-send`, `push-test`, `push-schedule`, and `delete-account` with `supabase functions deploy <function-name>`. Keep the cron secret and service-role key server-side.
+6. Configure a trusted cron to POST to `push-schedule` every minute with the `x-motovich-cron-secret` header; do not expose that secret to the browser. The scheduler uses only the last explicitly uploaded cloud snapshot, and only tasks that have both `date` and `time`. Users must choose Settings → Cloud and sync → «Отправить локальные данные» after changing tasks. `push-send` remains a generic internal broadcaster; `push-test` sends only to the signed-in user's subscriptions.
 7. Apply `tests/manual_security_checks.sql` in SQL Editor to verify table RLS, grants, policies, and quota RPC access.
 
 ## Security notes
@@ -30,3 +30,6 @@ This folder contains the secure backend for optional cloud persistence and the r
 - The quota table has no direct grants for browser roles; users may only request quota consumption through the fixed-limit function.
 - The endpoint deliberately accepts a short message and an optional compact context summary; it does not upload the user's entire local state.
 - The code is prepared but not deployed or runtime-tested against a live Supabase/OpenAI project. Service credentials, project creation and deployment cannot be inferred from the GitHub repository alone.
+
+
+The scheduler time zone is stored in `state.preferences.timeZone` when local state is saved and before manual cloud upload. Tasks without an explicit time are not due-time reminders. Schedule the cron every minute and monitor its summary counts; Push permission alone does not configure a scheduler.

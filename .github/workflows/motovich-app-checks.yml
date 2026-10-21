@@ -230,6 +230,8 @@ jobs:
           deno check supabase/functions/coach/index.ts
           deno check supabase/functions/push-send/index.ts
           deno check supabase/functions/delete-account/index.ts
+          deno check supabase/functions/push-test/index.ts
+          deno check supabase/functions/push-schedule/index.ts
       - name: Validate backend security contract
         run: |
           node - <<'NODE'
@@ -239,6 +241,9 @@ jobs:
           const fn = fs.readFileSync('supabase/functions/coach/index.ts', 'utf8');
           const pushFn = fs.readFileSync('supabase/functions/push-send/index.ts', 'utf8');
           const deleteFn = fs.readFileSync('supabase/functions/delete-account/index.ts', 'utf8');
+          const pushTestFn = fs.readFileSync('supabase/functions/push-test/index.ts', 'utf8');
+          const schedulerFn = fs.readFileSync('supabase/functions/push-schedule/index.ts', 'utf8');
+          const deliveriesSql = fs.readFileSync('supabase/migrations/202610210003_motovich_push_deliveries.sql', 'utf8');
           const cfg = fs.readFileSync('supabase/config.toml', 'utf8');
           const gitignore = fs.readFileSync('supabase/.gitignore', 'utf8');
           for (const policy of ['motovich state select own', 'motovich state insert own', 'motovich state update own', 'motovich state delete own']) {
@@ -263,10 +268,15 @@ jobs:
           if (!cfg.includes('[functions.push-send]') || !cfg.includes('verify_jwt = false')) throw new Error('Internal push function config missing');
           for (const token of ['auth.getUser', 'auth.admin.deleteUser', 'DELETE_MY_ACCOUNT', 'Access-Control-Allow-Origin']) if (!deleteFn.includes(token)) throw new Error('Missing secure account deletion safeguard: ' + token);
           if (!cfg.includes('[functions.delete-account]') || !cfg.includes('verify_jwt = true')) throw new Error('Account deletion must require an authenticated JWT');
+          for (const token of ['auth.getUser', 'motovich_push_subscriptions', 'sendNotification', 'VAPID_PRIVATE_KEY', 'user_id']) if (!pushTestFn.includes(token)) throw new Error('Missing user-scoped push test safeguard: ' + token);
+          if (!cfg.includes('[functions.push-test]') || !cfg.includes('verify_jwt = true')) throw new Error('Push test function must require an authenticated JWT');
+          for (const token of ['MOTOVICH_PUSH_CRON_SECRET', 'timingSafeEqual', 'timeZone', 'motovich_push_deliveries', 'VAPID_PRIVATE_KEY']) if (!schedulerFn.includes(token)) throw new Error('Missing scheduled reminder safeguard: ' + token);
+          for (const token of ['motovich_push_deliveries', 'enable row level security', 'motovich_push_delivery_once', 'revoke all']) if (!deliveriesSql.toLowerCase().includes(token.toLowerCase())) throw new Error('Missing server-only delivery ledger safeguard: ' + token);
+          if (!cfg.includes('[functions.push-schedule]') || !cfg.includes('verify_jwt = false')) throw new Error('Scheduler must be cron-only and secret-protected');
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
           const cloudClient = fs.readFileSync('motovich-app/cloud-sync.js', 'utf8');
-          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'cloudDeleteAccount', 'deleteCloudAccount', 'delete-account', 'DELETE_MY_ACCOUNT', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission', 'LAST_SYNC_KEY', 'renderLastSync()', 'saveLastSync(', 'id="cloudLastSync"']) {
+          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'cloudPushTest', 'sendTestPush', 'push-test', 'cloudDeleteAccount', 'deleteCloudAccount', 'delete-account', 'DELETE_MY_ACCOUNT', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission', 'LAST_SYNC_KEY', 'renderLastSync()', 'saveLastSync(', 'id="cloudLastSync"']) {
             if (!cloudClient.includes(token)) throw new Error('Cloud client safety feature missing: ' + token);
           }
           if (!cloudClient.includes("'/rest/v1/motovich_user_state?on_conflict=user_id'")) {
