@@ -108,4 +108,5 @@ function renderWeeklyLoad(){const root=$('weeklyLoadChartPro');if(!root)return;c
 const appRenderV2=render;render=function(){appRenderV2();renderGoalDeadlines();renderEnergyTrend();renderWeeklyLoad()};
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){renderGoalDeadlines();renderEnergyTrend();renderWeeklyLoad()}});
 renderGoalDeadlines();renderEnergyTrend();renderWeeklyLoad();
+render();
 })();
