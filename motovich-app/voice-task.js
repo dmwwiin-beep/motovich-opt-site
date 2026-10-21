@@ -131,14 +131,15 @@
     let priority = 'Средний';
     const high = new RegExp('(^|[^' + LETTER + '])(срочно|очень важно|высокий приоритет|приоритет высокий)(?=$|[^' + LETTER + '])', 'i');
     const low = new RegExp('(^|[^' + LETTER + '])(не срочно|низкий приоритет|приоритет низкий)(?=$|[^' + LETTER + '])', 'i');
-    match = text.match(high);
+    // Check explicit negative urgency first so "не срочно" is never classified as high.
+    match = text.match(low);
     if (match) {
-      priority = 'Высокий';
+      priority = 'Низкий';
       text = removeMatched(text, match);
     } else {
-      match = text.match(low);
+      match = text.match(high);
       if (match) {
-        priority = 'Низкий';
+        priority = 'Высокий';
         text = removeMatched(text, match);
       }
     }
