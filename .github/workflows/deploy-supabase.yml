@@ -85,7 +85,7 @@ jobs:
         run: |
           set -euo pipefail
           supabase link --project-ref "$PROJECT_REF" --password "$SUPABASE_DB_PASSWORD"
-          supabase db push --linked
+          supabase --yes db push --linked
 
       - name: Set server-only secrets and deploy functions
         env:
