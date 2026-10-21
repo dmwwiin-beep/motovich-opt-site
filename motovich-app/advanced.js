@@ -63,7 +63,16 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState!==
 const originalRender=render;render=function(){originalRender();renderPlanner();renderWater();renderNotes();renderReview()};
 const oldDelete=deleteTask;deleteTask=function(id){const t=state.tasks.find(x=>x.id===id);if(!t||!confirm('Удалить задачу «'+t.name+'»?'))return;oldDelete(id)};
 if(main){const h=document.querySelector('.hero h1'),p=document.querySelector('.hero p');if(h){const q=['Стань сильнее<br>день за днём.','Меньше шума.<br>Больше результата.','Сделай сегодня<br>чуть лучше вчерашнего.'];h.innerHTML=q[new Date().getDate()%q.length]}if(p&&state.profileName){const hr=new Date().getHours();p.textContent=(hr<12?'Доброе утро':hr<18?'Хорошего дня':'Хорошего вечера')+', '+state.profileName+'. Двигайся к своим целям шаг за шагом.'}}
-document.addEventListener('keydown',e=>{if(e.key==='?'&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||''))toast('⌘/Ctrl+K — быстро добавить задачу · Esc — закрыть меню')});
+document.addEventListener('keydown',e=>{
+  const tag=document.activeElement?.tagName||'';
+  const typing=/INPUT|TEXTAREA|SELECT/.test(tag)||document.activeElement?.isContentEditable;
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&!typing){
+    e.preventDefault();
+    if(typeof quickAddTask==='function')quickAddTask();else show('tasks');
+    return;
+  }
+  if(e.key==='?'&&!typing)toast('⌘/Ctrl+K — быстро добавить задачу · Esc — закрыть меню');
+});
 
 let lastCycleCount=Number(state.cycles)||0;
 const cycleNode=$('cycles');
