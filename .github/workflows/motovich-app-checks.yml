@@ -49,6 +49,15 @@ jobs:
           assert.equal(voice.parseOne('Купить хлеб через 3 дня', now).date, '2026-10-24');
           assert.equal(voice.parseOne('Позвонить клиенту в 7 вечера', now).time, '19:00');
           assert.equal(voice.parseOne('Сделать задачу 31.02.2026', now).date, '');
+          const commaBatch = voice.parseTasks('Позвонить маме завтра, купить продукты в пятницу в 18, отправить отчёт в 15:30', now);
+          assert.equal(commaBatch.length, 3, JSON.stringify(commaBatch));
+          assert.equal(commaBatch[0].date, '2026-10-22');
+          assert.equal(commaBatch[1].date, '2026-10-23');
+          assert.equal(commaBatch[1].time, '18:00');
+          assert.equal(commaBatch[2].time, '15:30');
+          const conjunctionBatch = voice.parseTasks('Позвонить маме завтра и отправить отчёт в пятницу', now);
+          assert.equal(conjunctionBatch.length, 2, JSON.stringify(conjunctionBatch));
+          assert.equal(voice.parseOne('Купить хлеб не срочно', now).priority, 'Низкий');
           console.log('Voice parser tests passed: dates, weekdays, time, priorities, and batches.');
           NODE
       - name: Check external JavaScript
