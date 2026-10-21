@@ -5,6 +5,7 @@
   const $ = id => document.getElementById(id);
   const CONFIG_KEY = 'motovich.cloud.config';
   const SESSION_KEY = 'motovich.cloud.session';
+  const PUSH_KEY = 'motovich.push.vapidPublicKey';
   const PRE_PULL_KEY = KEY + '.beforeCloudPull';
   const MAX_STATE_BYTES = 2 * 1024 * 1024;
   let config = readJson(CONFIG_KEY, null);
@@ -28,6 +29,16 @@
   function accountLabel() {
     const node = $('cloudAccount');
     if (node) node.textContent = session?.user?.email ? 'Аккаунт: ' + session.user.email : 'Не выполнен вход';
+  }
+  function vapidKeyBytes(value) {
+    const key = String(value || '').trim();
+    if (!/^[A-Za-z0-9_-]{80,100}$/.test(key)) throw new Error('VAPID public key has an invalid format.');
+    const normalized = key.replace(/-/g, '+').replace(/_/g, '/');
+    const binary = atob(normalized + '='.repeat((4 - normalized.length % 4) % 4));
+    if (binary.length !== 65 || binary.charCodeAt(0) !== 4) {
+      throw new Error('VAPID public key must be an uncompressed P-256 key.');
+    }
+    return Uint8Array.from(binary, char => char.charCodeAt(0));
   }
   function secretLikeKey(value) {
     if (/^sb_secret_/i.test(value)) return true;
@@ -121,6 +132,9 @@
     const signedIn = !!(session?.access_token && session?.user?.id);
     ['cloudSignUp', 'cloudSignIn', 'cloudCheck'].forEach(id => { if ($(id)) $(id).disabled = busy || !configured; });
     ['cloudSignOut', 'cloudPush', 'cloudPull'].forEach(id => { if ($(id)) $(id).disabled = busy || !configured || !signedIn; });
+    const pushSupported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+    if ($('cloudPushEnable')) $('cloudPushEnable').disabled = busy || !configured || !signedIn || !pushSupported;
+    if ($('cloudPushDisable')) $('cloudPushDisable').disabled = busy || !configured || !signedIn || !pushSupported;
     if ($('cloudSaveConfig')) $('cloudSaveConfig').disabled = busy;
     if ($('cloudRestoreLocal')) $('cloudRestoreLocal').disabled = busy || !localStorage.getItem(PRE_PULL_KEY);
     accountLabel();
@@ -291,7 +305,73 @@
     showStatus('Загрузка завершена · облачная ревизия ' + row.revision + '. Локальные данные до загрузки сохранены.', 'success');
     updateButtons();
   }
-  function restorePrePullState() {
+  async function enablePushOnThisDevice() {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window) || !('Notification' in window)) {
+      throw new Error('Этот браузер не поддерживает Web Push.');
+    }
+    if (!session?.user?.id) throw new Error('Сначала выполни вход в облачный аккаунт.');
+    const vapidPublicKey = $('cloudVapidPublicKey').value.trim() || localStorage.getItem(PUSH_KEY) || '';
+    const appServerKey = vapidKeyBytes(vapidPublicKey);
+    const permission = Notification.permission === 'granted'
+      ? 'granted'
+      : await Notification.requestPermission();
+    if (permission !== 'granted') throw new Error('Разрешение на уведомления не выдано в настройках браузера.');
+    const registration = await navigator.serviceWorker.ready;
+    let subscription = await registration.pushManager.getSubscription();
+    if (subscription) {
+      const currentKey = subscription.options?.applicationServerKey;
+      if (currentKey) {
+        const current = new Uint8Array(currentKey);
+        const same = current.length === appServerKey.length && current.every((byte, i) => byte === appServerKey[i]);
+        if (!same) { await subscription.unsubscribe(); subscription = null; }
+      }
+    }
+    if (!subscription) subscription = await registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: appServerKey
+    });
+    const serialized = subscription.toJSON();
+    if (!serialized.endpoint || !serialized.keys?.p256dh || !serialized.keys?.auth) {
+      throw new Error('Браузер не вернул полные данные Push-подписки.');
+    }
+    const stored = await request('/rest/v1/motovich_push_subscriptions?on_conflict=endpoint', {
+      method: 'POST',
+      headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
+      body: {
+        user_id: session.user.id,
+        endpoint: serialized.endpoint,
+        p256dh: serialized.keys.p256dh,
+        auth_secret: serialized.keys.auth
+      }
+    });
+    if (!persistJson(PUSH_KEY, vapidPublicKey)) {
+      throw new Error('Не удалось сохранить публичный VAPID-ключ. Подписка создана; сохрани ключ и попробуй снова.');
+    }
+    showStatus('Уведомления разрешены для этого устройства. Реальная доставка начнётся после настройки серверного отправителя.', 'success');
+    updateButtons();
+  }
+  async function disablePushOnThisDevice() {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+      throw new Error('Web Push не поддерживается этим браузером.');
+    }
+    const registration = await navigator.serviceWorker.ready;
+    const subscription = await registration.pushManager.getSubscription();
+    if (!subscription) {
+      showStatus('На этом устройстве активной Push-подписки нет.', '');
+      return;
+    }
+    const endpoint = subscription.endpoint;
+    await request('/rest/v1/motovich_push_subscriptions?endpoint=eq.' + encodeURIComponent(endpoint) +
+      '&user_id=eq.' + encodeURIComponent(session.user.id), {
+        method: 'DELETE',
+        headers: { Prefer: 'return=minimal' }
+      });
+    await subscription.unsubscribe();
+    showStatus('Push-уведомления выключены на этом устройстве.', 'success');
+    updateButtons();
+  }
+
+    function restorePrePullState() {
     const snapshot = readJson(PRE_PULL_KEY, null);
     if (!snapshot || !snapshot.data) throw new Error('Точка восстановления не найдена.');
     const normalized = normalizeState(snapshot.data);
@@ -329,6 +409,10 @@
       <div><label class="small" for="cloudPassword">Пароль аккаунта</label><input id="cloudPassword" class="field" type="password" autocomplete="current-password" minlength="10" placeholder="Не менее 10 символов"></div>
     </div>
     <div class="cloud-actions"><button id="cloudSignUp" class="advanced-button" type="button">Создать аккаунт</button><button id="cloudSignIn" class="advanced-button" type="button">Войти</button><button id="cloudSignOut" class="advanced-button" type="button">Выйти</button></div>
+    <label class="small" for="cloudVapidPublicKey" style="display:block;margin-top:12px">Публичный VAPID-ключ для Web Push</label>
+    <input id="cloudVapidPublicKey" class="field" type="password" autocomplete="off" placeholder="Заполняется только после настройки отправителя">
+    <p class="cloud-warning">Нужен публичный ключ от пары VAPID; приватный ключ и cron-секрет сюда вводить нельзя. Браузер запросит разрешение на уведомления.</p>
+    <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div>
     <div class="cloud-actions"><button id="cloudPush" class="advanced-button" type="button">Отправить локальные данные</button><button id="cloudPull" class="advanced-button" type="button">Загрузить из облака</button></div>
     <div class="cloud-actions"><button id="cloudRestoreLocal" class="advanced-button" type="button">Вернуть локальные данные до загрузки</button></div>
     <p id="cloudStatus" class="cloud-status" role="status" aria-live="polite">Облако не подключено. Локальный режим работает независимо.</p>
@@ -364,6 +448,7 @@
     $('cloudProjectUrl').value = config.url || '';
     $('cloudPublicKey').value = config.anonKey || '';
   }
+  $('cloudVapidPublicKey').value = localStorage.getItem(PUSH_KEY) || '';
 
   $('cloudSaveConfig').addEventListener('click', () => runAction(async () => {
     const next = validatedConfig($('cloudProjectUrl').value, $('cloudPublicKey').value);
@@ -380,6 +465,8 @@
   $('cloudSignUp').addEventListener('click', () => runAction(signUp));
   $('cloudSignIn').addEventListener('click', () => runAction(signIn));
   $('cloudSignOut').addEventListener('click', () => runAction(signOut));
+  $('cloudPushEnable').addEventListener('click', () => runAction(enablePushOnThisDevice));
+  $('cloudPushDisable').addEventListener('click', () => runAction(disablePushOnThisDevice));
   $('cloudPush').addEventListener('click', () => runAction(pushLocalState));
   $('cloudPull').addEventListener('click', () => runAction(pullRemoteState));
   $('cloudRestoreLocal').addEventListener('click', () => runAction(restorePrePullState));
