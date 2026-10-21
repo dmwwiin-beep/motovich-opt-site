@@ -5,6 +5,7 @@ This folder contains the secure backend for optional cloud persistence and the r
 ## Included
 
 - `migrations/202610210001_motovich_cloud.sql` — per-user JSON state table with four owner-only RLS policies, revision tracking, and a server-side daily AI request counter.
+- `migrations/202610210002_motovich_push.sql` — owner-scoped Web Push subscription storage with RLS.
 - `functions/coach/index.ts` — authenticated edge endpoint that keeps the OpenAI key on the server, validates inputs, limits payload size, and enforces a 30-request per-user daily quota in the database.
 - `config.toml` — enables JWT verification for the coach endpoint and configures the internal push sender to require a separate secret header.
 - `tests/manual_security_checks.sql` — read-only structural checks for RLS and grants.
