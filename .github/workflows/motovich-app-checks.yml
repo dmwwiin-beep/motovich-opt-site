@@ -161,7 +161,7 @@ jobs:
           }
           const cacheVersion = serviceWorker.match(/const CACHE = 'motovich-shell-v[0-9]+'/);
           if (!cacheVersion) throw new Error('Service worker cache version must be explicit and versioned');
-          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './advanced.js', './pro.js', './cloud-sync.js']) {
+          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './privacy.html', './account-deletion.html', './play-store-readiness.html', './advanced.js', './pro.js', './cloud-sync.js', './voice-task.js']) {
             if (!serviceWorker.includes("'" + asset + "'")) throw new Error('Offline shell is missing required asset: ' + asset);
           }
           console.log('Validated service worker cache version ' + cacheVersion[1]);
