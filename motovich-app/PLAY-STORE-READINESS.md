@@ -21,11 +21,11 @@
 
 ### A. Supabase и уведомления
 - Создать Supabase-проект и включить email/password auth.
-- В SQL Editor выполнить по порядку миграции 202610210001_motovich_cloud.sql и 202610210002_motovich_push.sql; затем выполнить supabase/tests/manual_security_checks.sql.
+- В SQL Editor выполнить по порядку все три миграции: 202610210001_motovich_cloud.sql, 202610210002_motovich_push.sql, 202610210003_motovich_push_deliveries.sql; затем выполнить supabase/tests/manual_security_checks.sql.
 - Установить Edge Function secrets на сервере: OPENAI_API_KEY (только для AI), OPENAI_MODEL, MOTOVICH_ALLOWED_ORIGIN=https://dmwwiin-beep.github.io, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_SUBJECT=mailto:..., MOTOVICH_PUSH_CRON_SECRET (случайный секрет не короче 32 байт), SUPABASE_SERVICE_ROLE_KEY. Ничего из секретов не помещать в клиентский код, GitHub Pages или этот файл.
-- Развернуть функции: supabase functions deploy coach, supabase functions deploy push-send, supabase functions deploy delete-account.
+- Развернуть функции: supabase functions deploy coach, supabase functions deploy push-send, supabase functions deploy push-test, supabase functions deploy push-schedule, supabase functions deploy delete-account.
 - В приложении открыть Настройки → Облако и синхронизация: ввести Project URL, публичный anon/publishable key и VAPID public key; зарегистрировать/войти, нажать «Включить уведомления на этом устройстве». Разрешение браузера — только этап подписки, оно не запускает отправку само по себе.
-- Настроить серверный cron/планировщик для push-send с заголовком x-motovich-cron-secret. Сейчас эта функция отправляет общую напоминательную нотификацию всем подписанным устройствам; персональные напоминания на время конкретной задачи требуют отдельного сервера планирования и актуального облачного состояния задач.
+- Настроить серверный cron каждую минуту для push-schedule с заголовком x-motovich-cron-secret. Планировщик использует только последнюю вручную выгруженную копию задач, часовой пояс устройства и задачу, в которой есть и дата, и время. После изменения задач снова нажми «Отправить локальные данные». Журнал на сервере предотвращает повтор одного и того же напоминания. push-send остаётся общим внутренним отправителем, push-test проверяет личную доставку.
 - Выполнить контрольную отправку из защищённого backend-процесса и подтвердить, что уведомление приходит на Android при закрытой PWA.
 
 ### B. Android packaging / Play Console

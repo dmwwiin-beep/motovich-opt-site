@@ -9,14 +9,17 @@ This folder contains the secure backend for optional cloud persistence and the r
 - `config.toml` — enables JWT verification for the coach endpoint and configures the internal push sender to require a separate secret header.
 - `tests/manual_security_checks.sql` — read-only structural checks for RLS and grants.
 - `migrations/202610210002_motovich_push.sql` — stores browser push subscriptions under owner-only RLS.
+- `migrations/202610210003_motovich_push_deliveries.sql` — server-only ledger prevents repeat task reminders.
 - `functions/push-send/index.ts` — internal server-side sender, protected by `MOTOVICH_PUSH_CRON_SECRET`; it deletes expired 404/410 subscriptions and never returns endpoint values.
 - `functions/delete-account/index.ts` — authenticated account-deletion endpoint; it validates the caller's JWT and deletes only that caller's account.
+- `functions/push-test/index.ts` — authenticated delivery test sent only to the signed-in user's devices.
+- `functions/push-schedule/index.ts` — cron-only task reminder sender that uses the saved user time zone and an idempotent server-side ledger.
 - `functions/.env.example` — names of local secrets without any real values.
 
 ## Deployment outline
 
 1. Create a Supabase project and link it locally with the Supabase CLI.
-2. Apply both SQL migrations using `supabase db push`, or execute the migration files in order in the project's SQL Editor.
+2. Apply all three SQL migrations in numeric order using `supabase db push`, or execute each migration file in order in the project's SQL Editor.
 3. Copy `functions/.env.example` to `functions/.env` for local development; do not commit the real file.
 4. Configure the Edge Function secrets in the Supabase dashboard or CLI. Set `OPENAI_API_KEY`, `OPENAI_MODEL`, and `MOTOVICH_ALLOWED_ORIGIN`. For push delivery also configure `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `MOTOVICH_PUSH_CRON_SECRET`, and `SUPABASE_SERVICE_ROLE_KEY` as server-only secrets. The model name must be one available to the configured OpenAI project. Supabase's function environment must also provide `SUPABASE_URL` and a publishable/anon key.
 5. Deploy `coach`, `push-send`, `push-test`, `push-schedule`, and `delete-account` with `supabase functions deploy <function-name>`. Keep the cron secret and service-role key server-side.
@@ -33,3 +36,6 @@ This folder contains the secure backend for optional cloud persistence and the r
 
 
 The scheduler time zone is stored in `state.preferences.timeZone` when local state is saved and before manual cloud upload. Tasks without an explicit time are not due-time reminders. Schedule the cron every minute and monitor its summary counts; Push permission alone does not configure a scheduler.
+
+
+The scheduler reads `state.preferences.timeZone` from the uploaded task snapshot, retries failed notifications after a cooldown, removes expired subscriptions, and uses a server-side unique ledger key to avoid repeatedly sending the same task/date/time. The cron should run every minute and be monitored. Push permission alone does not activate any server schedule.
