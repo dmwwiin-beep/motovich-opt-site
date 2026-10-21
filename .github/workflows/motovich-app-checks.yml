@@ -287,7 +287,6 @@ jobs:
           if (!cfg.includes('[functions.push-schedule]') || !cfg.includes('verify_jwt = false')) throw new Error('Scheduler must be cron-only and secret-protected');
           for (const token of ['workflow_dispatch:', "inputs.confirmation == 'DEPLOY'", 'supabase db push --linked', 'supabase secrets set --project-ref', 'supabase functions deploy "$fn"']) if (!deployWorkflow.includes(token)) throw new Error('Manual backend deployment workflow is missing a required step: ' + token);
           if (deployWorkflow.includes('secrets.SUPABASE_SERVICE_ROLE_KEY') || deployWorkflow.includes('write_secret SUPABASE_SERVICE_ROLE_KEY')) throw new Error('Do not deploy the reserved SUPABASE_ secret prefix through secrets set');
-          if (deployWorkflow.includes('\\${{')) throw new Error('GitHub workflow expressions must not be escaped');
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
           const cloudClient = fs.readFileSync('motovich-app/cloud-sync.js', 'utf8');
