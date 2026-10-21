@@ -6,6 +6,30 @@ const MAX_BODY_BYTES = 12_000;
 const MAX_MESSAGE_CHARS = 2_000;
 const MAX_CONTEXT_CHARS = 2_400;
 
+async function readBoundedJson(req: Request): Promise<unknown> {
+  if (!req.body) throw new SyntaxError("empty_body");
+  const reader = req.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  while (true) {
+    const part = await reader.read();
+    if (part.done) break;
+    total += part.value.byteLength;
+    if (total > MAX_BODY_BYTES) {
+      await reader.cancel();
+      throw new RangeError("request_too_large");
+    }
+    chunks.push(part.value);
+  }
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
 function json(data: unknown, status = 200, origin = APP_ORIGIN) {
   return new Response(JSON.stringify(data), {
     status,
@@ -24,7 +48,7 @@ Deno.serve(async (req: Request) => {
   const requestId = crypto.randomUUID();
   const origin = req.headers.get("origin");
   const allowedOrigin = Deno.env.get("MOTOVICH_ALLOWED_ORIGIN") ?? APP_ORIGIN;
-  const corsOrigin = origin === allowedOrigin ? allowedOrigin : allowedOrigin;
+  const corsOrigin = allowedOrigin;
 
   if (req.method === "OPTIONS") {
     return new Response("ok", {
@@ -63,16 +87,20 @@ Deno.serve(async (req: Request) => {
     return json({ error: "request_too_large", requestId }, 413, corsOrigin);
   }
 
-  let body: { message?: unknown; contextSummary?: unknown };
+  let parsed: unknown;
   try {
-    body = await req.json();
-  } catch {
+    parsed = await readBoundedJson(req);
+  } catch (error) {
+    if (error instanceof RangeError) {
+      return json({ error: "request_too_large", requestId }, 413, corsOrigin);
+    }
     return json({ error: "invalid_json", requestId }, 400, corsOrigin);
   }
 
-  if (!body || typeof body !== "object" || Array.isArray(body)) {
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
     return json({ error: "invalid_request", requestId }, 400, corsOrigin);
   }
+  const body = parsed as { message?: unknown; contextSummary?: unknown };
   const message = typeof body.message === "string" ? body.message.trim() : "";
   const contextSummary = typeof body.contextSummary === "string" ? body.contextSummary.trim() : "";
   if (!message || message.length > MAX_MESSAGE_CHARS || contextSummary.length > MAX_CONTEXT_CHARS) {
