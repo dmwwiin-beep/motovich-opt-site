@@ -1,0 +1,111 @@
+name: MOTOVICH live PWA smoke test
+
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Check live pages, PWA manifest, and install icons
+        env:
+          BASE_URL: https://dmwwiin-beep.github.io/motovich-opt-site/motovich-app
+        run: |
+          node <<'NODE'
+          const assert = require('node:assert/strict');
+
+          const base = process.env.BASE_URL.replace(/\/+$/, '');
+          async function get(path, attempts = 6) {
+            let lastError;
+            for (let n = 0; n < attempts; n++) {
+              try {
+                const response = await fetch(base + '/' + path, {
+                  cache: 'no-store',
+                  signal: AbortSignal.timeout(12000),
+                });
+                if (response.ok) return response;
+                lastError = new Error(path + ' returned HTTP ' + response.status);
+              } catch (error) {
+                lastError = error;
+              }
+              await new Promise(resolve => setTimeout(resolve, 4000));
+            }
+            throw lastError || new Error('Unable to retrieve ' + path);
+          }
+
+          (async () => {
+            const paths = [
+              'index.html',
+              'manifest.webmanifest',
+              'privacy.html',
+              'account-deletion.html',
+              'play-store-readiness.html',
+              'icon.svg',
+              'icon-192.png',
+              'icon-512.png',
+              'icon-maskable-512.png',
+              'sw.js',
+              'advanced.js',
+              'pro.js',
+              'cloud-sync.js',
+              'voice-task.js',
+            ];
+
+            const responses = new Map();
+            for (const path of paths) {
+              const response = await get(path);
+              const body = Buffer.from(await response.arrayBuffer());
+              assert.ok(body.length > 0, path + ' is empty');
+              responses.set(path, { response, body });
+              console.log('HTTP', response.status, path, body.length + ' bytes');
+            }
+
+            const manifest = JSON.parse(responses.get('manifest.webmanifest').body.toString('utf8'));
+            assert.ok(manifest.id, 'manifest id missing');
+            assert.equal(manifest.start_url, '/motovich-opt-site/motovich-app/');
+            assert.equal(manifest.scope, '/motovich-opt-site/motovich-app/');
+            for (const item of [
+              { path: 'icon-192.png', width: 192, height: 192 },
+              { path: 'icon-512.png', width: 512, height: 512 },
+              { path: 'icon-maskable-512.png', width: 512, height: 512 },
+            ]) {
+              const icons = manifest.icons || [];
+              assert.ok(icons.some(icon => icon.src === item.path), 'manifest does not list ' + item.path);
+              const body = responses.get(item.path).body;
+              assert.equal(body.toString('hex', 0, 8), '89504e470d0a1a0a', item.path + ' is not a PNG');
+              assert.equal(body.readUInt32BE(16), item.width, item.path + ' width mismatch');
+              assert.equal(body.readUInt32BE(20), item.height, item.path + ' height mismatch');
+            }
+            assert.ok((manifest.icons || []).some(icon => icon.src === 'icon-maskable-512.png' && icon.purpose === 'maskable'));
+
+            const privacy = responses.get('privacy.html').body.toString('utf8');
+            const deletion = responses.get('account-deletion.html').body.toString('utf8');
+            assert.match(privacy, /Политика конфиденциальности/);
+            assert.match(deletion, /Удаление аккаунта и данных/);
+            assert.match(deletion, /Если вы не можете войти/);
+            console.log('Live PWA deployment smoke test passed.');
+          })().catch(error => {
+            console.error(error);
+            process.exitCode = 1;
+          });
+          NODE
+      - name: Report root Digital Asset Links status
+        run: |
+          status=$(curl --location --silent --output /tmp/assetlinks.json --write-out '%{http_code}' --max-time 15 https://dmwwiin-beep.github.io/.well-known/assetlinks.json || true)
+          if [ "$status" = "200" ] && node -e "JSON.parse(require('fs').readFileSync('/tmp/assetlinks.json', 'utf8'))" >/dev/null 2>&1; then
+            echo "Root assetlinks.json is publicly served. Verify its package ID and SHA-256 fingerprint against Play App Signing before release."
+          else
+            echo "::warning title=TWA release blocker::Root Digital Asset Links is not publicly available at https://dmwwiin-beep.github.io/.well-known/assetlinks.json (HTTP $status). This does not break the web PWA, but the verified full-screen TWA release requires a root-site repository or a custom domain."
+          fi
