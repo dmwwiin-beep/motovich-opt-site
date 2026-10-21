@@ -112,11 +112,10 @@ jobs:
           for (const token of ["self.addEventListener('push'", "self.addEventListener('notificationclick'", 'showNotification', 'safeAppPath', '!Array.isArray(parsed)']) {
             if (!serviceWorker.includes(token)) throw new Error('PWA notification/offline safeguard missing: ' + token);
           }
-          const cacheVersion = serviceWorker.match(/const CACHE = '(motovich-shell-v\\d+)'/);
+          const cacheVersion = serviceWorker.match(/const CACHE = 'motovich-shell-v[0-9]+'/);
           if (!cacheVersion) throw new Error('Service worker cache version must be explicit and versioned');
-          const shellFiles = [...serviceWorker.matchAll(/^  '(\\.\\/[^']+)'[,]?$/gm)].map(match => match[1]);
           for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './advanced.js', './pro.js', './cloud-sync.js']) {
-            if (!shellFiles.includes(asset)) throw new Error('Offline shell is missing required asset: ' + asset);
+            if (!serviceWorker.includes("'" + asset + "'")) throw new Error('Offline shell is missing required asset: ' + asset);
           }
           console.log('Validated service worker cache version ' + cacheVersion[1]);
           for (const token of ['homeWidgets:', 'function renderHomeWidgets()', 'function removeHomeWidget(id)', "state.homeWidgets.push(id)", 'id="homeWidgetSelect"', 'id="confirmHomeWidget"']) {
