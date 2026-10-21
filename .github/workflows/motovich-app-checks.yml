@@ -112,6 +112,9 @@ jobs:
           for (const token of ['homeWidgets:', 'function renderHomeWidgets()', 'function removeHomeWidget(id)', "state.homeWidgets.push(id)", 'id="homeWidgetSelect"', 'id="confirmHomeWidget"']) {
             if (!html.includes(token)) throw new Error('Home dashboard customization feature missing: ' + token);
           }
+          for (const token of ['class="home-quick-actions"', 'class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')", "homeQuickAction('note')", "homeQuickAction('water')", "homeQuickAction('focus')", "homeQuickAction('meditation')"]) {
+            if (!html.includes(token)) throw new Error('Home quick action missing: ' + token);
+          }
           const widgetBlock = html.match(/const HOME_WIDGETS=(\[[\s\S]*?\]);if\(!Array\.isArray\(state\.homeWidgets\)\)/);
           if (!widgetBlock) throw new Error('Home dashboard widget catalogue is missing');
           const widgetIds = [...widgetBlock[1].matchAll(/id:'([^']+)'/g)].map(match => match[1]);
