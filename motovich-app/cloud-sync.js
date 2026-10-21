@@ -169,6 +169,27 @@
     }
     return data;
   }
+  // This API is consumed by the existing coach button only when a signed-in cloud account is ready.
+  window.MOTOVICHCloudCoach = {
+    isReady: () => configReady() && !!(session?.access_token && session?.user?.id),
+    async ask(message) {
+      if (!this.isReady()) throw new Error('Сначала подключи Supabase и выполни вход.');
+      const prompt = String(message || '').trim().slice(0, 2000) ||
+        'Помоги выбрать три приоритета и составь реалистичный план на ближайший час.';
+      const openCount = Array.isArray(state.tasks) ? state.tasks.filter(task => task && !task.done).length : 0;
+      const contextSummary = 'Краткий контекст приложения: открытых задач — ' + openCount +
+        '; последний отмеченный уровень энергии — ' + (Number(state.energy) || 3) + ' из 5. Названия и тексты задач не отправляются.';
+      const result = await request('/functions/v1/coach', {
+        method: 'POST',
+        body: { message: prompt, contextSummary }
+      });
+      if (!result || typeof result.answer !== 'string' || !result.answer.trim()) {
+        throw new Error('Сервер не вернул текст ответа.');
+      }
+      return result.answer.trim();
+    }
+  };
+
   function setBusy(value) {
     busy = value;
     updateButtons();
@@ -313,6 +334,31 @@
     <p id="cloudStatus" class="cloud-status" role="status" aria-live="polite">Облако не подключено. Локальный режим работает независимо.</p>
   `;
   card.appendChild(panel);
+
+  // Use the live AI coach only when cloud auth is ready. Otherwise the existing local coach remains untouched.
+  if ($('coachBtn') && !window.MOTOVICHCloudCoachHandlerAdded) {
+    window.MOTOVICHCloudCoachHandlerAdded = true;
+    $('coachBtn').addEventListener('click', async event => {
+      if (!window.MOTOVICHCloudCoach.isReady()) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const button = $('coachBtn');
+      const answer = $('coachAnswer');
+      const prompt = $('coachGoal').value.trim();
+      button.disabled = true;
+      answer.style.display = 'block';
+      answer.style.whiteSpace = 'pre-wrap';
+      answer.textContent = 'AI-коуч готовит ответ…';
+      try {
+        answer.textContent = await window.MOTOVICHCloudCoach.ask(prompt);
+      } catch (error) {
+        answer.textContent = 'Не удалось получить ответ AI-коуча. Проверь соединение, серверную настройку и лимит запросов. ' +
+          (error instanceof Error ? error.message : '');
+      } finally {
+        button.disabled = false;
+      }
+    }, true);
+  }
 
   if (config) {
     $('cloudProjectUrl').value = config.url || '';
