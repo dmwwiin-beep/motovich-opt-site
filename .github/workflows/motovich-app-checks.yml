@@ -156,7 +156,7 @@ jobs:
           for (const token of ['musicSleepDeadline', 'function updateMusicSleepTimer()', 'id="musicSleepTimer"', 'id="musicSleepStart"', "localStorage.setItem('motovich.music.sleepDeadline'", "document.addEventListener('visibilitychange'"]) {
             if (!pro.includes(token)) throw new Error('Music sleep timer feature missing: ' + token);
           }
-          for (const token of ["if($('coachGoal')&&!$('coachTemplatesPro')&&!$('coachTemplates'))", 'id="coachTemplatesPro"']) {
+          for (const token of ["if($('coachGoal')&&!$('coachTemplatesPro')&&!$('coachTemplates'))", "w.id='coachTemplatesPro'"]) {
             if (!pro.includes(token)) throw new Error('AI coach prompt deduplication safeguard missing: ' + token);
           }
           for (const token of ["routines:[{id:'morning'", "const optionalArrays=['taskHistory','wellbeingHistory','focusHistory','quickNotes','routines']", "const optionalObjects=['habitHistory','waterLog','routineLog','weeklyReviews','achievements','wellbeing','preferences','energyHistory']"]) {
