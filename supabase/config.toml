@@ -3,3 +3,7 @@ project_id = "motovich"
 [functions.coach]
 # Require an authenticated Supabase user JWT at the gateway as well as in the handler.
 verify_jwt = true
+
+[functions.push-send]
+# Internal scheduler only. The function verifies a separate high-entropy secret header.
+verify_jwt = false
