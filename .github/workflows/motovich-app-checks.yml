@@ -232,12 +232,16 @@ jobs:
           deno check supabase/functions/delete-account/index.ts
           deno check supabase/functions/push-test/index.ts
           deno check supabase/functions/push-schedule/index.ts
+          deno test supabase/functions/push-schedule/schedule-core.test.ts
       - name: Validate backend security contract
         run: |
           node - <<'NODE'
           const fs = require('node:fs');
           const sql = fs.readFileSync('supabase/migrations/202610210001_motovich_cloud.sql', 'utf8');
           const pushSql = fs.readFileSync('supabase/migrations/202610210002_motovich_push.sql', 'utf8');
+          const cronSql = fs.readFileSync('supabase/setup/push-schedule-cron.sql', 'utf8');
+          const twaExample = JSON.parse(fs.readFileSync('motovich-app/android/twa-manifest.example.json', 'utf8'));
+          const androidIgnore = fs.readFileSync('motovich-app/android/.gitignore', 'utf8');
           const fn = fs.readFileSync('supabase/functions/coach/index.ts', 'utf8');
           const pushFn = fs.readFileSync('supabase/functions/push-send/index.ts', 'utf8');
           const deleteFn = fs.readFileSync('supabase/functions/delete-account/index.ts', 'utf8');
@@ -272,6 +276,9 @@ jobs:
           if (!cfg.includes('[functions.push-test]') || !cfg.includes('verify_jwt = true')) throw new Error('Push test function must require an authenticated JWT');
           for (const token of ['MOTOVICH_PUSH_CRON_SECRET', 'timingSafeEqual', 'timeZone', 'motovich_push_deliveries', 'claim_token', 'VAPID_PRIVATE_KEY']) if (!schedulerFn.includes(token)) throw new Error('Missing scheduled reminder safeguard: ' + token);
           for (const token of ['motovich_push_deliveries', 'enable row level security', 'motovich_push_delivery_once', 'revoke all']) if (!deliveriesSql.toLowerCase().includes(token.toLowerCase())) throw new Error('Missing server-only delivery ledger safeguard: ' + token);
+          for (const token of ['motovich-push-schedule', '* * * * *', 'vault.decrypted_secrets', 'x-motovich-cron-secret']) if (!cronSql.includes(token)) throw new Error('Missing safe cron setup instruction: ' + token);
+          if (twaExample.packageId !== 'app.motovich.productivity' || !twaExample.host || !twaExample.webManifestUrl || !twaExample.maskableIconUrl.endsWith('icon-maskable-512.png')) throw new Error('TWA example manifest is missing required app/host/maskable fields');
+          for (const token of ['*.keystore', '*.jks', '*.aab', '*.apk', 'twa-manifest.json']) if (!androidIgnore.includes(token)) throw new Error('Signing material / Android artifacts must be ignored by Git: ' + token);
           if (!cfg.includes('[functions.push-schedule]') || !cfg.includes('verify_jwt = false')) throw new Error('Scheduler must be cron-only and secret-protected');
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');

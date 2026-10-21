@@ -1,0 +1,13 @@
+# Never commit signing material or Play release artifacts.
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key
+*.aab
+*.apk
+twa-manifest.json
+node_modules/
+.gradle/
+build/
+decompressed/

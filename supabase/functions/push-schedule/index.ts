@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import webpush from "npm:web-push@3.6.7";
+import { getDueTaskTime, getLocalClock } from "./schedule-core.ts";
 
 const APP_PATH = "/motovich-opt-site/motovich-app/";
 const PAGE_SIZE = 500;
@@ -23,19 +24,6 @@ function timingSafeEqual(a: string, b: string): boolean {
   let difference = left.length ^ right.length;
   for (let i = 0; i < maxLength; i++) difference |= (left[i] ?? 0) ^ (right[i] ?? 0);
   return difference === 0;
-}
-
-function localClock(now: Date, timeZone: string) {
-  const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone,
-    year: "numeric", month: "2-digit", day: "2-digit",
-    hour: "2-digit", minute: "2-digit", hourCycle: "h23",
-  }).formatToParts(now);
-  const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return {
-    date: map.year + "-" + map.month + "-" + map.day,
-    minuteOfDay: Number(map.hour) * 60 + Number(map.minute),
-  };
 }
 
 async function taskTag(userId: string, taskId: string, dueOn: string): Promise<string> {
@@ -132,19 +120,16 @@ Deno.serve(async (req: Request) => {
       const tasks = Array.isArray(state.tasks) ? state.tasks : [];
       const timeZone = state.preferences && typeof state.preferences.timeZone === "string" ? state.preferences.timeZone : "UTC";
       let clock: { date: string; minuteOfDay: number };
-      try { clock = localClock(now, timeZone); }
-      catch { clock = localClock(now, "UTC"); }
+      try { clock = getLocalClock(now, timeZone); }
+      catch { clock = getLocalClock(now, "UTC"); }
 
       for (const task of tasks) {
         if (!task || typeof task !== "object" || task.done === true) continue;
         const taskId = String(task.id || "").slice(0, 120);
         const name = String(task.name || "").replace(/\s+/g, " ").trim().slice(0, 150);
         const date = String(task.date || "");
-        const time = String(task.time || "");
-        if (!taskId || !name || date !== clock.date || !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(time)) continue;
-        const dueMinute = Number(time.slice(0, 2)) * 60 + Number(time.slice(3, 5));
-        const delay = clock.minuteOfDay - dueMinute;
-        if (delay < 0 || delay > LATE_WINDOW_MINUTES) continue;
+        const time = getDueTaskTime(task, clock.date, clock.minuteOfDay, LATE_WINDOW_MINUTES);
+        if (!taskId || !name || !time) continue;
         if (dueTasks >= MAX_DELIVERIES_PER_RUN) { capped = true; break; }
 
         dueTasks++;

@@ -111,3 +111,8 @@ Workflow проверяет синтаксис встроенного и вне�
 ### Напоминания по срокам
 
 Для персональных Push-напоминаний по задачам с датой и временем используется функция `supabase/functions/push-schedule/index.ts` и миграция `202610210003_motovich_push_deliveries.sql`. После изменения задач пользователь должен вручную отправить локальные данные в подключённое облако; затем защищённый cron запускает планировщик каждую минуту. Задачи без времени не получают напоминание на конкретный час. См. [PLAY-STORE-READINESS.md](./PLAY-STORE-READINESS.md).
+
+
+### Быстрый запуск cron-напоминаний
+
+SQL-шаблон для Supabase Vault и расписания каждую минуту находится в [supabase/setup/push-schedule-cron.sql](../supabase/setup/push-schedule-cron.sql). Перед запуском замените project ref и сохраните тот же случайный секрет в Supabase Edge Function secrets как `MOTOVICH_PUSH_CRON_SECRET` и в Vault как `motovich_push_cron_secret`. Не коммитьте заполненный SQL со значением секрета.
