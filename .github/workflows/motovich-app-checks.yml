@@ -112,6 +112,17 @@ jobs:
           for (const token of ['homeWidgets:', 'function renderHomeWidgets()', 'function removeHomeWidget(id)', "state.homeWidgets.push(id)", 'id="homeWidgetSelect"', 'id="confirmHomeWidget"']) {
             if (!html.includes(token)) throw new Error('Home dashboard customization feature missing: ' + token);
           }
+          const widgetBlock = html.match(/const HOME_WIDGETS=(\[[\s\S]*?\]);if\(!Array\.isArray\(state\.homeWidgets\)\)/);
+          if (!widgetBlock) throw new Error('Home dashboard widget catalogue is missing');
+          const widgetIds = [...widgetBlock[1].matchAll(/id:'([^']+)'/g)].map(match => match[1]);
+          const expectedWidgets = [...base, ...extra].filter(id => id !== 'today');
+          for (const id of expectedWidgets) {
+            if (!widgetIds.includes(id)) throw new Error('Section cannot be added to home dashboard: ' + id);
+          }
+          if (new Set(widgetIds).size !== widgetIds.length) throw new Error('Home dashboard contains duplicate widget IDs');
+          for (const token of ['function homeWidgetDetail(id)', 'function moveHomeWidget(id,delta)', 'function removeHomeWidget(id)', "state.homeWidgets.push(id)", 'Переместить ']) {
+            if (!html.includes(token)) throw new Error('Dashboard preview/reordering control missing: ' + token);
+          }
           console.log('Backup, voice input, home dashboard, offline, and notification-handler checks passed.');
           NODE
       - name: Set up Deno for the Edge Function
