@@ -61,5 +61,30 @@ const originalRender=render;render=function(){originalRender();renderPlanner();r
 const oldDelete=deleteTask;deleteTask=function(id){const t=state.tasks.find(x=>x.id===id);if(!t||!confirm('Удалить задачу «'+t.name+'»?'))return;oldDelete(id)};
 if(main){const h=document.querySelector('.hero h1'),p=document.querySelector('.hero p');if(h){const q=['Стань сильнее<br>день за днём.','Меньше шума.<br>Больше результата.','Сделай сегодня<br>чуть лучше вчерашнего.'];h.innerHTML=q[new Date().getDate()%q.length]}if(p&&state.profileName){const hr=new Date().getHours();p.textContent=(hr<12?'Доброе утро':hr<18?'Хорошего дня':'Хорошего вечера')+', '+state.profileName+'. Двигайся к своим целям шаг за шагом.'}}
 document.addEventListener('keydown',e=>{if(e.key==='?'&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||''))toast('⌘/Ctrl+K — быстро добавить задачу · Esc — закрыть меню')});
+
+let lastCycleCount=Number(state.cycles)||0;
+const cycleNode=$('cycles');
+if(cycleNode&&typeof MutationObserver!=='undefined'){
+  const cycleObserver=new MutationObserver(function(){
+    const now=Number(state.cycles)||0;
+    if(now>lastCycleCount){
+      state.focusHistory=state.focusHistory||[];
+      for(let i=lastCycleCount;i<now;i++)state.focusHistory.push({date:today(),minutes:Number(focusMinutes)||45,task:state.currentFocusTask||''});
+      state.focusHistory=state.focusHistory.slice(-500);
+      lastCycleCount=now;persist();renderReview();
+    } else {lastCycleCount=now}
+  });
+  cycleObserver.observe(cycleNode,{childList:true,subtree:true,characterData:true});
+}
+const resetButton=$('resetApp');
+if(resetButton){
+  resetButton.addEventListener('click',function(e){
+    e.stopImmediatePropagation();
+    if(!confirm('Сбросить все задачи, привычки, цели и записи? Это действие нельзя отменить.'))return;
+    state=defaultState();
+    Object.assign(state,{waterLog:{},quickNotes:[],weeklyReviews:{},focusHistory:[],preferences:{},taskCategories:['Бизнес','Работа','Личное','Здоровье','Учёба','Дом','Другое'],waterTarget:8,wellbeingHistory:[],focusMinutesTotal:0,profileName:''});
+    persist();render();show('today');toast('Данные приложения сброшены');
+  },true);
+}
 renderPlanner();renderWater();renderNotes();renderReview();renderGoals();renderHabits();renderTasks();
 })();
