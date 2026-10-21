@@ -6,8 +6,10 @@ This folder contains the secure backend for optional cloud persistence and the r
 
 - `migrations/202610210001_motovich_cloud.sql` — per-user JSON state table with four owner-only RLS policies, revision tracking, and a server-side daily AI request counter.
 - `functions/coach/index.ts` — authenticated edge endpoint that keeps the OpenAI key on the server, validates inputs, limits payload size, and enforces a 30-request per-user daily quota in the database.
-- `config.toml` — enables gateway JWT verification for the coach function.
+- `config.toml` — enables JWT verification for the coach endpoint and configures the internal push sender to require a separate secret header.
 - `tests/manual_security_checks.sql` — read-only structural checks for RLS and grants.
+- `migrations/202610210002_motovich_push.sql` — stores browser push subscriptions under owner-only RLS.
+- `functions/push-send/index.ts` — internal server-side sender, protected by `MOTOVICH_PUSH_CRON_SECRET`; it deletes expired 404/410 subscriptions and never returns endpoint values.
 - `functions/.env.example` — names of local secrets without any real values.
 
 ## Deployment outline
@@ -15,9 +17,10 @@ This folder contains the secure backend for optional cloud persistence and the r
 1. Create a Supabase project and link it locally with the Supabase CLI.
 2. Apply the migration using `supabase db push`, or execute the migration file in the project's SQL Editor.
 3. Copy `functions/.env.example` to `functions/.env` for local development; do not commit the real file.
-4. Configure the Edge Function secrets in the Supabase dashboard or CLI. Set `OPENAI_API_KEY`, `OPENAI_MODEL`, and `MOTOVICH_ALLOWED_ORIGIN`. The model name must be one available to the configured OpenAI project. Supabase's function environment must also provide `SUPABASE_URL` and a publishable/anon key.
-5. Deploy with `supabase functions deploy coach`.
-6. Run `tests/manual_security_checks.sql` in SQL Editor to verify table RLS, grants, policies, and quota RPC access.
+4. Configure the Edge Function secrets in the Supabase dashboard or CLI. Set `OPENAI_API_KEY`, `OPENAI_MODEL`, and `MOTOVICH_ALLOWED_ORIGIN`. For push delivery also configure `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `MOTOVICH_PUSH_CRON_SECRET`, and `SUPABASE_SERVICE_ROLE_KEY` as server-only secrets. The model name must be one available to the configured OpenAI project. Supabase's function environment must also provide `SUPABASE_URL` and a publishable/anon key.
+5. Deploy the AI endpoint with `supabase functions deploy coach` and the internal sender with `supabase functions deploy push-send`. Keep the cron secret and service-role key server-side.
+6. Configure a trusted scheduler to POST to the push-send function with the `x-motovich-cron-secret` header; do not expose that secret to the browser. Schedule only reminders users have explicitly enabled.
+7. Apply `tests/manual_security_checks.sql` in SQL Editor to verify table RLS, grants, policies, and quota RPC access.
 
 ## Security notes
 
