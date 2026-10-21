@@ -27,6 +27,7 @@ jobs:
         run: |
           node --check motovich-app/advanced.js
           node --check motovich-app/pro.js
+          node --check motovich-app/sw.js
       - name: Extract and check inline JavaScript
         run: |
           node - <<'NODE'
@@ -71,4 +72,17 @@ jobs:
             if (!pro.includes("['" + id + "'")) throw new Error('Missing section from complete navigation reconciliation: ' + id);
           }
           console.log('Validated ' + (base.length + extra.length) + ' navigation targets.');
+          const backupTokens = ["8*1024*1024", "bad-shape", "bad-record"];
+          for (const token of backupTokens) {
+            if (!html.includes(token)) throw new Error('Backup import safety guard missing: ' + token);
+          }
+          if (!advanced.includes('validSnapshotData') ||
+              !advanced.includes('restoreAutosave') ||
+              !advanced.includes("KEY+'.autosave'")) {
+            throw new Error('Local autosave recovery controls are incomplete');
+          }
+          if (!html.includes("a.download='motovich-backup-'")) {
+            throw new Error('Backup download action is missing');
+          }
+          console.log('Backup import safety and autosave recovery checks passed.');
           NODE
