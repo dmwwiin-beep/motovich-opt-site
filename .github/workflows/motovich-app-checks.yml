@@ -270,7 +270,7 @@ jobs:
           if (!cfg.includes('[functions.delete-account]') || !cfg.includes('verify_jwt = true')) throw new Error('Account deletion must require an authenticated JWT');
           for (const token of ['auth.getUser', 'motovich_push_subscriptions', 'sendNotification', 'VAPID_PRIVATE_KEY', 'user_id']) if (!pushTestFn.includes(token)) throw new Error('Missing user-scoped push test safeguard: ' + token);
           if (!cfg.includes('[functions.push-test]') || !cfg.includes('verify_jwt = true')) throw new Error('Push test function must require an authenticated JWT');
-          for (const token of ['MOTOVICH_PUSH_CRON_SECRET', 'timingSafeEqual', 'timeZone', 'motovich_push_deliveries', 'VAPID_PRIVATE_KEY']) if (!schedulerFn.includes(token)) throw new Error('Missing scheduled reminder safeguard: ' + token);
+          for (const token of ['MOTOVICH_PUSH_CRON_SECRET', 'timingSafeEqual', 'timeZone', 'motovich_push_deliveries', 'claim_token', 'VAPID_PRIVATE_KEY']) if (!schedulerFn.includes(token)) throw new Error('Missing scheduled reminder safeguard: ' + token);
           for (const token of ['motovich_push_deliveries', 'enable row level security', 'motovich_push_delivery_once', 'revoke all']) if (!deliveriesSql.toLowerCase().includes(token.toLowerCase())) throw new Error('Missing server-only delivery ledger safeguard: ' + token);
           if (!cfg.includes('[functions.push-schedule]') || !cfg.includes('verify_jwt = false')) throw new Error('Scheduler must be cron-only and secret-protected');
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');

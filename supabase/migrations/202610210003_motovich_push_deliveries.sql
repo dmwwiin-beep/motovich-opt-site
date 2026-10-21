@@ -7,6 +7,7 @@ create table if not exists public.motovich_push_deliveries (
   task_id text not null,
   due_on text not null check (due_on ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$'),
   status text not null default 'sending' check (status in ('sending', 'sent', 'failed')),
+  claim_token text not null default gen_random_uuid()::text,
   attempts integer not null default 1 check (attempts between 1 and 100),
   last_attempt_at timestamptz not null default now(),
   sent_at timestamptz,

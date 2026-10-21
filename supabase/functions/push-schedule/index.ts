@@ -49,7 +49,7 @@ async function taskTag(userId: string, taskId: string, dueOn: string): Promise<s
 async function claimDelivery(admin: any, userId: string, taskId: string, dueOn: string) {
   const { data: existing, error: lookupError } = await admin
     .from("motovich_push_deliveries")
-    .select("id,status,attempts,last_attempt_at")
+    .select("id,status,attempts,last_attempt_at,claim_token")
     .eq("user_id", userId).eq("task_id", taskId).eq("due_on", dueOn).maybeSingle();
   if (lookupError) throw new Error("delivery_ledger_lookup_failed");
   const now = new Date();
@@ -57,14 +57,15 @@ async function claimDelivery(admin: any, userId: string, taskId: string, dueOn: 
   if (existing) {
     const lastAttempt = new Date(existing.last_attempt_at).getTime();
     if (now.getTime() - lastAttempt < RETRY_COOLDOWN_MS) return null;
+    const claimToken = crypto.randomUUID();
     const { data, error } = await admin.from("motovich_push_deliveries")
-      .update({ status: "sending", attempts: Math.min(100, Number(existing.attempts || 0) + 1), last_attempt_at: now.toISOString(), error_code: null })
-      .eq("id", existing.id).neq("status", "sent").select("id").maybeSingle();
+      .update({ status: "sending", attempts: Math.min(100, Number(existing.attempts || 0) + 1), last_attempt_at: now.toISOString(), claim_token: claimToken, error_code: null })
+      .eq("id", existing.id).eq("claim_token", existing.claim_token).neq("status", "sent").select("id").maybeSingle();
     if (error || !data) return null;
     return Number(data.id);
   }
   const { data, error } = await admin.from("motovich_push_deliveries").insert({
-    user_id: userId, task_id: taskId, due_on: dueOn, status: "sending", attempts: 1, last_attempt_at: now.toISOString(),
+    user_id: userId, task_id: taskId, due_on: dueOn, status: "sending", attempts: 1, last_attempt_at: now.toISOString(), claim_token: crypto.randomUUID(),
   }).select("id").maybeSingle();
   if (error) {
     if (error.code === "23505") return null;
