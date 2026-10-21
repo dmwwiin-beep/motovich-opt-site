@@ -118,6 +118,17 @@ jobs:
           for (const token of ['home-quick-actions', 'class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')", "homeQuickAction('note')", "homeQuickAction('water')", "homeQuickAction('focus')", "homeQuickAction('meditation')"]) {
             if (!html.includes(token)) throw new Error('Home quick action missing: ' + token);
           }
+          const timerCount = (html.match(/id="timerDisplay"/g) || []).length;
+          if (timerCount !== 1) throw new Error('Expected exactly one primary timer display on the home screen');
+          if (!html.includes('<section class="section active" id="today"><article class="card" style="margin-bottom:13px"><h2>⏱ Таймер фокуса</h2>')) {
+            throw new Error('Primary focus timer must be the first card on the home screen');
+          }
+          if (!advanced.includes("const focusCard=$('timerDisplay')?.closest('.card')")) {
+            throw new Error('Advanced focus controls must attach to the primary timer card');
+          }
+          if (!pro.includes("const fc=$('timerDisplay')?.closest('.card');if(fc&&!$('focusMorePro')&&!$('focusCustom'))")) {
+            throw new Error('Pro focus controls must avoid duplicating the advanced focus controls');
+          }
           for (const token of ["const TIMER_KEY=KEY+'.focusTimer'", 'function saveTimerState()', 'function restoreTimerState()', 'function startTimer(resume=false)', 'Math.ceil((timerDeadline-Date.now())/1000)', 'deadline:timerDeadline||0', 'restoreTimerState();']) {
             if (!html.includes(token)) throw new Error('Persistent focus timer safeguard missing: ' + token);
           }
