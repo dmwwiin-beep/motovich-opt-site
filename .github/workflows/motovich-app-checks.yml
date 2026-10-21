@@ -119,13 +119,17 @@ jobs:
         with:
           deno-version: v2.x
       - name: Type-check authenticated AI Edge Function
-        run: deno check supabase/functions/coach/index.ts
+        run: |
+          deno check supabase/functions/coach/index.ts
+          deno check supabase/functions/push-send/index.ts
       - name: Validate backend security contract
         run: |
           node - <<'NODE'
           const fs = require('node:fs');
           const sql = fs.readFileSync('supabase/migrations/202610210001_motovich_cloud.sql', 'utf8');
+          const pushSql = fs.readFileSync('supabase/migrations/202610210002_motovich_push.sql', 'utf8');
           const fn = fs.readFileSync('supabase/functions/coach/index.ts', 'utf8');
+          const pushFn = fs.readFileSync('supabase/functions/push-send/index.ts', 'utf8');
           const cfg = fs.readFileSync('supabase/config.toml', 'utf8');
           const gitignore = fs.readFileSync('supabase/.gitignore', 'utf8');
           for (const policy of ['motovich state select own', 'motovich state insert own', 'motovich state update own', 'motovich state delete own']) {
@@ -140,7 +144,15 @@ jobs:
           if (fn.includes('SUPABASE_SERVICE_ROLE_KEY') || fn.includes('sb_secret_')) {
             throw new Error('Privileged Supabase keys must not be embedded in the function source');
           }
-          if (!cfg.includes('verify_jwt = true')) throw new Error('AI function must require JWT verification');
+          if (!cfg.includes('verify_jwt = true') || !cfg.includes('[functions.coach]')) throw new Error('AI function must require JWT verification');
+          for (const token of ['motovich_push_subscriptions', 'enable row level security', 'motovich push select own', 'motovich push insert own', 'motovich push update own', 'motovich push delete own']) {
+            if (!pushSql.includes(token)) throw new Error('Missing owner-only Web Push security control: ' + token);
+          }
+          for (const token of ['MOTOVICH_PUSH_CRON_SECRET', 'timingSafeEqual', 'VAPID_PRIVATE_KEY', 'sendNotification', 'statusCode === 404 || statusCode === 410']) {
+            if (!pushFn.includes(token)) throw new Error('Missing protected push sender safeguard: ' + token);
+          }
+          if (!cfg.includes('[functions.push-send]') || !cfg.includes('verify_jwt = false')) throw new Error('Internal push function config missing');
+          if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
           const cloudClient = fs.readFileSync('motovich-app/cloud-sync.js', 'utf8');
           for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2']) {
