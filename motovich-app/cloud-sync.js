@@ -54,6 +54,17 @@
     if (secretLikeKey(publicKey)) throw new Error('Секретный/service_role ключ нельзя хранить в браузере. Нужен только публичный ключ.');
     return { url: url.origin, anonKey: publicKey };
   }
+  // Validate locally stored connection settings before trusting them on startup.
+  if (config) {
+    try { config = validatedConfig(String(config.url || ''), String(config.anonKey || '')); }
+    catch (_) { config = null; localStorage.removeItem(CONFIG_KEY); }
+  }
+  if (!session || typeof session.access_token !== 'string' ||
+      typeof session.refresh_token !== 'string' || typeof session.user?.id !== 'string') {
+    session = null;
+    localStorage.removeItem(SESSION_KEY);
+  }
+
   function validateState(data) {
     const arrays = ['tasks', 'habits', 'goals', 'journal'];
     if (!data || typeof data !== 'object' || Array.isArray(data) || !arrays.every(k => Array.isArray(data[k]))) {
@@ -221,7 +232,7 @@
   async function pullRemoteState() {
     const row = await getRemoteState();
     if (!row) { showStatus('В облаке пока нет сохранения. Сначала отправь локальные данные.', ''); return; }
-    if (!confirm('Загрузить облачные данные от ' + new Date(row.updated_at).toLocaleString('ru-RU') + '? Текущие данные на этом устройстве будут заменены. Перед заменой приложение создаст локальную точку восстановления и предложит скачать JSON-копию.')) return;
+    if (!confirm('Загрузить облачные данные от ' + new Date(row.updated_at).toLocaleString('ru-RU') + '? Текущие данные на этом устройстве будут заменены. Перед заменой приложение создаст локальную точку восстановления и попытается скачать JSON-копию.')) return;
     const normalized = normalizeState(row.state);
     const snapshot = { savedAt: new Date().toISOString(), data: state };
     if (!persistJson(PRE_PULL_KEY, snapshot)) throw new Error('Не удалось сохранить точку восстановления. Освободи место в браузере.');
