@@ -124,7 +124,7 @@ jobs:
           for (const token of ['id="calQuickTaskForm"', 'id="calQuickTaskName"', 'id="calQuickTaskDate"', "state.tasks.push({id:String(Date.now())", "renderCalendar();", "Задача добавлена в календарь"]) {
             if (!pro.includes(token)) throw new Error('Calendar quick-task workflow missing: ' + token);
           }
-          for (const token of ["id='music'", "const musicTracks=", "meditation:[", "work:[", "function playMusic(i)", "function stopMusic()", "data-music-category", "renderMusic();"]) {
+          for (const token of ["addSection('music'", "const musicTracks=", "meditation:[", "work:[", "function playMusic(i)", "function stopMusic()", "data-music-category", "renderMusic();"]) {
             if (!pro.includes(token)) throw new Error('Music section/player feature missing: ' + token);
           }
           if (!html.includes("{id:'music',name:'Музыка',icon:'♫'}")) {
