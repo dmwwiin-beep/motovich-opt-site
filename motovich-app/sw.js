@@ -1,6 +1,6 @@
 /* MOTOVICH PWA service worker: offline shell + Web Push notifications. */
 'use strict';
-const CACHE = 'motovich-shell-v15';
+const CACHE = 'motovich-shell-v16';
 const SHELL = [
   './',
   './index.html',
@@ -8,7 +8,8 @@ const SHELL = [
   './icon.svg',
   './advanced.js',
   './pro.js',
-  './cloud-sync.js'
+  './cloud-sync.js',
+  './voice-task.js'
 ];
 
 self.addEventListener('install', event => {
