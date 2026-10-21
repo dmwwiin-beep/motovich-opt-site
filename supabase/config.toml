@@ -1,0 +1,5 @@
+project_id = "motovich"
+
+[functions.coach]
+# Require an authenticated Supabase user JWT at the gateway as well as in the handler.
+verify_jwt = true
