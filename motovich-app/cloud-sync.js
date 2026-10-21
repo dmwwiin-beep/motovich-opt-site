@@ -133,7 +133,8 @@
     ['cloudSignUp', 'cloudSignIn', 'cloudCheck'].forEach(id => { if ($(id)) $(id).disabled = busy || !configured; });
     ['cloudSignOut', 'cloudPush', 'cloudPull'].forEach(id => { if ($(id)) $(id).disabled = busy || !configured || !signedIn; });
     const pushSupported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
-    if ($('cloudPushEnable')) $('cloudPushEnable').disabled = busy || !configured || !signedIn || !pushSupported;
+    const pushKey = ($('cloudVapidPublicKey')?.value || localStorage.getItem(PUSH_KEY) || '').trim();
+    if ($('cloudPushEnable')) $('cloudPushEnable').disabled = busy || !configured || !signedIn || !pushSupported || !pushKey;
     if ($('cloudPushDisable')) $('cloudPushDisable').disabled = busy || !configured || !signedIn || !pushSupported;
     if ($('cloudSaveConfig')) $('cloudSaveConfig').disabled = busy;
     if ($('cloudRestoreLocal')) $('cloudRestoreLocal').disabled = busy || !localStorage.getItem(PRE_PULL_KEY);
@@ -465,6 +466,7 @@
   $('cloudSignUp').addEventListener('click', () => runAction(signUp));
   $('cloudSignIn').addEventListener('click', () => runAction(signIn));
   $('cloudSignOut').addEventListener('click', () => runAction(signOut));
+  $('cloudVapidPublicKey').addEventListener('input', updateButtons);
   $('cloudPushEnable').addEventListener('click', () => runAction(enablePushOnThisDevice));
   $('cloudPushDisable').addEventListener('click', () => runAction(disablePushOnThisDevice));
   $('cloudPush').addEventListener('click', () => runAction(pushLocalState));
