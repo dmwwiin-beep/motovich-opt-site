@@ -1,0 +1,28 @@
+# MOTOVICH backend preparation
+
+This folder contains a secure starting point for optional cloud persistence and the real AI coach. It is **not active in the published web app yet**: the app still saves locally and its current coach remains a template/rule-based prototype until a Supabase project is configured and the frontend integration is connected.
+
+## Included
+
+- `migrations/202610210001_motovich_cloud.sql` — per-user JSON state table with four owner-only RLS policies, revision tracking, and a server-side daily AI request counter.
+- `functions/coach/index.ts` — authenticated edge endpoint that keeps the OpenAI key on the server, validates inputs, limits payload size, and enforces a 30-request per-user daily quota in the database.
+- `config.toml` — enables gateway JWT verification for the coach function.
+- `tests/manual_security_checks.sql` — read-only structural checks for RLS and grants.
+- `functions/.env.example` — names of local secrets without any real values.
+
+## Deployment outline
+
+1. Create a Supabase project and link it locally with the Supabase CLI.
+2. Apply the migration using `supabase db push`, or execute the migration file in the project's SQL Editor.
+3. Copy `functions/.env.example` to `functions/.env` for local development; do not commit the real file.
+4. Configure the Edge Function secrets in the Supabase dashboard or CLI. Set `OPENAI_API_KEY`, `OPENAI_MODEL`, and `MOTOVICH_ALLOWED_ORIGIN`. The model name must be one available to the configured OpenAI project. Supabase's function environment must also provide `SUPABASE_URL` and a publishable/anon key.
+5. Deploy with `supabase functions deploy coach`.
+6. Run `tests/manual_security_checks.sql` in SQL Editor to verify table RLS, grants, policies, and quota RPC access.
+
+## Security notes
+
+- Never place an OpenAI secret key or Supabase secret/service-role key in `motovich-app/`, GitHub Pages, or a client-side environment variable.
+- The published frontend cannot use the cloud table until a project URL and publishable key are configured in a client integration. A publishable key is not a substitute for RLS: the migration restricts user-state rows to the signed-in owner.
+- The quota table has no direct grants for browser roles; users may only request quota consumption through the fixed-limit function.
+- The endpoint deliberately accepts a short message and an optional compact context summary; it does not upload the user's entire local state.
+- The code is prepared but not deployed or runtime-tested against a live Supabase/OpenAI project. Service credentials, project creation and deployment cannot be inferred from the GitHub repository alone.
