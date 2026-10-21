@@ -119,9 +119,12 @@ jobs:
             if (!html.includes(token)) throw new Error('Home quick action missing: ' + token);
           }
           const timerCount = (html.match(/id="timerDisplay"/g) || []).length;
-          if (timerCount !== 1) throw new Error('Expected exactly one primary timer display on the home screen');
-          if (!html.includes('<section class="section active" id="today"><article class="card" style="margin-bottom:13px"><h2>⏱ Таймер фокуса</h2>')) {
-            throw new Error('Primary focus timer must be the first card on the home screen');
+          if (timerCount !== 1) throw new Error('Expected exactly one primary timer display in the app');
+          const todaySection = html.slice(html.indexOf('<section class="section active" id="today">'), html.indexOf('<section class="section" id="tasks">'));
+          const focusSection = html.slice(html.indexOf('<section class="section" id="focus">'), html.indexOf('<section class="section" id="wellbeing">'));
+          if (todaySection.includes('id="timerDisplay"')) throw new Error('Primary timer must not appear on the home screen');
+          if (!focusSection.includes('<h2>⏱ Таймер фокуса</h2>') || focusSection.indexOf('id="timerDisplay"') < 0) {
+            throw new Error('Full focus timer must be placed in the Work Timer section');
           }
           if (!advanced.includes("const focusCard=$('timerDisplay')?.closest('.card')")) {
             throw new Error('Advanced focus controls must attach to the primary timer card');
