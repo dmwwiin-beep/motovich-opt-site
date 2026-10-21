@@ -155,7 +155,7 @@ jobs:
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
           const cloudClient = fs.readFileSync('motovich-app/cloud-sync.js', 'utf8');
-          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2']) {
+          for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission']) {
             if (!cloudClient.includes(token)) throw new Error('Cloud client safety feature missing: ' + token);
           }
           if (!cloudClient.includes("'/rest/v1/motovich_user_state?on_conflict=user_id'")) {
