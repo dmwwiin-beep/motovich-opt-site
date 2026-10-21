@@ -1,0 +1,19 @@
+{
+  "name": "MOTOVICH — система эффективности",
+  "short_name": "MOTOVICH",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d100e",
+  "theme_color": "#10130f",
+  "description": "Личная система продуктивности, привычек и восстановления.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
