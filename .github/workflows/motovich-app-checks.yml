@@ -81,6 +81,9 @@ jobs:
               !advanced.includes("KEY+'.autosave'")) {
             throw new Error('Local autosave recovery controls are incomplete');
           }
+          if (!pro.includes('.drawer{overflow-y:auto')) {
+            throw new Error('Mobile side drawer must support vertical scrolling');
+          }
           if (!html.includes("a.download='motovich-backup-'")) {
             throw new Error('Backup download action is missing');
           }
