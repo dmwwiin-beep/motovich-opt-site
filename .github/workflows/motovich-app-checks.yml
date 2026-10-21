@@ -290,6 +290,8 @@ jobs:
           for (const token of ['cloudPush', 'cloudPull', 'beforeCloudPull', 'validatedConfig', 'secretLikeKey', 'schema_version: 2', 'cloudPushEnable', 'cloudPushDisable', 'cloudPushTest', 'sendTestPush', 'push-test', 'cloudDeleteAccount', 'deleteCloudAccount', 'delete-account', 'DELETE_MY_ACCOUNT', 'vapidKeyBytes', 'motovich_push_subscriptions', 'applicationServerKey', 'Notification.requestPermission', 'LAST_SYNC_KEY', 'renderLastSync()', 'saveLastSync(', 'id="cloudLastSync"']) {
             if (!cloudClient.includes(token)) throw new Error('Cloud client safety feature missing: ' + token);
           }
+          if (!cloudClient.includes('id="cloudVapidPublicKey" class="field" type="text"')) throw new Error('Public VAPID key must be visible/copyable (not hidden as a secret)');
+          if (!cloudClient.includes('Быстрая инструкция по запуску')) throw new Error('Cloud panel is missing its setup checklist');
           if (!cloudClient.includes("'/rest/v1/motovich_user_state?on_conflict=user_id'")) {
             throw new Error('Cloud sync must target the RLS-protected user-state table');
           }

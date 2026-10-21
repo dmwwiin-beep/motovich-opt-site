@@ -447,7 +447,19 @@
   panel.className = 'cloud-panel';
   panel.innerHTML = `
     <h3>Облако и синхронизация</h3>
-    <p class="muted">По умолчанию данные остаются в этом браузере. Подключение работает только после настройки собственного проекта Supabase и применения миграции из репозитория.</p>
+    <p class="muted">По умолчанию данные остаются в этом браузере. Подключение работает только после настройки Supabase, применения миграций и развёртывания серверных функций.</p>
+    <details class="card" style="padding:12px;margin:10px 0">
+      <summary style="cursor:pointer;font-weight:700">Быстрая инструкция по запуску</summary>
+      <ol class="small" style="padding-left:20px;line-height:1.55">
+        <li>Создай Supabase-проект и примени три SQL-миграции из репозитория по порядку.</li>
+        <li>Разверни coach, push-test, push-schedule и delete-account; настрой секреты на сервере.</li>
+        <li>Введи Project URL и публичный anon/publishable key, сохрани и проверь связь.</li>
+        <li>Создай аккаунт или войди. Для облачной синхронизации нажимай «Отправить локальные данные» после изменения задач.</li>
+        <li>Введи публичный VAPID key, включи Push и нажми «Отправить тестовое уведомление мне».</li>
+        <li>Настрой Supabase Vault/cron по инструкции репозитория. Только после успешного теста ожидай напоминания по дате и времени задачи.</li>
+      </ol>
+      <p class="small"><a href="./play-store-readiness.html" target="_blank" rel="noopener">Полная инструкция по уведомлениям и Android-релизу →</a></p>
+    </details>
     <label class="small" for="cloudProjectUrl">URL проекта Supabase</label>
     <input id="cloudProjectUrl" class="field" type="url" autocomplete="url" placeholder="https://your-project.supabase.co">
     <label class="small" for="cloudPublicKey" style="display:block;margin-top:8px">Публичный anon/publishable key</label>
@@ -461,7 +473,7 @@
     </div>
     <div class="cloud-actions"><button id="cloudSignUp" class="advanced-button" type="button">Создать аккаунт</button><button id="cloudSignIn" class="advanced-button" type="button">Войти</button><button id="cloudSignOut" class="advanced-button" type="button">Выйти</button></div>
     <label class="small" for="cloudVapidPublicKey" style="display:block;margin-top:12px">Публичный VAPID-ключ для Web Push</label>
-    <input id="cloudVapidPublicKey" class="field" type="password" autocomplete="off" placeholder="Заполняется только после настройки отправителя">
+    <input id="cloudVapidPublicKey" class="field" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Вставь публичный VAPID key">
     <p class="cloud-warning">Нужен публичный ключ от пары VAPID; приватный ключ и cron-секрет сюда вводить нельзя. Браузер запросит разрешение на уведомления.</p>
     <div class="cloud-actions"><button id="cloudPushEnable" class="advanced-button" type="button">Включить уведомления на этом устройстве</button><button id="cloudPushDisable" class="advanced-button" type="button">Выключить уведомления на этом устройстве</button></div><div class="cloud-actions"><button id="cloudPushTest" class="advanced-button" type="button">Отправить тестовое уведомление мне</button></div><p class="cloud-warning">Тест проверяет доставку на твои подписанные устройства. Для напоминаний нужна функция push-schedule и cron каждую минуту. После изменения дат/времени задач повторно нажимай «Отправить локальные данные».</p><div class="cloud-actions"><button id="cloudDeleteAccount" class="advanced-button danger" type="button">Удалить облачный аккаунт и данные</button></div><p class="cloud-warning">Удаление аккаунта удаляет связанные облачные записи и Push-подписки; локальные данные на этом устройстве остаются.</p>
     <div class="cloud-actions"><button id="cloudPush" class="advanced-button" type="button">Отправить локальные данные</button><button id="cloudPull" class="advanced-button" type="button">Загрузить из облака</button></div>
