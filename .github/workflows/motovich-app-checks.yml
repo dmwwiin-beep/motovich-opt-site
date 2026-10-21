@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - "motovich-app/**"
+      - "supabase/**"
       - ".github/workflows/motovich-app-checks.yml"
   pull_request:
     branches: [main]
     paths:
       - "motovich-app/**"
+      - "supabase/**"
       - ".github/workflows/motovich-app-checks.yml"
 
 jobs:
@@ -94,4 +96,34 @@ jobs:
             if (!html.includes(token)) throw new Error('Local state migration safeguard missing: ' + token);
           }
           console.log('Backup import safety and autosave recovery checks passed.');
+          NODE
+      - name: Set up Deno for the Edge Function
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Type-check authenticated AI Edge Function
+        run: deno check supabase/functions/coach/index.ts
+      - name: Validate backend security contract
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const sql = fs.readFileSync('supabase/migrations/202610210001_motovich_cloud.sql', 'utf8');
+          const fn = fs.readFileSync('supabase/functions/coach/index.ts', 'utf8');
+          const cfg = fs.readFileSync('supabase/config.toml', 'utf8');
+          const gitignore = fs.readFileSync('supabase/.gitignore', 'utf8');
+          for (const policy of ['motovich state select own', 'motovich state insert own', 'motovich state update own', 'motovich state delete own']) {
+            if (!sql.includes(policy)) throw new Error('Missing owner-only RLS policy: ' + policy);
+          }
+          for (const token of ['enable row level security', 'motovich_consume_ai_coach_request', 'request_count < 30']) {
+            if (!sql.includes(token)) throw new Error('Missing backend guard: ' + token);
+          }
+          for (const token of ['auth.getUser()', 'AbortSignal.timeout', 'store: false', 'MAX_BODY_BYTES', 'OPENAI_API_KEY']) {
+            if (!fn.includes(token)) throw new Error('Missing AI endpoint safeguard: ' + token);
+          }
+          if (fn.includes('SUPABASE_SERVICE_ROLE_KEY') || fn.includes('sb_secret_')) {
+            throw new Error('Privileged Supabase keys must not be embedded in the function source');
+          }
+          if (!cfg.includes('verify_jwt = true')) throw new Error('AI function must require JWT verification');
+          if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
+          console.log('Backend security contract checks passed.');
           NODE
