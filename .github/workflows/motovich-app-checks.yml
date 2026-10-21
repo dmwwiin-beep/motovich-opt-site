@@ -115,7 +115,7 @@ jobs:
           for (const token of ['home-quick-actions', 'class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')", "homeQuickAction('note')", "homeQuickAction('water')", "homeQuickAction('focus')", "homeQuickAction('meditation')"]) {
             if (!html.includes(token)) throw new Error('Home quick action missing: ' + token);
           }
-          for (const token of ["const TIMER_KEY=KEY+'.focusTimer'", 'function saveTimerState()', 'function restoreTimerState()', 'function startTimer(resume=false)', 'Math.ceil((timerDeadline-Date.now())/1000)', 'restoreTimerState();']) {
+          for (const token of ["const TIMER_KEY=KEY+'.focusTimer'", 'function saveTimerState()', 'function restoreTimerState()', 'function startTimer(resume=false)', 'Math.ceil((timerDeadline-Date.now())/1000)', 'deadline:timerDeadline||0', 'restoreTimerState();']) {
             if (!html.includes(token)) throw new Error('Persistent focus timer safeguard missing: ' + token);
           }
           const widgetBlock = html.match(/const HOME_WIDGETS=(\[[\s\S]*?\]);if\(!Array\.isArray\(state\.homeWidgets\)\)/);
