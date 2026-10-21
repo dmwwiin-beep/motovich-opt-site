@@ -84,6 +84,9 @@ jobs:
               !advanced.includes("KEY+'.autosave'")) {
             throw new Error('Local autosave recovery controls are incomplete');
           }
+          for (const token of ['installOnIOS', 'navigator.standalone===true', 'Как установить на iPhone', 'Поделиться» → «На экран Домой']) {
+            if (!advanced.includes(token)) throw new Error('iPhone PWA install help missing: ' + token);
+          }
           if (!pro.includes('.drawer{overflow-y:auto')) {
             throw new Error('Mobile side drawer must support vertical scrolling');
           }
