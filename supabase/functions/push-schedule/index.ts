@@ -44,7 +44,9 @@ async function taskTag(userId: string, taskId: string, dueOn: string): Promise<s
   return "task-" + Array.from(new Uint8Array(digest)).map((v) => v.toString(16).padStart(2, "0")).join("").slice(0, 24);
 }
 
-async function claimDelivery(admin: ReturnType<typeof createClient>, userId: string, taskId: string, dueOn: string) {
+// The dynamically created project schema has no generated TypeScript Database type yet.
+// Keep the admin PostgREST client loose here; query results are validated before use.
+async function claimDelivery(admin: any, userId: string, taskId: string, dueOn: string) {
   const { data: existing, error: lookupError } = await admin
     .from("motovich_push_deliveries")
     .select("id,status,attempts,last_attempt_at")
