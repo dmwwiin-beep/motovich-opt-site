@@ -1,0 +1,112 @@
+name: Deploy MOTOVICH Supabase backend (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_ref:
+        description: Supabase project reference (from Project Settings > General)
+        required: true
+        type: string
+      confirmation:
+        description: Type DEPLOY to apply migrations and deploy backend functions
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: ${{ inputs.confirmation == 'DEPLOY' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Validate credentials and prepare secrets file
+        env:
+          PROJECT_REF: ${{ inputs.project_ref }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          MOTOVICH_PUSH_CRON_SECRET: ${{ secrets.MOTOVICH_PUSH_CRON_SECRET }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          MOTOVICH_ALLOWED_ORIGIN: https://dmwwiin-beep.github.io
+        run: |
+          set -euo pipefail
+          # SUPABASE_URL and legacy SUPABASE_SERVICE_ROLE_KEY are injected by the Supabase runtime.
+          # The SUPABASE_ prefix is reserved; do not send these through `supabase secrets set`.
+          test "$PROJECT_REF" != ""
+          test "$SUPABASE_ACCESS_TOKEN" != ""
+          test "$SUPABASE_DB_PASSWORD" != ""
+          test "$MOTOVICH_PUSH_CRON_SECRET" != ""
+          test "$VAPID_PUBLIC_KEY" != ""
+          test "$VAPID_PRIVATE_KEY" != ""
+          test "$VAPID_SUBJECT" != ""
+          test "$MOTOVICH_ALLOWED_ORIGIN" = "https://dmwwiin-beep.github.io"
+          if [ "$(printf %s "$MOTOVICH_PUSH_CRON_SECRET" | wc -c)" -lt 32 ]; then
+            echo "::error::MOTOVICH_PUSH_CRON_SECRET must contain at least 32 characters."
+            exit 1
+          fi
+          env_file="$RUNNER_TEMP/motovich-edge-secrets.env"
+          : > "$env_file"
+          write_secret() {
+            name="$1"; value="$2"
+            if [ -n "$value" ]; then
+              case "$value" in
+                *$'\n'*) echo "::error::A secret contains a newline; deployment halted."; exit 1 ;;
+              esac
+              printf '%s=%s\n' "$name" "$value" >> "$env_file"
+            fi
+          }
+          write_secret MOTOVICH_PUSH_CRON_SECRET "$MOTOVICH_PUSH_CRON_SECRET"
+          write_secret VAPID_PUBLIC_KEY "$VAPID_PUBLIC_KEY"
+          write_secret VAPID_PRIVATE_KEY "$VAPID_PRIVATE_KEY"
+          write_secret VAPID_SUBJECT "$VAPID_SUBJECT"
+          write_secret MOTOVICH_ALLOWED_ORIGIN "$MOTOVICH_ALLOWED_ORIGIN"
+          write_secret OPENAI_API_KEY "$OPENAI_API_KEY"
+          write_secret OPENAI_MODEL "$OPENAI_MODEL"
+          echo "Preflight complete. Secret values were not printed."
+
+      - name: Link project and apply ordered SQL migrations
+        env:
+          PROJECT_REF: ${{ inputs.project_ref }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+        run: |
+          set -euo pipefail
+          supabase link --project-ref "$PROJECT_REF" --password "$SUPABASE_DB_PASSWORD"
+          supabase db push --linked
+
+      - name: Set server-only secrets and deploy functions
+        env:
+          PROJECT_REF: ${{ inputs.project_ref }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          env_file="$RUNNER_TEMP/motovich-edge-secrets.env"
+          test -s "$env_file"
+          supabase secrets set --project-ref "$PROJECT_REF" --env-file "$env_file"
+          rm -f "$env_file"
+          trap 'rm -f "$RUNNER_TEMP/motovich-edge-secrets.env"' EXIT
+          for fn in coach push-send push-test push-schedule delete-account; do
+            echo "Deploying function: $fn"
+            supabase functions deploy "$fn" --project-ref "$PROJECT_REF"
+          done
+
+      - name: Report manual cron step
+        run: |
+          echo "Backend functions and migrations were submitted. Before expecting task reminders:"
+          echo "1. Enable pg_cron, pg_net and Vault in Supabase."
+          echo "2. Run supabase/setup/push-schedule-cron.sql after replacing the project URL and same MOTOVICH_PUSH_CRON_SECRET."
+          echo "3. Open MOTOVICH > Settings > Cloud and sync, save the public project URL/key and VAPID public key, sign in, enable Push, upload local data, and send a test Push."
+          echo "4. Never add any secret to client code or repository files."

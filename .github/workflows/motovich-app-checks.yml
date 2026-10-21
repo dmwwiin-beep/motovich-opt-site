@@ -251,6 +251,7 @@ jobs:
           const deleteFn = fs.readFileSync('supabase/functions/delete-account/index.ts', 'utf8');
           const pushTestFn = fs.readFileSync('supabase/functions/push-test/index.ts', 'utf8');
           const schedulerFn = fs.readFileSync('supabase/functions/push-schedule/index.ts', 'utf8');
+          const deployWorkflow = fs.readFileSync('.github/workflows/deploy-supabase.yml', 'utf8');
           const deliveriesSql = fs.readFileSync('supabase/migrations/202610210003_motovich_push_deliveries.sql', 'utf8');
           const cfg = fs.readFileSync('supabase/config.toml', 'utf8');
           const gitignore = fs.readFileSync('supabase/.gitignore', 'utf8');
@@ -284,6 +285,9 @@ jobs:
           if (twaExample.packageId !== 'app.motovich.productivity' || !twaExample.host || !twaExample.webManifestUrl || !twaExample.maskableIconUrl.endsWith('icon-maskable-512.png')) throw new Error('TWA example manifest is missing required app/host/maskable fields');
           for (const token of ['*.keystore', '*.jks', '*.aab', '*.apk', 'twa-manifest.json']) if (!androidIgnore.includes(token)) throw new Error('Signing material / Android artifacts must be ignored by Git: ' + token);
           if (!cfg.includes('[functions.push-schedule]') || !cfg.includes('verify_jwt = false')) throw new Error('Scheduler must be cron-only and secret-protected');
+          for (const token of ['workflow_dispatch:', "inputs.confirmation == 'DEPLOY'", 'supabase db push --linked', 'supabase secrets set --project-ref', 'supabase functions deploy "$fn"']) if (!deployWorkflow.includes(token)) throw new Error('Manual backend deployment workflow is missing a required step: ' + token);
+          if (deployWorkflow.includes('secrets.SUPABASE_SERVICE_ROLE_KEY') || deployWorkflow.includes('write_secret SUPABASE_SERVICE_ROLE_KEY')) throw new Error('Do not deploy the reserved SUPABASE_ secret prefix through secrets set');
+          if (deployWorkflow.includes('\\${{')) throw new Error('GitHub workflow expressions must not be escaped');
           if (pushFn.includes('sk-proj-') || pushFn.includes('sb_secret_')) throw new Error('No live service secrets should be embedded in source');
           if (!gitignore.includes('functions/.env')) throw new Error('Local function secrets must be ignored by Git');
           const cloudClient = fs.readFileSync('motovich-app/cloud-sync.js', 'utf8');
