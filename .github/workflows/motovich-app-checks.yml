@@ -90,5 +90,8 @@ jobs:
           if (!html.includes("a.download='motovich-backup-'")) {
             throw new Error('Backup download action is missing');
           }
+          for (const token of ["ensureRecords", "needsStateUpgrade", "state.schemaVersion=2"]) {
+            if (!html.includes(token)) throw new Error('Local state migration safeguard missing: ' + token);
+          }
           console.log('Backup import safety and autosave recovery checks passed.');
           NODE
