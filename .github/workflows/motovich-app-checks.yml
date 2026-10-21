@@ -62,7 +62,7 @@ jobs:
           const advanced = fs.readFileSync('motovich-app/advanced.js', 'utf8');
           const pro = fs.readFileSync('motovich-app/pro.js', 'utf8');
           const base = ['today', 'tasks', 'habits', 'focus', 'wellbeing', 'coach', 'stats', 'meditation', 'journal', 'goals', 'backup', 'settings'];
-          const extra = ['planner', 'water', 'inbox', 'review', 'calendar', 'routines', 'achievements'];
+          const extra = ['planner', 'water', 'inbox', 'review', 'calendar', 'routines', 'achievements', 'music'];
           for (const id of base) {
             if (!html.includes('id="' + id + '"')) throw new Error('Missing base section: ' + id);
             if (!html.includes('data-section="' + id + '"')) throw new Error('Missing base navigation entry: ' + id);
@@ -123,6 +123,12 @@ jobs:
           }
           for (const token of ['id="calQuickTaskForm"', 'id="calQuickTaskName"', 'id="calQuickTaskDate"', "state.tasks.push({id:String(Date.now())", "renderCalendar();", "Задача добавлена в календарь"]) {
             if (!pro.includes(token)) throw new Error('Calendar quick-task workflow missing: ' + token);
+          }
+          for (const token of ["id='music'", "const musicTracks=", "meditation:[", "work:[", "function playMusic(i)", "function stopMusic()", "data-music-category", "renderMusic();"]) {
+            if (!pro.includes(token)) throw new Error('Music section/player feature missing: ' + token);
+          }
+          if (!html.includes("{id:'music',name:'Музыка',icon:'♫'}")) {
+            throw new Error('Music section is missing from home dashboard catalogue');
           }
           const widgetBlock = html.match(/const HOME_WIDGETS=(\[[\s\S]*?\]);if\(!Array\.isArray\(state\.homeWidgets\)\)/);
           if (!widgetBlock) throw new Error('Home dashboard widget catalogue is missing');
