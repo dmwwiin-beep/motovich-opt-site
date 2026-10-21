@@ -189,9 +189,21 @@ body{background:var(--bg);color:var(--text)}
 
 <label class="formfield"><span>Ваш номер телефона или Telegram</span><input name="contact" placeholder="@username или номер телефона" autocomplete="tel" required></label>
 
-<label class="formfield"><span>Выберите способ доставки</span><select name="delivery" required><option value="">Выберите доставку</option><option value="Яндекс">Яндекс</option><option value="СДЭК">СДЭК</option><option value="Авито Доставка (обычно самый дешёвый способ)">Авито Доставка — обычно самый дешёвый способ</option></select></label>
+<label class="formfield"><span>Выберите способ доставки</span><select name="delivery" id="deliveryMethod" required><option value="">Выберите доставку</option><option value="Яндекс">Яндекс</option><option value="СДЭК">СДЭК</option><option value="Авито">Пункт Авито</option></select></label>
 
-<label class="formfield"><span>Комментарии к заказу</span><textarea name="comment" placeholder="Город, адрес и пожелания"></textarea></label>
+<div id="deliveryDetails" hidden>
+<label class="formfield"><span>ФИО получателя</span><input name="recipientName" autocomplete="name" placeholder="Иванов Иван Иванович"></label>
+<label class="formfield"><span>Номер телефона получателя</span><input name="recipientPhone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></label>
+<label class="formfield"><span>Город</span><input name="recipientCity" autocomplete="address-level2" placeholder="Город получения"></label>
+<label class="formfield"><span>Адрес или название пункта выдачи</span><input name="pickupPoint" placeholder="Адрес / название пункта выдачи"></label>
+</div>
+<div id="avitoDetails" hidden style="border:1px solid #e5d8f2;background:#f8f2ff;border-radius:12px;padding:13px;margin:12px 0">
+<strong>Оформление через Авито</strong>
+<p style="font-size:13px;line-height:1.5;margin:7px 0 10px">Перейдите по ссылке на объявление и оформите заказ через Авито.</p>
+<a id="avitoListingLink" class="primary" href="#" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;text-decoration:none">Открыть объявление на Авито</a>
+</div>
+
+<label class="formfield"><span>Комментарии к заказу</span><textarea name="comment" placeholder="Дополнительные пожелания к заказу"></textarea></label>
 
 <button class="primary checkout" type="submit">Отправить заказ в WhatsApp →</button>
 
@@ -214,6 +226,9 @@ const CATEGORY_RULES=[
 const HIT_RULE=/air\s?pods pro|airpods pro|dyson.*(фен|стайлер)|marshall major|jbl flip|apple watch ultra|galaxy buds|hk 11|xiaomi повербанк|dual(?:sense|shock)|iphone xr/i;
 
 let allProducts=[],cart={},activeCat='Все товары',activeTier=0,pendingOrder=null,currentDetail=null;
+
+// Вставим сюда ссылку на объявление Авито после её получения.
+const AVITO_LISTING_URL='';
 
 const $=s=>document.querySelector(s);const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n)+' ₽';
 
@@ -292,7 +307,9 @@ $('#copyProductLink').onclick=async()=>{const input=$('#productShareLink');input
 
 $('#paymentClose').onclick=closePayment;$('#paymentModal').addEventListener('click',e=>{if(e.target.id==='paymentModal')closePayment()});
 
-$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const ids=Object.keys(cart).filter(k=>cart[k]>0);if(!ids.length){toast('Сначала добавьте товары в корзину');return}const total=ids.reduce((sum,k)=>{const p=allProducts.find(x=>x.id===Number(k));return sum+(p?priceFor(p)*cart[k]:0)},0);if(total<5000){toast('Минимальный заказ — 5 000 ₽');return}const f=new FormData(e.target);const contact=String(f.get('contact')||'').trim(),delivery=String(f.get('delivery')||''),comment=String(f.get('comment')||'').trim();const lines=ids.map(k=>{const p=allProducts.find(x=>x.id===Number(k));return p.name+' — '+cart[k]+' шт. × '+money(priceFor(p))+' = '+money(cart[k]*priceFor(p))});const method=document.querySelector('input[name="payMethod"]:checked')?.value||'СБП';const message=['ЗАКАЗ MOTOVICH OPT','',...lines,'','ИТОГО: '+money(total),'Уровень прайса: '+tierText(),'Контакт покупателя: '+contact,'Доставка: '+delivery,'Комментарий: '+(comment||'нет'),'Предпочтительный способ оплаты: '+method,'','Прошу подтвердить наличие и прислать ссылку на оплату.'].join('\n');const whatsappUrl='https://wa.me/79186568581?text='+encodeURIComponent(message);window.location.assign(whatsappUrl)});
+$('#deliveryMethod').addEventListener('change',e=>{const isAvito=e.target.value==='Авито';const needsDetails=['Яндекс','СДЭК'].includes(e.target.value);$('#avitoDetails').hidden=!isAvito;$('#deliveryDetails').hidden=!needsDetails;$('#deliveryDetails').querySelectorAll('input').forEach(input=>{input.required=needsDetails});$('#avitoListingLink').href=AVITO_LISTING_URL||'#';$('#avitoListingLink').style.opacity=AVITO_LISTING_URL?'1':'.55';$('#avitoListingLink').setAttribute('aria-disabled',AVITO_LISTING_URL?'false':'true')});
+$('#avitoListingLink').addEventListener('click',e=>{if(!AVITO_LISTING_URL){e.preventDefault();toast('Пришлите ссылку на объявление Авито — добавлю её на сайт')}});
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const ids=Object.keys(cart).filter(k=>cart[k]>0);if(!ids.length){toast('Сначала добавьте товары в корзину');return}const total=ids.reduce((sum,k)=>{const p=allProducts.find(x=>x.id===Number(k));return sum+(p?priceFor(p)*cart[k]:0)},0);if(total<5000){toast('Минимальный заказ — 5 000 ₽');return}const f=new FormData(e.target);const contact=String(f.get('contact')||'').trim(),delivery=String(f.get('delivery')||''),comment=String(f.get('comment')||'').trim();const recipientName=String(f.get('recipientName')||'').trim(),recipientPhone=String(f.get('recipientPhone')||'').trim(),recipientCity=String(f.get('recipientCity')||'').trim(),pickupPoint=String(f.get('pickupPoint')||'').trim();if(['Яндекс','СДЭК'].includes(delivery)&&(!recipientName||!recipientPhone||!recipientCity||!pickupPoint)){toast('Заполните все данные для доставки');return}if(delivery==='Авито'){if(!AVITO_LISTING_URL){toast('Пришлите ссылку на объявление Авито — добавлю её на сайт');return}window.open(AVITO_LISTING_URL,'_blank','noopener');return}const lines=ids.map(k=>{const p=allProducts.find(x=>x.id===Number(k));return p.name+' — '+cart[k]+' шт. × '+money(priceFor(p))+' = '+money(cart[k]*priceFor(p))});const method=document.querySelector('input[name="payMethod"]:checked')?.value||'СБП';const message=['ЗАКАЗ MOTOVICH OPT','',...lines,'','ИТОГО: '+money(total),'Уровень прайса: '+tierText(),'Контакт покупателя: '+contact,'Способ доставки: '+delivery,'ФИО получателя: '+recipientName,'Телефон получателя: '+recipientPhone,'Город: '+recipientCity,'Пункт выдачи: '+pickupPoint,'Комментарий: '+(comment||'нет'),'Предпочтительный способ оплаты: '+method,'','Прошу подтвердить наличие и прислать ссылку на оплату.'].join('\\n');const whatsappUrl='https://wa.me/79186568581?text='+encodeURIComponent(message);window.location.assign(whatsappUrl)});;
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();closePayment()}});init();
 
