@@ -87,3 +87,10 @@ Workflow проверяет синтаксис встроенного и вне�
 ## Если меню выглядит старым
 
 После публикации обновления GitHub Pages может сохраняться предыдущая версия в браузерном кеше. Закрой вкладку приложения и открой ссылку снова. Если версия не обновилась, обнови страницу; сервис-воркер использует версионированный кеш.
+
+
+### Recent stability work
+- The full focus timer belongs in the **Рабочий таймер** section; it is not duplicated on the home screen.
+- Extra timer presets/full-screen controls are injected only once, even if the advanced and pro scripts load in different orders.
+- The service worker shell cache is versioned (`motovich-shell-v15`) so updated app assets can replace stale cached files.
+- CI checks the current cache version and validates timer placement and timer-control guards.
