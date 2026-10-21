@@ -1,6 +1,6 @@
 # MOTOVICH backend preparation
 
-This folder contains a secure starting point for optional cloud persistence and the real AI coach. It is **not active in the published web app yet**: the app still saves locally and its current coach remains a template/rule-based prototype until a Supabase project is configured and the frontend integration is connected.
+This folder contains the secure backend for optional cloud persistence and the real AI coach. The published app now includes an opt-in client panel for Supabase Auth and explicit cloud upload/download, plus a coach client hook. The cloud features remain **inactive until a real Supabase project is configured, the migration is applied, the Edge Function is deployed, and its secrets are set**. Without that setup the app continues in local-only mode with its template/rule-based coach.
 
 ## Included
 
@@ -22,7 +22,7 @@ This folder contains a secure starting point for optional cloud persistence and 
 ## Security notes
 
 - Never place an OpenAI secret key or Supabase secret/service-role key in `motovich-app/`, GitHub Pages, or a client-side environment variable.
-- The published frontend cannot use the cloud table until a project URL and publishable key are configured in a client integration. A publishable key is not a substitute for RLS: the migration restricts user-state rows to the signed-in owner.
+- The published frontend does not access the cloud table until a project URL and publishable key are configured in Settings and a user signs in. A publishable key is not a substitute for RLS: the migration restricts user-state rows to the signed-in owner.
 - The quota table has no direct grants for browser roles; users may only request quota consumption through the fixed-limit function.
 - The endpoint deliberately accepts a short message and an optional compact context summary; it does not upload the user's entire local state.
 - The code is prepared but not deployed or runtime-tested against a live Supabase/OpenAI project. Service credentials, project creation and deployment cannot be inferred from the GitHub repository alone.
