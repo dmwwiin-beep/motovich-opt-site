@@ -85,7 +85,7 @@ jobs:
             throw new Error('PWA manifest is missing required fields');
           }
           if (!manifest.icons || !manifest.icons.some(i => i.src === 'icon-192.png' && i.sizes === '192x192') || !manifest.icons.some(i => i.src === 'icon-512.png' && i.sizes === '512x512') || !manifest.icons.some(i => i.src === 'icon-maskable-512.png' && i.purpose === 'maskable')) throw new Error('PWA install icons must include raster 192 and 512 px assets');
-          for (const legalFile of ['motovich-app/privacy.html', 'motovich-app/account-deletion.html', 'motovich-app/PLAY-STORE-READINESS.md', 'motovich-app/play-store-readiness.html', 'motovich-app/PLAY-STORE-LISTING.md', 'motovich-app/android/BUILD-ANDROID.md']) if (!fs.existsSync(legalFile)) throw new Error('Missing Play release prerequisite: ' + legalFile);
+          for (const legalFile of ['motovich-app/privacy.html', 'motovich-app/account-deletion.html', 'motovich-app/PLAY-STORE-READINESS.md', 'motovich-app/play-store-readiness.html', 'motovich-app/PLAY-STORE-LISTING.md', 'motovich-app/PLAY-TEST-PLAN.md', 'motovich-app/android/BUILD-ANDROID.md']) if (!fs.existsSync(legalFile)) throw new Error('Missing Play release prerequisite: ' + legalFile);
           if (!html.includes('./privacy.html') || !html.includes('./account-deletion.html')) throw new Error('In-app legal/data deletion links are missing');
           const privacy = fs.readFileSync('motovich-app/privacy.html', 'utf8');
           const deletion = fs.readFileSync('motovich-app/account-deletion.html', 'utf8');

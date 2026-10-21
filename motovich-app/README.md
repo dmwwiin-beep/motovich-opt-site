@@ -130,3 +130,8 @@ Do not submit the listing until the support contact and external deletion-reques
 ### Android release runbook
 
 Use [android/BUILD-ANDROID.md](./android/BUILD-ANDROID.md) for the commands to validate the PWA, initialize Bubblewrap, verify target API 36, finish Digital Asset Links, build and test the release AAB.
+
+
+### Closed testing and review preparation
+
+Use [PLAY-TEST-PLAN.md](./PLAY-TEST-PLAN.md) for the end-to-end test matrix, feedback template, and a draft Data safety inventory. Mark cases complete only after testing an actual signed Android build, not the PWA alone.
