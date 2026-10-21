@@ -8,6 +8,7 @@ const SHELL = [
   './icon.svg',
   './icon-192.png',
   './icon-512.png',
+  './icon-maskable-512.png',
   './advanced.js',
   './pro.js',
   './cloud-sync.js',

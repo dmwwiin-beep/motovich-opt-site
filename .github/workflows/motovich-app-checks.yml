@@ -84,14 +84,15 @@ jobs:
           if (!manifest.name || !manifest.id || !manifest.start_url || !manifest.scope) {
             throw new Error('PWA manifest is missing required fields');
           }
-          if (!manifest.icons || !manifest.icons.some(i => i.src === 'icon-192.png' && i.sizes === '192x192') || !manifest.icons.some(i => i.src === 'icon-512.png' && i.sizes === '512x512')) throw new Error('PWA install icons must include raster 192 and 512 px assets');
-          for (const legalFile of ['motovich-app/privacy.html', 'motovich-app/account-deletion.html', 'motovich-app/PLAY-STORE-READINESS.md']) if (!fs.existsSync(legalFile)) throw new Error('Missing Play release prerequisite: ' + legalFile);
+          if (!manifest.icons || !manifest.icons.some(i => i.src === 'icon-192.png' && i.sizes === '192x192') || !manifest.icons.some(i => i.src === 'icon-512.png' && i.sizes === '512x512') || !manifest.icons.some(i => i.src === 'icon-maskable-512.png' && i.purpose === 'maskable')) throw new Error('PWA install icons must include raster 192 and 512 px assets');
+          for (const legalFile of ['motovich-app/privacy.html', 'motovich-app/account-deletion.html', 'motovich-app/PLAY-STORE-READINESS.md', 'motovich-app/play-store-readiness.html']) if (!fs.existsSync(legalFile)) throw new Error('Missing Play release prerequisite: ' + legalFile);
           if (!html.includes('./privacy.html') || !html.includes('./account-deletion.html')) throw new Error('In-app legal/data deletion links are missing');
           const icon192 = fs.readFileSync('motovich-app/icon-192.png');
           const icon512 = fs.readFileSync('motovich-app/icon-512.png');
-          if (icon192.readUInt32BE(16) !== 192 || icon192.readUInt32BE(20) !== 192 || icon512.readUInt32BE(16) !== 512 || icon512.readUInt32BE(20) !== 512) throw new Error('PWA raster icon dimensions do not match manifest');
+          const maskableIcon = fs.readFileSync('motovich-app/icon-maskable-512.png');
+          if (icon192.readUInt32BE(16) !== 192 || icon192.readUInt32BE(20) !== 192 || icon512.readUInt32BE(16) !== 512 || icon512.readUInt32BE(20) !== 512 || maskableIcon.readUInt32BE(16) !== 512 || maskableIcon.readUInt32BE(20) !== 512) throw new Error('PWA raster icon dimensions do not match manifest');
           const sw = fs.readFileSync('motovich-app/sw.js', 'utf8');
-          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './advanced.js', './pro.js', './cloud-sync.js', './voice-task.js']) {
+          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './advanced.js', './pro.js', './cloud-sync.js', './voice-task.js']) {
             if (!sw.includes("'" + asset + "'")) throw new Error('Service worker does not cache ' + asset);
           }
           NODE

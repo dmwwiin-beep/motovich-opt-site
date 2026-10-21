@@ -93,7 +93,7 @@ Workflow проверяет синтаксис встроенного и вне�
 ### Recent stability work
 - The full focus timer belongs in the **Рабочий таймер** section; it is not duplicated on the home screen.
 - Extra timer presets/full-screen controls are injected only once, even if the advanced and pro scripts load in different orders.
-- The service worker shell cache is versioned (`motovich-shell-v15`) so updated app assets can replace stale cached files.
+- The service worker shell cache is versioned; its current cache generation advances when app assets are added or changed.
 - CI checks the current cache version and validates timer placement and timer-control guards.
 
 
