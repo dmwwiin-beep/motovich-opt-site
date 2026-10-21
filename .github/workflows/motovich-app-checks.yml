@@ -50,3 +50,25 @@ jobs:
           }
           NODE
           node --check /tmp/motovich-inline.js
+      - name: Validate complete navigation and section targets
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const html = fs.readFileSync('motovich-app/index.html', 'utf8');
+          const advanced = fs.readFileSync('motovich-app/advanced.js', 'utf8');
+          const pro = fs.readFileSync('motovich-app/pro.js', 'utf8');
+          const base = ['today', 'tasks', 'habits', 'focus', 'wellbeing', 'coach', 'stats', 'meditation', 'journal', 'goals', 'backup', 'settings'];
+          const extra = ['planner', 'water', 'inbox', 'review', 'calendar', 'routines', 'achievements'];
+          for (const id of base) {
+            if (!html.includes('id="' + id + '"')) throw new Error('Missing base section: ' + id);
+            if (!html.includes('data-section="' + id + '"')) throw new Error('Missing base navigation entry: ' + id);
+          }
+          for (const id of extra) {
+            const sectionExists = html.includes('id="' + id + '"') ||
+              advanced.includes("addSection('" + id + "'") ||
+              pro.includes("addSection('" + id + "'");
+            if (!sectionExists) throw new Error('Missing section definition: ' + id);
+            if (!pro.includes("['" + id + "'")) throw new Error('Missing section from complete navigation reconciliation: ' + id);
+          }
+          console.log('Validated ' + (base.length + extra.length) + ' navigation targets.');
+          NODE
