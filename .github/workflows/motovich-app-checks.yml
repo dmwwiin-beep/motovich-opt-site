@@ -103,8 +103,8 @@ jobs:
             throw new Error('Voice dictation fallback is missing');
           }
           const serviceWorker = fs.readFileSync('motovich-app/sw.js', 'utf8');
-          for (const token of ["self.addEventListener('push'", "self.addEventListener('notificationclick'", 'showNotification', 'safeAppPath']) {
-            if (!serviceWorker.includes(token)) throw new Error('PWA notification handler missing: ' + token);
+          for (const token of ["self.addEventListener('push'", "self.addEventListener('notificationclick'", 'showNotification', 'safeAppPath', '!Array.isArray(parsed)', 'motovich-shell-v13']) {
+            if (!serviceWorker.includes(token)) throw new Error('PWA notification/offline safeguard missing: ' + token);
           }
           console.log('Backup, voice input, offline, and notification-handler checks passed.');
           NODE
