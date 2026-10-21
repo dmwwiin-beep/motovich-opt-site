@@ -116,3 +116,12 @@ Workflow проверяет синтаксис встроенного и вне�
 ### Быстрый запуск cron-напоминаний
 
 SQL-шаблон для Supabase Vault и расписания каждую минуту находится в [supabase/setup/push-schedule-cron.sql](../supabase/setup/push-schedule-cron.sql). Перед запуском замените project ref и сохраните тот же случайный секрет в Supabase Edge Function secrets как `MOTOVICH_PUSH_CRON_SECRET` и в Vault как `motovich_push_cron_secret`. Не коммитьте заполненный SQL со значением секрета.
+
+
+### Google Play materials
+
+- [Draft store listing copy and asset checklist](./PLAY-STORE-LISTING.md)
+- [Release readiness and blocking dependencies](./PLAY-STORE-READINESS.md)
+- [Browser-readable release checklist](./play-store-readiness.html)
+
+Do not submit the listing until the support contact and external deletion-request link are real and tested, the TWA origin association is configured, and a signed Android App Bundle has been tested.

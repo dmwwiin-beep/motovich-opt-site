@@ -40,3 +40,14 @@
 - Не настроены Supabase project secrets, миграции в реальном проекте и серверный cron, поэтому push-доставка не станет активной только от включения разрешения.
 - Не выполнен реальный тест на Android-устройстве и в Google Play Console.
 - Уникальность app.motovich.productivity, название листинга и контакт разработчика нужно проверить до первой отправки.
+
+
+## Blocking release requirement: real support contact
+
+A verified developer support email has not been provided in the repository context, so it has intentionally not been invented. Before public release:
+- replace the warning contact text in `privacy.html` and `account-deletion.html` with the actual support email;
+- make the external deletion request a direct, working link that does not require installing or signing into the app;
+- use the same support contact in Play Console and the public listing;
+- test the deletion URL in a private browser window without an app session.
+
+Google Play's account-deletion policy requires a discoverable in-app path and an external web resource where a user can request deletion even after uninstalling: https://support.google.com/googleplay/android-developer/answer/10144311
