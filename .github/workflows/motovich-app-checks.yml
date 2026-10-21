@@ -84,6 +84,9 @@ jobs:
           if (!pro.includes('.drawer{overflow-y:auto')) {
             throw new Error('Mobile side drawer must support vertical scrolling');
           }
+          for (const token of ["e.key==='Escape'", "e.key!=='Tab'", "aria-expanded", "aria-controls"]) {
+            if (!pro.includes(token)) throw new Error('Drawer accessibility feature missing: ' + token);
+          }
           if (!html.includes("a.download='motovich-backup-'")) {
             throw new Error('Backup download action is missing');
           }
