@@ -1,6 +1,6 @@
 /* MOTOVICH PWA service worker: offline shell + Web Push notifications. */
 'use strict';
-const CACHE = 'motovich-shell-v12';
+const CACHE = 'motovich-shell-v13';
 const SHELL = [
   './',
   './index.html',
@@ -60,8 +60,14 @@ self.addEventListener('fetch', event => {
 
 self.addEventListener('push', event => {
   let data = {};
-  try { data = event.data ? event.data.json() : {}; }
-  catch (_) { data = { body: event.data ? event.data.text() : '' }; }
+  try {
+    const parsed = event.data ? event.data.json() : {};
+    data = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+      ? parsed
+      : { body: parsed == null ? '' : String(parsed) };
+  } catch (_) {
+    data = { body: event.data ? event.data.text() : '' };
+  }
 
   event.waitUntil(self.registration.showNotification(
     String(data.title || 'MOTOVICH').slice(0, 80),
