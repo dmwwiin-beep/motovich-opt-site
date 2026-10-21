@@ -1,0 +1,52 @@
+name: MOTOVICH app checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "motovich-app/**"
+      - ".github/workflows/motovich-app-checks.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "motovich-app/**"
+      - ".github/workflows/motovich-app-checks.yml"
+
+jobs:
+  static-checks:
+    name: Check app scripts and PWA files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check external JavaScript
+        run: |
+          node --check motovich-app/advanced.js
+          node --check motovich-app/pro.js
+      - name: Extract and check inline JavaScript
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const html = fs.readFileSync('motovich-app/index.html', 'utf8');
+          const match = html.match(/<script>([\s\S]*?)<\/script>/);
+          if (!match) throw new Error('Inline app script was not found');
+          for (const file of ['advanced.js', 'pro.js']) {
+            if (!html.includes('<script src="' + file + '"></script>')) {
+              throw new Error('Missing script link: ' + file);
+            }
+          }
+          fs.writeFileSync('/tmp/motovich-inline.js', match[1]);
+          const manifest = JSON.parse(fs.readFileSync('motovich-app/manifest.webmanifest', 'utf8'));
+          if (!manifest.name || !manifest.start_url || !manifest.scope) {
+            throw new Error('PWA manifest is missing required fields');
+          }
+          const sw = fs.readFileSync('motovich-app/sw.js', 'utf8');
+          for (const asset of ['./index.html', './manifest.webmanifest', './icon.svg', './advanced.js', './pro.js']) {
+            if (!sw.includes("'" + asset + "'")) throw new Error('Service worker does not cache ' + asset);
+          }
+          NODE
+          node --check /tmp/motovich-inline.js
