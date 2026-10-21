@@ -1,0 +1,6 @@
+# Local Supabase secrets and generated state. Keep real credentials out of Git.
+functions/.env
+functions/**/.env
+.env
+*.local
+.tmp/
