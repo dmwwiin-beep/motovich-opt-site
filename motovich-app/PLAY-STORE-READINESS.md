@@ -51,3 +51,13 @@ A verified developer support email has not been provided in the repository conte
 - test the deletion URL in a private browser window without an app session.
 
 Google Play's account-deletion policy requires a discoverable in-app path and an external web resource where a user can request deletion even after uninstalling: https://support.google.com/googleplay/android-developer/answer/10144311
+
+
+## Пошаговая сборка Android
+
+Подробные команды, проверка API 36, Digital Asset Links, подпись и smoke-test собраны в [BUILD-ANDROID.md](./android/BUILD-ANDROID.md).
+
+
+## Дополнительный риск для аккаунта с платежным профилем России
+
+Если платежный профиль Google Play и банковский счёт для выплат зарегистрированы в России, проверь официальное ограничение для разработчиков из России. Google сообщает, что с 26 декабря 2024 года перестала обрабатывать выплаты на банковские счета, открытые в России; новые бесплатные приложения при этом могут публиковаться, но монетизацию с таким счётом не следует считать доступной. Условия зависят от фактической страны платёжного профиля и могут меняться: https://support.google.com/googleplay/android-developer/answer/15685001

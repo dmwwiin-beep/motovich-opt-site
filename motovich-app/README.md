@@ -125,3 +125,8 @@ SQL-шаблон для Supabase Vault и расписания каждую ми
 - [Browser-readable release checklist](./play-store-readiness.html)
 
 Do not submit the listing until the support contact and external deletion-request link are real and tested, the TWA origin association is configured, and a signed Android App Bundle has been tested.
+
+
+### Android release runbook
+
+Use [android/BUILD-ANDROID.md](./android/BUILD-ANDROID.md) for the commands to validate the PWA, initialize Bubblewrap, verify target API 36, finish Digital Asset Links, build and test the release AAB.
