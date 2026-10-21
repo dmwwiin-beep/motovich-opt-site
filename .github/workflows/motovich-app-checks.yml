@@ -109,7 +109,10 @@ jobs:
           for (const token of ["self.addEventListener('push'", "self.addEventListener('notificationclick'", 'showNotification', 'safeAppPath', '!Array.isArray(parsed)', 'motovich-shell-v13']) {
             if (!serviceWorker.includes(token)) throw new Error('PWA notification/offline safeguard missing: ' + token);
           }
-          console.log('Backup, voice input, offline, and notification-handler checks passed.');
+          for (const token of ['homeWidgets:', 'function renderHomeWidgets()', 'function removeHomeWidget(id)', "state.homeWidgets.push(id)", 'id="homeWidgetSelect"', 'id="confirmHomeWidget"']) {
+            if (!html.includes(token)) throw new Error('Home dashboard customization feature missing: ' + token);
+          }
+          console.log('Backup, voice input, home dashboard, offline, and notification-handler checks passed.');
           NODE
       - name: Set up Deno for the Edge Function
         uses: denoland/setup-deno@v2
