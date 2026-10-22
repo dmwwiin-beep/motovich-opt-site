@@ -113,7 +113,8 @@ jobs:
           const extra = ['planner', 'water', 'inbox', 'review', 'calendar', 'routines', 'achievements', 'music'];
           for (const id of base) {
             if (!html.includes('id="' + id + '"')) throw new Error('Missing base section: ' + id);
-            if (!html.includes('data-section="' + id + '"')) throw new Error('Missing base navigation entry: ' + id);
+            // The redesigned home uses a generated side drawer, not a static bottom-nav entry.
+            if (!pro.includes("['" + id + "'")) throw new Error('Missing base section from complete drawer navigation: ' + id);
           }
           for (const id of extra) {
             const sectionExists = html.includes('id="' + id + '"') ||
