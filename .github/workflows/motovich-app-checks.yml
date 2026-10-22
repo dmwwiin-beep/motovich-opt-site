@@ -241,6 +241,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs = require('node:fs');
+          const html = fs.readFileSync('motovich-app/index.html', 'utf8');
           const sql = fs.readFileSync('supabase/migrations/202610210001_motovich_cloud.sql', 'utf8');
           const pushSql = fs.readFileSync('supabase/migrations/202610210002_motovich_push.sql', 'utf8');
           const cronSql = fs.readFileSync('supabase/setup/push-schedule-cron.sql', 'utf8');
