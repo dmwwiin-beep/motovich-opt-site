@@ -176,4 +176,26 @@ setupVoiceTaskInput();
  input.addEventListener('keydown',e=>{if(e.key==='Escape'){input.value='';input.blur()}});
 })();
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script><script>
+/* Independent fallback: keep the two floating task controls usable even if an unrelated app module fails. */
+(function(){
+ function bindQuickTaskControls(){
+  const add=document.getElementById('quickAddFab');
+  const voice=document.getElementById('quickVoiceFab');
+  const composer=document.getElementById('aiTaskComposer');
+  const hint=document.getElementById('aiTaskHint');
+  const input=document.getElementById('aiTaskInput');
+  const mic=document.getElementById('aiTaskMic');
+  if(!composer||!input)return;
+  function open(){
+   composer.classList.add('is-open');composer.style.display='flex';
+   if(hint){hint.classList.add('is-open');hint.style.display='block';}
+   try{input.focus({preventScroll:true});}catch(_){input.focus();}
+  }
+  if(add&&!add.dataset.fallbackBound){add.dataset.fallbackBound='1';add.addEventListener('click',open);}
+  if(voice&&!voice.dataset.fallbackBound){voice.dataset.fallbackBound='1';voice.addEventListener('click',function(){open();if(mic)setTimeout(()=>mic.click(),120);});}
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindQuickTaskControls,{once:true});
+ else bindQuickTaskControls();
+})();
 </script><script src="advanced.js"></script><script src="pro.js"></script><script src="cloud-sync.js"></script></body></html>
