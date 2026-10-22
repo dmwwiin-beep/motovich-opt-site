@@ -167,8 +167,9 @@ jobs:
             if (!serviceWorker.includes("'" + asset + "'")) throw new Error('Offline shell is missing required asset: ' + asset);
           }
           console.log('Validated service worker cache version ' + cacheVersion[1]);
-          for (const token of ['homeWidgets:', 'function renderHomeWidgets()', 'function removeHomeWidget(id)', "state.homeWidgets.push(id)", 'id="homeWidgetSelect"', 'id="confirmHomeWidget"']) {
-            if (!html.includes(token)) throw new Error('Home dashboard customization feature missing: ' + token);
+          // The redesigned home is a minimal task inbox; old widget-editor controls were intentionally removed.
+          for (const token of ['home-quick-actions', 'class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')"]) {
+            if (!html.includes(token)) throw new Error('Redesigned home quick-task entry is missing: ' + token);
           }
           for (const token of ['home-quick-actions', 'class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')", "homeQuickAction('note')", "homeQuickAction('water')", "homeQuickAction('focus')", "homeQuickAction('meditation')"]) {
             if (!html.includes(token)) throw new Error('Home quick action missing: ' + token);
