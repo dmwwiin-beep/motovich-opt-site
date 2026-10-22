@@ -90,6 +90,7 @@ jobs:
           const privacy = fs.readFileSync('motovich-app/privacy.html', 'utf8');
           const deletion = fs.readFileSync('motovich-app/account-deletion.html', 'utf8');
           if (privacy.includes('dmwwiin@icloud.com') || deletion.includes('dmwwiin@icloud.com')) throw new Error('Do not publish an unverified developer support address');
+          for (const disclosure of ['название задачи', 'часовой пояс', 'техническую запись доставки', 'Push-провайдер']) if (!privacy.includes(disclosure)) throw new Error('Privacy policy must disclose scheduled reminder data: ' + disclosure);
           if (!deletion.includes('без входа') && !deletion.includes('Если вы не можете войти')) throw new Error('External account deletion instructions must be visible');
           const icon192 = fs.readFileSync('motovich-app/icon-192.png');
           const icon512 = fs.readFileSync('motovich-app/icon-512.png');
