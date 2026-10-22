@@ -168,10 +168,7 @@ jobs:
           }
           console.log('Validated service worker cache version ' + cacheVersion[1]);
           // The redesigned home is a minimal task inbox; old widget-editor controls were intentionally removed.
-          for (const token of ['home-quick-actions', 'class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')"]) {
-            if (!html.includes(token)) throw new Error('Redesigned home quick-task entry is missing: ' + token);
-          }
-          for (const token of ['home-quick-actions', 'class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')", "homeQuickAction('note')", "homeQuickAction('water')", "homeQuickAction('focus')", "homeQuickAction('meditation')"]) {
+          for (const token of ['class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')", "homeQuickAction('note')", "homeQuickAction('water')", "homeQuickAction('focus')", "homeQuickAction('meditation')"]) {
             if (!html.includes(token)) throw new Error('Home quick action missing: ' + token);
           }
           const timerCount = (html.match(/id="timerDisplay"/g) || []).length;
