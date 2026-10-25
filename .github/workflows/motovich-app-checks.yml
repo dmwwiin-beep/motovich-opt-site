@@ -167,9 +167,9 @@ jobs:
             if (!serviceWorker.includes("'" + asset + "'")) throw new Error('Offline shell is missing required asset: ' + asset);
           }
           console.log('Validated service worker cache version ' + cacheVersion[1]);
-          // The redesigned home is a minimal task inbox; old widget-editor controls were intentionally removed.
-          for (const token of ['class="home-action-grid"', "function homeQuickAction(action)", "homeQuickAction('task')", "homeQuickAction('note')", "homeQuickAction('water')", "homeQuickAction('focus')", "homeQuickAction('meditation')"]) {
-            if (!html.includes(token)) throw new Error('Home quick action missing: ' + token);
+          // The current home is a minimal task inbox with a focused quick composer.
+          for (const token of ['id="quickAddFab"', 'id="quickVoiceFab"', 'id="aiTaskComposer"', 'id="aiTaskInput"', 'function setupQuickTaskComposer()', 'body.composer-editing', 'function closeComposer()']) {
+            if (!html.includes(token)) throw new Error('Quick task composer requirement missing: ' + token);
           }
           const timerCount = (html.match(/id="timerDisplay"/g) || []).length;
           if (timerCount !== 1) throw new Error('Expected exactly one primary timer display in the app');
