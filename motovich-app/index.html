@@ -281,6 +281,13 @@ setupVoiceTaskInput();
     else showKeyboardDictationFallback('Речь не распознана. Нажми 🎙 на клавиатуре iPhone.');
    };
    // Called directly from the user's button tap to preserve browser user activation.
+   // Start a watchdog before start(): some embedded iOS browsers never emit onstart/onerror.
+   clearTimeout(voiceWatchdog);
+   voiceWatchdog=setTimeout(()=>{
+    if(recognition&&!listening&&!finalVoiceText){
+     showKeyboardDictationFallback('Голосовое распознавание в этом окне не ответило. Нажми 🎙 на клавиатуре iPhone.');
+    }
+   },6000);
    recognition.start();
   }catch(_){
    showKeyboardDictationFallback('Не удалось запустить голосовой ввод здесь. Нажми 🎙 на клавиатуре iPhone.');
