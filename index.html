@@ -228,9 +228,8 @@ const CATEGORY_RULES=[
 
 const HIT_RULE=/air\s?pods pro|airpods pro|dyson.*(фен|стайлер)|marshall major|jbl flip|apple watch ultra|galaxy buds|hk 11|xiaomi повербанк|dual(?:sense|shock)|iphone xr/i;
 
-let allProducts=[],cart=loadSavedCart(),activeCat='Все товары',activeTier=0,pendingOrder=null,currentDetail=null;
-
 const CART_STORAGE_KEY='motovich_opt_cart_v1';
+let allProducts=[],cart=loadSavedCart(),activeCat='Все товары',activeTier=0,pendingOrder=null,currentDetail=null;
 function loadSavedCart(){
   try{
     const raw=localStorage.getItem(CART_STORAGE_KEY);
