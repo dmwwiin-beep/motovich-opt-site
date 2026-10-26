@@ -26,7 +26,7 @@ body.composer-editing #aiTaskInput{font-size:16px!important;line-height:1.4!impo
 body.composer-editing #aiTaskInput::placeholder{color:#a0aaa0!important;opacity:1}
 body.composer-editing .ai-task-composer button{width:44px;height:44px;flex-basis:44px}
 body.composer-editing .ai-task-hint{display:none!important}
-.ai-task-composer.is-open{display:flex!important}.ai-task-hint.is-open{display:block!important}.ai-task-composer{position:fixed;z-index:9999;left:50%;transform:translateX(-50%);bottom:calc(100px + env(safe-area-inset-bottom) + var(--keyboard-lift, 0px));width:min(720px,calc(100% - 24px));display:flex;align-items:flex-end;gap:8px;padding:8px;background:#202720f5;border:1px solid #465246;border-radius:24px;box-shadow:0 8px 32px #0007;backdrop-filter:blur(18px)}.ai-task-composer input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);padding:10px 6px;max-height:100px}.ai-task-composer button{width:42px;height:42px;flex:0 0 42px;border:0;border-radius:50%;display:grid;place-items:center;font-size:19px;background:#303a31;color:var(--text)}.ai-task-composer button.send{background:var(--accent);color:#10130f;font-weight:900}.ai-task-composer button#aiTaskMic{background:var(--accent,#c3f36b);color:#10130f;position:relative;overflow:visible}.motovich-mic-icon{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round;overflow:visible}.ai-task-composer button#aiTaskMic.listening{background:var(--accent,#c3f36b);color:#10130f;animation:micBreath 1.2s ease-in-out infinite}.ai-task-composer button#aiTaskMic.listening:before,.ai-task-composer button#aiTaskMic.listening:after{content:"";position:absolute;inset:-4px;border:2px solid var(--accent,#c3f36b);border-radius:50%;animation:micRipple 1.6s ease-out infinite;pointer-events:none}.ai-task-composer button#aiTaskMic.listening:after{animation-delay:.8s}.ai-task-composer button#aiTaskMic.listening .motovich-mic-icon{animation:micFloat .8s ease-in-out infinite alternate}.ai-task-hint{position:fixed;z-index:14;left:50%;transform:translateX(-50%);bottom:calc(126px + env(safe-area-inset-bottom));width:min(720px,calc(100% - 34px));font-size:11px;color:var(--muted);text-align:center;pointer-events:none;text-shadow:0 1px 5px #000}@keyframes micPulse{50%{box-shadow:0 0 0 6px #c3f36b33}}@keyframes micBreath{50%{transform:scale(1.06);box-shadow:0 0 0 5px #c3f36b30}}@keyframes micRipple{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.65);opacity:0}}@keyframes micFloat{from{transform:translateY(1px)}to{transform:translateY(-1px)}}@media(prefers-reduced-motion:reduce){.ai-task-composer button#aiTaskMic.listening,.ai-task-composer button#aiTaskMic.listening:before,.ai-task-composer button#aiTaskMic.listening:after,.ai-task-composer button#aiTaskMic.listening .motovich-mic-icon{animation:none}}@media(max-width:600px){.ai-task-composer{bottom:calc(94px + env(safe-area-inset-bottom) + var(--keyboard-lift, 0px));border-radius:23px}.ai-task-composer input{font-size:16px}.ai-task-hint{bottom:calc(148px + env(safe-area-inset-bottom) + var(--keyboard-lift, 0px));z-index:9998}@media(max-height:500px){.ai-task-hint{display:none!important}}}body.composer-editing .ai-task-composer{position:fixed!important;top:var(--composer-top,calc(100dvh - 76px))!important;bottom:auto!important;left:12px!important;right:12px!important;width:auto!important;max-width:none!important;height:60px!important;min-height:60px!important;max-height:60px!important;flex:0 0 60px!important;display:flex!important;align-items:center!important;visibility:visible!important;opacity:1!important;transform:none!important;z-index:2147483647!important;overflow:hidden!important;background:#202720!important;border:2px solid #c3f36b!important;border-radius:22px!important;box-shadow:0 4px 24px #0008!important}body.composer-editing #aiTaskInput{display:block!important;visibility:visible!important;opacity:1!important;color:#f3f5ef!important;caret-color:#c3f36b!important;background:transparent!important;min-width:0!important;height:42px!important;max-height:80px!important;overflow-y:auto!important;font-size:16px!important;line-height:1.35!important;padding:10px 6px!important}body.composer-editing .ai-task-composer button{flex:0 0 42px!important;width:42px!important;height:42px!important}</style><script src="voice-task.js"></script><style id="inbox-home-style">#progressHero{display:none!important}.inbox-home{padding-top:8px}.inbox-heading{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 22px}.inbox-heading h1{font-size:clamp(30px,7vw,42px);line-height:1.05;letter-spacing:-1.4px;margin:5px 0 0;font-weight:850}.inbox-heading .eyebrow{color:var(--accent,#c3f36b);font-size:12px;letter-spacing:2px;font-weight:800}.inbox-count{display:grid;place-items:center;min-width:38px;height:38px;padding:0 10px;border-radius:50px;background:#c3f36b;color:#10140d;font-weight:850}.inbox-task-list{display:flex;flex-direction:column}.inbox-task-row{display:flex;align-items:flex-start;gap:13px;padding:17px 4px;border-bottom:1px solid var(--line,#30372f);min-width:0}.inbox-check{appearance:none;flex:0 0 23px;width:23px;height:23px;border:1.8px solid #859080;border-radius:50%;background:transparent;margin:3px 0 0;cursor:pointer;position:relative}.inbox-check:checked{background:#c3f36b;border-color:#c3f36b}.inbox-check:checked:after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#10140d;font-size:15px;font-weight:900}.inbox-task-copy{min-width:0;flex:1}.inbox-task-name{font-size:17px;line-height:1.35;font-weight:650;overflow-wrap:anywhere}.inbox-task-row.is-done .inbox-task-name{text-decoration:line-through;opacity:.52}.inbox-task-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:5px;color:var(--muted,#9ca69b);font-size:13px}.inbox-task-meta .due{color:#c3f36b}.inbox-task-actions{display:flex;gap:5px;opacity:.8}.inbox-task-actions button{border:1px solid var(--line,#30372f);background:var(--surface,#171c17);color:var(--text,#f3f5ef);border-radius:9px;width:32px;height:32px}.inbox-empty{padding:36px 12px;text-align:center;color:var(--muted,#9ca69b);line-height:1.7}.inbox-empty span{font-size:13px}.home-manage{padding:20px 0 28px;text-align:center}.home-manage .btn{color:var(--muted,#9ca69b);background:transparent}@media(min-width:700px){.inbox-home{max-width:820px;margin-inline:auto}.inbox-task-row{padding:19px 8px}}</style></head>
+.ai-task-composer.is-open{display:flex!important}.ai-task-hint.is-open{display:block!important}.ai-task-composer{position:fixed;z-index:9999;left:50%;transform:translateX(-50%);bottom:calc(100px + env(safe-area-inset-bottom) + var(--keyboard-lift, 0px));width:min(720px,calc(100% - 24px));display:flex;align-items:flex-end;gap:8px;padding:8px;background:#202720f5;border:1px solid #465246;border-radius:24px;box-shadow:0 8px 32px #0007;backdrop-filter:blur(18px)}.ai-task-composer input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);padding:10px 6px;max-height:100px}.ai-task-composer button{width:42px;height:42px;flex:0 0 42px;border:0;border-radius:50%;display:grid;place-items:center;font-size:19px;background:#303a31;color:var(--text)}.ai-task-composer button.send{background:var(--accent);color:#10130f;font-weight:900}.ai-task-composer button#aiTaskMic{background:var(--accent,#c3f36b);color:#10130f;position:relative;overflow:visible}.motovich-mic-icon{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round;overflow:visible}.ai-task-composer button#aiTaskMic.listening{background:var(--accent,#c3f36b);color:#10130f;animation:micBreath 1.2s ease-in-out infinite}.ai-task-composer button#aiTaskMic.listening:before,.ai-task-composer button#aiTaskMic.listening:after{content:"";position:absolute;inset:-4px;border:2px solid var(--accent,#c3f36b);border-radius:50%;animation:micRipple 1.6s ease-out infinite;pointer-events:none}.ai-task-composer button#aiTaskMic.listening:after{animation-delay:.8s}.ai-task-composer button#aiTaskMic.listening .motovich-mic-icon{animation:micFloat .8s ease-in-out infinite alternate}.ai-task-hint{position:fixed;z-index:14;left:50%;transform:translateX(-50%);bottom:calc(126px + env(safe-area-inset-bottom));width:min(720px,calc(100% - 34px));font-size:11px;color:var(--muted);text-align:center;pointer-events:none;text-shadow:0 1px 5px #000}@keyframes micPulse{50%{box-shadow:0 0 0 6px #c3f36b33}}@keyframes micBreath{50%{transform:scale(1.06);box-shadow:0 0 0 5px #c3f36b30}}@keyframes micRipple{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.65);opacity:0}}@keyframes micFloat{from{transform:translateY(1px)}to{transform:translateY(-1px)}}@media(prefers-reduced-motion:reduce){.ai-task-composer button#aiTaskMic.listening,.ai-task-composer button#aiTaskMic.listening:before,.ai-task-composer button#aiTaskMic.listening:after,.ai-task-composer button#aiTaskMic.listening .motovich-mic-icon{animation:none}}@media(max-width:600px){.ai-task-composer{bottom:calc(94px + env(safe-area-inset-bottom) + var(--keyboard-lift, 0px));border-radius:23px}.ai-task-composer input{font-size:16px}.ai-task-hint{bottom:calc(148px + env(safe-area-inset-bottom) + var(--keyboard-lift, 0px));z-index:9998}@media(max-height:500px){.ai-task-hint{display:none!important}}}body.composer-editing .ai-task-composer{position:fixed!important;top:var(--composer-top,calc(100dvh - 76px))!important;bottom:auto!important;left:12px!important;right:12px!important;width:auto!important;max-width:none!important;height:60px!important;min-height:60px!important;max-height:60px!important;flex:0 0 60px!important;display:flex!important;align-items:center!important;visibility:visible!important;opacity:1!important;transform:none!important;z-index:2147483647!important;overflow:hidden!important;background:#202720!important;border:2px solid #c3f36b!important;border-radius:22px!important;box-shadow:0 4px 24px #0008!important}body.composer-editing #aiTaskInput{display:block!important;visibility:visible!important;opacity:1!important;color:#f3f5ef!important;caret-color:#c3f36b!important;background:transparent!important;min-width:0!important;height:42px!important;max-height:80px!important;overflow-y:auto!important;font-size:16px!important;line-height:1.35!important;padding:10px 6px!important}body.composer-editing .ai-task-composer button{flex:0 0 42px!important;width:42px!important;height:42px!important}body.composer-editing .ai-task-composer{position:fixed!important;left:12px!important;right:12px!important;width:auto!important;max-width:none!important;height:60px!important;min-height:60px!important;max-height:60px!important;display:flex!important;align-items:center!important;overflow:hidden!important;z-index:2147483647!important;transform:none!important}body.composer-editing #aiTaskInput{display:block!important;visibility:visible!important;opacity:1!important;min-width:0!important;height:42px!important;max-height:42px!important;line-height:1.35!important;font-size:16px!important;color:#f3f5ef!important;caret-color:#c3f36b!important;background:transparent!important}</style><script src="voice-task.js"></script><style id="inbox-home-style">#progressHero{display:none!important}.inbox-home{padding-top:8px}.inbox-heading{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 22px}.inbox-heading h1{font-size:clamp(30px,7vw,42px);line-height:1.05;letter-spacing:-1.4px;margin:5px 0 0;font-weight:850}.inbox-heading .eyebrow{color:var(--accent,#c3f36b);font-size:12px;letter-spacing:2px;font-weight:800}.inbox-count{display:grid;place-items:center;min-width:38px;height:38px;padding:0 10px;border-radius:50px;background:#c3f36b;color:#10140d;font-weight:850}.inbox-task-list{display:flex;flex-direction:column}.inbox-task-row{display:flex;align-items:flex-start;gap:13px;padding:17px 4px;border-bottom:1px solid var(--line,#30372f);min-width:0}.inbox-check{appearance:none;flex:0 0 23px;width:23px;height:23px;border:1.8px solid #859080;border-radius:50%;background:transparent;margin:3px 0 0;cursor:pointer;position:relative}.inbox-check:checked{background:#c3f36b;border-color:#c3f36b}.inbox-check:checked:after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#10140d;font-size:15px;font-weight:900}.inbox-task-copy{min-width:0;flex:1}.inbox-task-name{font-size:17px;line-height:1.35;font-weight:650;overflow-wrap:anywhere}.inbox-task-row.is-done .inbox-task-name{text-decoration:line-through;opacity:.52}.inbox-task-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:5px;color:var(--muted,#9ca69b);font-size:13px}.inbox-task-meta .due{color:#c3f36b}.inbox-task-actions{display:flex;gap:5px;opacity:.8}.inbox-task-actions button{border:1px solid var(--line,#30372f);background:var(--surface,#171c17);color:var(--text,#f3f5ef);border-radius:9px;width:32px;height:32px}.inbox-empty{padding:36px 12px;text-align:center;color:var(--muted,#9ca69b);line-height:1.7}.inbox-empty span{font-size:13px}.home-manage{padding:20px 0 28px;text-align:center}.home-manage .btn{color:var(--muted,#9ca69b);background:transparent}@media(min-width:700px){.inbox-home{max-width:820px;margin-inline:auto}.inbox-task-row{padding:19px 8px}}</style></head>
 <body><div class="notice" id="notice"></div><div class="drawer-backdrop" id="drawerBackdrop" onclick="closeMenu()"></div><aside class="drawer" id="sideDrawer" aria-label="Меню приложения" aria-hidden="true"><div class="drawer-head"><div class="brand"><div class="mark">M</div><div>MOTOVICH<div class="small" style="letter-spacing:0;font-weight:500">Личный кабинет</div></div></div><div class="row" style="gap:6px;flex-wrap:nowrap"><button class="btn primary" id="drawerManageBtn" type="button" aria-label="Настроить разделы меню" title="Добавить или удалить разделы">＋</button><button class="btn" onclick="closeMenu()" aria-label="Закрыть меню">×</button></div></div><div id="drawerManageHint" class="small" hidden>Нажми ×, чтобы убрать раздел. Нажми ＋, чтобы вернуть его.</div><div id="drawerSectionList"></div><div id="drawerSectionPicker" class="home-widget-picker" hidden><label class="small" for="drawerSectionSelect">Добавить раздел в меню</label><div class="row" style="margin-top:6px"><select id="drawerSectionSelect" class="field"></select><button class="btn primary" id="drawerSectionConfirm" type="button">Добавить</button><button class="btn" id="drawerSectionCancel" type="button" aria-label="Отмена">×</button></div></div><div class="drawer-foot"><div class="small">Твой прогресс — шаг за шагом.</div><div class="small" style="margin-top:6px">Данные хранятся в этом браузере.</div></div></aside><main class="app">
 <header class="top"><div class="brand"><div class="mark">M</div><div>MOTOVICH<div class="small" style="letter-spacing:0;font-weight:500">Твоя система эффективности</div></div></div><button class="btn" id="menuBtn" aria-label="Открыть меню" onclick="openMenu()">☰</button></header>
 <section class="hero" id="progressHero" hidden><div class="eyebrow" id="todayLabel">ТВОЙ ДЕНЬ</div><div class="row"><div><div class="small">Выполнено сегодня</div><div class="stat" id="doneCount">0 / 0</div></div><div style="width:42%;max-width:220px"><div class="progress"><span id="dayProgress"></span></div><div class="small" style="margin-top:7px" id="progressText">Начни с одного шага</div></div></div></section>
@@ -136,27 +136,83 @@ function setupVoiceTaskInput(){
  });
 }
 setupVoiceTaskInput();
-// Compact ChatGPT-style composer: text or voice creates a task directly.
+// Compact quick-task composer with iOS visual-viewport handling and a real voice fallback.
 (function setupQuickTaskComposer(){
  const fab=$('quickAddFab'),voiceFab=$('quickVoiceFab'),composer=$('aiTaskComposer'),hintBox=$('aiTaskHint');
- if(composer)composer.classList.remove('is-open');if(hintBox)hintBox.classList.remove('is-open');
- let keyboardLift=0;
- function setKeyboardLift(){const vv=window.visualViewport;if(!vv)return;const layoutHeight=Math.max(document.documentElement.clientHeight,window.innerHeight);const lift=Math.max(0,layoutHeight-vv.height-vv.offsetTop);keyboardLift=lift;document.documentElement.style.setProperty('--keyboard-lift',Math.max(0,lift)+'px');if(composer&&composer.classList.contains('is-open')){const top=Math.max(8,Math.round(vv.offsetTop+vv.height-68));document.documentElement.style.setProperty('--composer-top',top+'px');}}
- if(window.visualViewport){window.visualViewport.addEventListener('resize',setKeyboardLift);window.visualViewport.addEventListener('scroll',setKeyboardLift)}
- function openComposer(){document.body.classList.add('composer-editing');if(composer){composer.classList.add('is-open');composer.style.display='flex'}if(hintBox){hintBox.classList.remove('is-open');hintBox.style.display='none'}document.documentElement.style.setProperty('--keyboard-lift','0px');setKeyboardLift();const input=$('aiTaskInput');if(input){try{input.focus({preventScroll:true})}catch(_){input.focus()}setTimeout(()=>{setKeyboardLift()},180)}}
- function closeComposer(){document.body.classList.remove('composer-editing');if(composer){composer.classList.remove('is-open');composer.style.display='none'}if(hintBox){hintBox.classList.remove('is-open');hintBox.style.display='none'}document.documentElement.style.setProperty('--keyboard-lift','0px')}
- window.MOTOVICHQuickAdd=openComposer;
- if(voiceFab){voiceFab.addEventListener('click',()=>{openComposer();const mic=$('aiTaskMic');if(mic){mic.click();setTimeout(()=>{const input=$('aiTaskInput');if(input)input.blur()},80)}})}
- if(fab){fab.addEventListener('click',openComposer);fab.addEventListener('pointerup',e=>{if(!composer.classList.contains('is-open')){e.preventDefault();openComposer()}},{passive:false});}
-
- const form=$('aiTaskComposer'),input=$('aiTaskInput'),mic=$('aiTaskMic'),hint=$('aiTaskHint');
- if(!form||!input||!mic)return;
+ const form=$('aiTaskComposer'),input=$('aiTaskInput'),mic=$('aiTaskMic');
+ if(!composer||!form||!input||!mic)return;
  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
- let recognition=null,listening=false;
- function submitTask(raw){
+ let recognition=null,listening=false,voiceWatchdog=0,finalVoiceText='';
+ const initialPlaceholder=input.placeholder||'Задача, дата и время…';
+
+ function updateComposerPosition(){
+  if(!composer||!composer.classList.contains('is-open'))return;
+  const vv=window.visualViewport;
+  const viewportTop=vv&&Number.isFinite(vv.offsetTop)?vv.offsetTop:0;
+  const viewportHeight=vv&&Number.isFinite(vv.height)&&vv.height>0?vv.height:window.innerHeight;
+  const composerHeight=Math.max(60,composer.offsetHeight||60);
+  const top=Math.max(8,Math.round(viewportTop+viewportHeight-composerHeight-8));
+  // Set inline important styles: mobile Safari sometimes ignores CSS custom-property
+  // updates while the virtual keyboard is animating.
+  composer.style.setProperty('top',top+'px','important');
+  composer.style.setProperty('bottom','auto','important');
+ }
+ function scheduleComposerPosition(){
+  updateComposerPosition();
+  [60,160,320,550,850].forEach(ms=>setTimeout(updateComposerPosition,ms));
+ }
+ if(window.visualViewport){
+  window.visualViewport.addEventListener('resize',scheduleComposerPosition);
+  window.visualViewport.addEventListener('scroll',scheduleComposerPosition);
+ }
+ window.addEventListener('resize',scheduleComposerPosition);
+ function openComposer(shouldFocus=true){
+  document.body.classList.add('composer-editing');
+  composer.classList.add('is-open');
+  composer.style.display='flex';
+  if(hintBox){hintBox.classList.remove('is-open');hintBox.style.display='none'}
+  updateComposerPosition();
+  if(shouldFocus){
+   requestAnimationFrame(()=>{
+    try{input.focus({preventScroll:true})}catch(_){input.focus()}
+    scheduleComposerPosition();
+   });
+  }
+ }
+ function closeComposer(){
+  document.body.classList.remove('composer-editing');
+  composer.classList.remove('is-open');
+  composer.style.display='none';
+  composer.style.removeProperty('top');
+  composer.style.removeProperty('bottom');
+  if(hintBox){hintBox.classList.remove('is-open');hintBox.style.display='none'}
+  document.documentElement.style.setProperty('--keyboard-lift','0px');
+ }
+ window.MOTOVICHQuickAdd=()=>openComposer(true);
+
+ function setListeningUI(active){
+  listening=active;
+  mic.classList.toggle('listening',active);
+  mic.innerHTML=active?'<span aria-hidden="true">Ⅱ</span>':'<svg class="motovich-mic-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="11" y="3.5" width="10" height="17" rx="5"/><path d="M6.5 15.5a9.5 9.5 0 0 0 19 0M16 25v4M11.5 29h9"/></svg>';
+  mic.setAttribute('aria-label',active?'Остановить запись':'Надиктовать задачу');
+ }
+ function showKeyboardDictationFallback(message){
+  clearTimeout(voiceWatchdog);voiceWatchdog=0;
+  try{if(recognition)recognition.stop()}catch(_){}
+  recognition=null;setListeningUI(false);
+  input.placeholder='Задача… Нажми 🎙 на клавиатуре iPhone';
+  openComposer(true);
+  toast(message||'Голосовой ввод недоступен в этом окне. Нажми 🎙 на клавиатуре iPhone.');
+ }
+ function addTasks(raw){
   const voice=window.MOTOVICHVoice;
   const parsed=voice&&typeof voice.parseTasks==='function'?voice.parseTasks(raw):[];
-  if(!parsed.length){if(hint)hint.textContent='Не удалось выделить задачу. Например: «завтра в 10 позвонить поставщику»';return}
+  if(!parsed.length){
+   toast('Введи текст задачи перед добавлением.');
+   scheduleComposerPosition();
+   input.focus({preventScroll:true});
+   return;
+  }
   const added=[];
   for(const item of parsed){
    const taskDate=item.date||dateKey();
@@ -170,31 +226,77 @@ setupVoiceTaskInput();
    added.push({date:taskDate,time:item.time||'',name:item.name});
   }
   input.value='';
-  if(composer)composer.classList.remove('is-open');if(hintBox)hintBox.classList.remove('is-open');document.documentElement.style.setProperty('--keyboard-lift','0px');
-  const formatDate=d=>new Date(d+'T12:00:00').toLocaleDateString('ru-RU',{day:'numeric',month:'long'});
-  if(hint){
-   hint.textContent=added.length===1
-    ?'Добавлено в календарь · '+formatDate(added[0].date)+(added[0].time?' в '+added[0].time:'')
-    :'Добавлено задач: '+added.length+'. Последняя дата: '+formatDate(added[added.length-1].date);
-  }
+  input.placeholder=initialPlaceholder;
+  closeComposer();
+  input.blur();
   toast(added.length===1?'Задача добавлена в календарь':'Добавлено задач: '+added.length);
-  closeComposer();input.blur();
  }
- form.addEventListener('submit',e=>{e.preventDefault();if(listening&&recognition){try{recognition.stop()}catch(_){}return}submitTask(input.value)});
- mic.addEventListener('click',()=>{
-  if(listening){try{recognition.stop()}catch(_){}return}
-  if(!SpeechRecognition){input.focus();input.placeholder='Нажми 🎙 на клавиатуре iPhone и продиктуй задачу';if(hint)hint.textContent='Используй микрофон клавиатуры iPhone';return}
+ function startVoice(){
+  if(listening&&recognition){try{recognition.stop()}catch(_){}return}
+  if(!SpeechRecognition){
+   showKeyboardDictationFallback('В этом браузере голосовой ввод приложения недоступен. Используй 🎙 на клавиатуре iPhone.');
+   return;
+  }
   try{
-   recognition=new SpeechRecognition();recognition.lang='ru-RU';recognition.continuous=false;recognition.interimResults=true;recognition.maxAlternatives=1;
-   let finalText='';
-   recognition.onstart=()=>{listening=true;mic.classList.add('listening');mic.innerHTML='<span aria-hidden="true">Ⅱ</span>';mic.setAttribute('aria-label','Остановить запись');if(hint)hint.textContent='Слушаю… Скажи задачу и, если нужно, дату'};
-   recognition.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const phrase=e.results[i][0].transcript;if(e.results[i].isFinal)finalText+=phrase;else interim+=phrase}input.value=(finalText||interim).trim().slice(0,500)};
-   recognition.onerror=e=>{if(hint)hint.textContent=e.error==='not-allowed'?'Разреши доступ к микрофону в настройках Safari':'Не удалось распознать речь. Попробуй ещё раз'};
-   recognition.onend=()=>{listening=false;mic.classList.remove('listening');mic.innerHTML='<svg class="motovich-mic-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="11" y="3.5" width="10" height="17" rx="5"/><path d="M6.5 15.5a9.5 9.5 0 0 0 19 0M16 25v4M11.5 29h9"/></svg>';mic.setAttribute('aria-label','Надиктовать задачу');if(finalText.trim()){submitTask(finalText)}else if(hint&&input.value.trim())hint.textContent='Проверь текст и нажми ↑, чтобы добавить задачу'};
+   finalVoiceText='';
+   recognition=new SpeechRecognition();
+   recognition.lang='ru-RU';
+   recognition.continuous=false;
+   recognition.interimResults=true;
+   recognition.maxAlternatives=1;
+   recognition.onstart=()=>{
+    setListeningUI(true);
+    input.placeholder='Слушаю… говори по-русски';
+    toast('Слушаю задачу…');
+    clearTimeout(voiceWatchdog);
+    // Embedded iOS browsers can expose the API without returning a transcript.
+    voiceWatchdog=setTimeout(()=>{
+     if(listening&&!finalVoiceText)showKeyboardDictationFallback('Не удалось получить распознанный текст. Нажми 🎙 на клавиатуре iPhone.');
+    },9000);
+   };
+   recognition.onresult=e=>{
+    let interim='';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+     const phrase=e.results[i][0].transcript;
+     if(e.results[i].isFinal)finalVoiceText+=phrase;
+     else interim+=phrase;
+    }
+    input.value=(finalVoiceText||interim).trim().slice(0,500);
+    scheduleComposerPosition();
+   };
+   recognition.onerror=e=>{
+    clearTimeout(voiceWatchdog);voiceWatchdog=0;
+    const reason=e&&e.error==='not-allowed'
+     ?'Нет доступа к микрофону. Используй 🎙 на клавиатуре iPhone.'
+     :'Распознавание не сработало в этом браузере. Используй 🎙 на клавиатуре iPhone.';
+    showKeyboardDictationFallback(reason);
+   };
+   recognition.onend=()=>{
+    clearTimeout(voiceWatchdog);voiceWatchdog=0;
+    const transcript=finalVoiceText.trim();
+    setListeningUI(false);
+    recognition=null;
+    if(transcript){input.placeholder=initialPlaceholder;addTasks(transcript)}
+    else if(input.value.trim()){toast('Проверь текст и нажми стрелку для добавления.')}
+    else showKeyboardDictationFallback('Речь не распознана. Нажми 🎙 на клавиатуре iPhone.');
+   };
+   // Called directly from the user's button tap to preserve browser user activation.
    recognition.start();
-  }catch(_){if(hint)hint.textContent='Не удалось включить микрофон. Проверь разрешения браузера'}
+  }catch(_){
+   showKeyboardDictationFallback('Не удалось запустить голосовой ввод здесь. Нажми 🎙 на клавиатуре iPhone.');
+  }
+ }
+ form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(listening&&recognition){try{recognition.stop()}catch(_){}return}
+  addTasks(input.value);
  });
- input.addEventListener('keydown',e=>{if(e.key==='Escape'){input.value='';input.blur();closeComposer()}});
+ mic.addEventListener('click',startVoice);
+ if(fab)fab.addEventListener('click',()=>openComposer(true));
+ if(voiceFab)voiceFab.addEventListener('click',()=>{openComposer(false);startVoice()});
+ input.addEventListener('focus',scheduleComposerPosition);
+ input.addEventListener('input',scheduleComposerPosition);
+ input.addEventListener('keydown',e=>{if(e.key==='Escape'){input.blur();closeComposer()}});
 })();
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script><script>
