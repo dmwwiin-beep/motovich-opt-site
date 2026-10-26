@@ -334,15 +334,17 @@ function openWhatsAppOrder(message){
   const url='https://wa.me/79186568581?text='+encodeURIComponent(message);
   const fallback=$('#whatsappFallback');
   const fallbackLink=$('#whatsappFallbackLink');
-  if(fallbackLink)fallbackLink.href=url;
+  if(fallbackLink){
+    fallbackLink.href=url;
+    fallbackLink.target='_self';
+  }
   if(fallback)fallback.hidden=false;
-  let popup=null;
-  try{popup=window.open(url,'_blank')}catch(err){}
-  if(popup){
-    try{popup.opener=null}catch(err){}
-    toast('Заявка подготовлена. Проверьте сообщение и нажмите «Отправить» в WhatsApp');
-  }else{
-    toast('Автооткрытие заблокировано браузером. Нажмите ссылку под кнопкой заказа');
+  // On mobile in-app browsers window.open() can leave a blank about:blank tab.
+  // Navigate in the current tab so the WhatsApp handoff is not blocked.
+  try{
+    window.location.assign(url);
+  }catch(err){
+    toast('Не удалось открыть WhatsApp. Нажмите ссылку под кнопкой заказа');
   }
 }
 
