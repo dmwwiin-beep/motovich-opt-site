@@ -228,7 +228,26 @@ const CATEGORY_RULES=[
 
 const HIT_RULE=/air\s?pods pro|airpods pro|dyson.*(фен|стайлер)|marshall major|jbl flip|apple watch ultra|galaxy buds|hk 11|xiaomi повербанк|dual(?:sense|shock)|iphone xr/i;
 
-let allProducts=[],cart={},activeCat='Все товары',activeTier=0,pendingOrder=null,currentDetail=null;
+let allProducts=[],cart=loadSavedCart(),activeCat='Все товары',activeTier=0,pendingOrder=null,currentDetail=null;
+
+const CART_STORAGE_KEY='motovich_opt_cart_v1';
+function loadSavedCart(){
+  try{
+    const raw=localStorage.getItem(CART_STORAGE_KEY);
+    const saved=raw?JSON.parse(raw):{};
+    if(!saved||typeof saved!=='object'||Array.isArray(saved))return {};
+    const clean={};
+    for(const [id,qty] of Object.entries(saved)){
+      const n=Number(qty);
+      if(/^\\d+$/.test(id)&&Number.isInteger(n)&&n>0&&n<10000)clean[id]=n;
+    }
+    return clean;
+  }catch(e){return {}}
+}
+function saveCart(){
+  try{localStorage.setItem(CART_STORAGE_KEY,JSON.stringify(cart));}
+  catch(e){console.warn('Не удалось сохранить корзину на этом устройстве',e)}
+}
 
 // Вставим сюда ссылку на объявление Авито после её получения.
 const AVITO_LISTING_URL='https://www.avito.ru/moskva/audio_i_video/airpods_pro_optom_8295606402';
@@ -247,7 +266,7 @@ function calcTier(){const base=Object.keys(cart).reduce((sum,id)=>{const p=allPr
 
 function tierText(){return ['от 5 000 ₽','от 20 000 ₽','от 40 000 ₽'][activeTier]}
 
-async function init(){try{const r=await fetch('./products.json');const source=await r.json();allProducts=source.filter(p=>p.category!=='Автотовары'&&p.sheet!=='Авто Товары');let hits=0;for(const p of allProducts){p.categories=categoryProducts(p);if(HIT_RULE.test((p.name||'')+' '+(p.section||''))&&hits<12){p.categories.push('Хиты продаж');hits++}p.category=p.categories[0]||'Аксессуары';if(p.id===44&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[1],p.prices[1]];if([92,126].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];if([93,127].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];}buildTabs();render();updateCartUI();const productParam=new URLSearchParams(window.location.search).get('product');if(productParam)openProduct(productParam)}catch(e){$('#products').innerHTML='<div class="empty">Не удалось загрузить каталог. Обновите страницу и попробуйте снова.</div>';$('#resultCount').textContent='Ошибка загрузки'}}
+async function init(){try{const r=await fetch('./products.json');const source=await r.json();allProducts=source.filter(p=>p.category!=='Автотовары'&&p.sheet!=='Авто Товары');let hits=0;for(const p of allProducts){p.categories=categoryProducts(p);if(HIT_RULE.test((p.name||'')+' '+(p.section||''))&&hits<12){p.categories.push('Хиты продаж');hits++}p.category=p.categories[0]||'Аксессуары';if(p.id===44&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[1],p.prices[1]];if([92,126].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];if([93,127].includes(p.id)&&(p.prices||[]).length===2)p.prices=[p.prices[0],p.prices[0],p.prices[1]];}cart=Object.fromEntries(Object.entries(cart).filter(([id,qty])=>allProducts.some(p=>p.id===Number(id))&&Number.isInteger(qty)&&qty>0));saveCart();activeTier=calcTier();buildTabs();render();updateCartUI();const productParam=new URLSearchParams(window.location.search).get('product');if(productParam)openProduct(productParam)}catch(e){$('#products').innerHTML='<div class="empty">Не удалось загрузить каталог. Обновите страницу и попробуйте снова.</div>';$('#resultCount').textContent='Ошибка загрузки'}}
 
 function buildTabs(){$('#tabs').innerHTML='<button class="tab active" data-cat="Все товары">Все товары</button>'+CATEGORIES.map(c=>'<button class="tab" data-cat="'+esc(c)+'">'+esc(c)+'</button>').join('')}
 
@@ -255,7 +274,7 @@ function render(){const q=$('#search').value.toLowerCase().trim();let list=allPr
 
 function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',1800)}
 
-function sync(){activeTier=calcTier();render();updateCartUI()}
+function sync(){saveCart();activeTier=calcTier();render();updateCartUI()}
 
 function add(id,n){const p=allProducts.find(x=>x.id===Number(id));if(!p)return;cart[id]=(cart[id]||0)+Math.max(1,Number(n)||1);sync();toast('Добавлено в корзину')}
 
